@@ -6,38 +6,199 @@
   <script src="http://fabricjs.com/lib/fabric.js"></script>
   <script type='text/javascript' src='http://cdn.scaledrone.com/scaledrone.min.js'></script>
   <!-- <script src="script.js"></script> -->
-  <style>
-  </style>	
 </head>
 <body> 
 
  
-	 <!-- <video id="localVideo"  style="position: absolute; height: 20%; width: 100%; left: 15%; top:-5%;" autoplay muted></video>
-	 <video id="remoteVideo" style="display: none"></video>  -->
-<video height="360" width="480" id="video1" style="display: none" muted>
-  <source src="http://html5demos.com/assets/dizzy.mp4">
-  <source src="http://html5demos.com/assets/dizzy.ogv">
-</video>
+	<video id="localVideo" width="300" height="400"  style="height: auto;display: none;" autoplay muted></video>
+	<video id="remoteVideo1" width="300" height="400" style="display: none"></video>  
+	<video id="remoteVideo2" width="300" height="200" style="display: none"></video>  
+	<video id="remoteVideo3" width="300" height="200" style="display: none"></video>  
 	<canvas id="c" style="border: 1px solid black; position: relative; "></canvas> 	      
         
-	   
+	    
   	<script>
 
-  	(function() {	
+  	(function() {	 
 
 	  		var canvas = this.__canvas = new fabric.Canvas('c',{ selection: true });
 
-	  		var video1El = document.getElementById('video1');
-	  		var video1 = new fabric.Image(video1El, {
-			  left: 200,
-			  top: 300,
-			  angle: -15,
-			  originX: 'center',
-			  originY: 'center',
-			  objectCaching: false,
-			});
+	  		var video1El = document.getElementById('localVideo');
+	  		var remotevideo1El = document.getElementById('remoteVideo1');
+	  		var remotevideo2El = document.getElementById('remoteVideo2');
+	  		var remotevideo3El = document.getElementById('remoteVideo3');
+	  		var video1 = new fabric.Image(video1El, {        
+				  left: 310, //310 0
+				  top: 0,      
+				  originX: 'center',
+				  originY: 'center'
+			});  
 			canvas.add(video1);
-			video1.getElement().play();
+
+			var remotevideo1 = new fabric.Image(remotevideo1El, {        
+				  left: 1070,  
+				  top: 0,  
+				  originX: 'center',
+				  originY: 'center'
+			});  
+			canvas.add(remotevideo1);      
+
+			var remotevideo2 = new fabric.Image(remotevideo2El, {        
+				  left: 310,  
+				  top: 490,  
+				  originX: 'center',
+				  originY: 'center'
+			});  
+			canvas.add(remotevideo2);      
+
+			var remotevideo3 = new fabric.Image(remotevideo3El, {        
+				  left: 1070,  
+				  top: 490,  
+				  originX: 'center',
+				  originY: 'center'
+			});  
+			canvas.add(remotevideo3);          
+			
+
+			/*************** video streaming *************/
+			// Generate random room name if needed
+			if (!location.hash) {
+			  location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+			}
+			const roomHash =  "123"; //location.hash.substring(1);
+
+			// TODO: Replace with your own channel ID
+			const drone = new ScaleDrone('2xmbUiTsqTzukyf7');
+			// Room name needs to be prefixed with 'observable-'
+			const roomName = 'observable-' + roomHash;
+			const configuration = {
+			  iceServers: [{
+			    urls: 'stun:stun.l.google.com:19302'
+			  }]
+			};
+			let room;
+			let pc;  
+
+
+			function onSuccess() {};
+			function onError(error) {
+			  console.error(error);
+			};
+
+			drone.on('open', error => {
+			  if (error) {
+			    return console.error(error);
+			  }
+			  room = drone.subscribe(roomName);
+			  room.on('open', error => {
+			    if (error) {
+			      onError(error);
+			    }
+			  });
+			  // We're connected to the room and received an array of 'members'
+			  // connected to the room (including us). Signaling server is ready.
+			  room.on('members', members => {
+			    console.log('MEMBERS', members);
+			    // If we are the second user to connect to the room we will be creating the offer
+			    const isOfferer = members.length === 2;
+			    startWebRTC(isOfferer);
+			  });
+			});
+
+			// Send signaling data via Scaledrone
+			function sendMessage(message) {
+			  drone.publish({
+			    room: roomName,
+			    message
+			  });
+			}
+
+			function startWebRTC(isOfferer) {
+			  pc = new RTCPeerConnection(configuration);
+
+			  // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
+			  // message to the other peer through the signaling server
+			  pc.onicecandidate = event => {
+			    if (event.candidate) {
+			      sendMessage({'candidate': event.candidate});
+			    }
+			  };
+
+			  // If user is offerer let the 'negotiationneeded' event create the offer
+			  if (isOfferer) {
+			    pc.onnegotiationneeded = () => {
+			      pc.createOffer().then(localDescCreated).catch(onError);
+			    }
+			  }
+
+			  // When a remote stream arrives display it in the #remoteVideo element
+			  pc.onaddstream = event => {
+			    remoteVideo.srcObject = event.stream;
+
+			    remotevideo1El.srcObject = event.stream;
+			    canvas.add(remotevideo1);
+			    remotevideo1.moveTo(0); // move webcam element to back of zIndex stack
+			    remotevideo1.getElement().play();
+			  };
+
+			  navigator.mediaDevices.getUserMedia({
+			    audio: true,
+			    video: true,
+			  }).then(stream => {
+			    // Display your local video in #localVideo element
+			    localVideo.srcObject = stream;
+			    // Add your stream to be sent to the conneting peer
+			    pc.addStream(stream);
+
+
+			    video1El.srcObject = stream;
+			    canvas.add(video1);
+			    video1.moveTo(0); // move webcam element to back of zIndex stack
+			    video1.getElement().play();   
+
+
+			  }, onError);
+
+			  // Listen to signaling data from Scaledrone
+			  room.on('data', (message, client) => {
+			    // Message was sent by us
+			    if (client.id === drone.clientId) {
+			      return;
+			    }
+
+			    if (message.sdp) {
+			      // This is called after receiving an offer or answer from another peer
+			      pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
+			        // When receiving an offer lets answer it
+			        if (pc.remoteDescription.type === 'offer') {
+			          pc.createAnswer().then(localDescCreated).catch(onError);
+			        }
+			      }, onError);
+			    } else if (message.candidate) {
+			      // Add the new ICE candidate to our connections remote description
+			      pc.addIceCandidate(
+			        new RTCIceCandidate(message.candidate), onSuccess, onError
+			      );
+			    }
+			  });
+			}
+
+			function localDescCreated(desc) {
+			  pc.setLocalDescription(
+			    desc,
+			    () => sendMessage({'sdp': pc.localDescription}),
+			    onError
+			  );
+			}     
+
+
+
+
+
+
+
+      
+
               
             
 	  		var rect1 = { left: 160, top: 0, stroke:"#FFC000",strokeWidth:3,fill:'',width: 300, height: 200, id:"user_one",lockMovementX:true,lockMovementY:true };
@@ -564,7 +725,7 @@
  
 			/*fabric.Image.fromURL('https://img.icons8.com/windows/2x/macos-close.png', function(myImg) {
 				myImg.id = "bullet";
-			 	canvas.add(myImg); 
+			 	canvas.add(myImg);  
 			 	canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
 			});*/      
 
@@ -640,8 +801,8 @@
 			  function resizeCanvas() {
 			  		var innerWidth = window.innerWidth - 50;
 
-			  		console.log(window.innerWidth);
-			  		console.log(window.innerHeight);
+			  		//console.log(window.innerWidth);
+			  		//console.log(window.innerHeight);
 
 
 				    canvas.setHeight(window.innerHeight);
@@ -658,17 +819,32 @@
 
 				    //canvas.calcOffset();
 				    canvas.renderAll(); //innerWidth
-				    console.log("zoom:"+canvas.getZoom());
+				    //console.log("zoom:"+canvas.getZoom());
 
-				    fabric.util.requestAnimFrame(function render() {
-					  fabric.util.requestAnimFrame(render);
-					});
+				    
 			  }     
 
 
+			fabric.util.requestAnimFrame(function render() {
+					var innerWidth = window.innerWidth - 50;
+
+			  		//console.log(window.innerWidth);
+			  		//console.log(window.innerHeight);    
+
+				    canvas.setHeight(window.innerHeight);
+				    canvas.setWidth(innerWidth); 
+
+				    var originalWidth = 1300;
+				    var originalHeight = 980;
+
+				    canvas.setZoom(innerWidth/originalWidth);
+			  		canvas.renderAll();
+					  fabric.util.requestAnimFrame(render);
+			});    
+
 
 			  // resize on init
-			  resizeCanvas();
+			  //resizeCanvas();
 	  			
 	})();  
 
