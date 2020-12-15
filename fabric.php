@@ -4,24 +4,62 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <script src="fabric.js"></script>
+  <link  href="style.css" rel="stylesheet" type="text/css"/>
   <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
-  <!-- <script src="script.js"></script> -->
-</head> 
-<body> 
-
+</head>       
+<body>
+   
+	<div id="dice" data-side="1" style="position: absolute;top: 0; left: 0; bottom: 0; right: 0;margin: auto;z-index: 9999;">      
+		<div class="sides side-1">
+				<span class="dot dot-1"></span>
+		</div>      
+		<div class="sides side-2">
+				<span class="dot dot-1"></span>
+				<span class="dot dot-2"></span>
+		</div>
+		<div class="sides side-3">
+				<span class="dot dot-1"></span>
+				<span class="dot dot-2"></span>  
+				<span class="dot dot-3"></span>
+		</div>
+		<div class="sides side-4">
+				<span class="dot dot-1"></span>
+				<span class="dot dot-2"></span>  
+				<span class="dot dot-3"></span>
+				<span class="dot dot-4"></span>
+		</div>
+		<div class="sides side-5">
+				<span class="dot dot-1"></span>
+				<span class="dot dot-2"></span>  
+				<span class="dot dot-3"></span>
+				<span class="dot dot-4"></span>
+				<span class="dot dot-5"></span>
+		</div>
+		<div class="sides side-6">
+				<span class="dot dot-1"></span>
+				<span class="dot dot-2"></span>  
+				<span class="dot dot-3"></span>
+				<span class="dot dot-4"></span>
+				<span class="dot dot-5"></span>
+				<span class="dot dot-6"></span>
+		</div>
+	</div>
  
 	<video id="localVideo" width="300" height="400"  style="height: auto;display: none" autoplay muted></video>
 	<video id="remoteVideo1" width="300" height="400" style="height: auto;display: none" autoplay></video>    
 	<video id="remoteVideo2" width="300" height="200" style="height: auto;display: none" autoplay></video>  
-	<video id="remoteVideo3" width="300" height="200" style="height: auto;display: none" autoplay></video>  
-	<canvas id="c" style="border: 1px solid black; position: relative; "></canvas> 	      
+	<video id="remoteVideo3" width="300" height="200" style="height: auto;display: none" autoplay></video> 
+	<input type="hidden" id="remote1" value="">
+	<input type="hidden" id="remote2" value="">
+	<input type="hidden" id="remote3" value=""> 
+	<canvas id="c" style="border: 1px solid black; position: relative;"></canvas> 	      
         
 	      
   	<script>
 
   	(function() {	 
 
-	  		var canvas = this.__canvas = new fabric.Canvas('c',{ selection: true });
+	  		var canvas = this.__canvas = new fabric.Canvas('c',{ selection: false });
 
 	  		var video1El = document.getElementById('localVideo');
 	  		var remoteVideo1El = document.getElementById('remoteVideo1');
@@ -31,7 +69,9 @@
 				  left: 310, //310 0
 				  top: 0,      
 				  originX: 'center',
-				  originY: 'center'
+				  originY: 'center',
+				  lockMovementX:true,
+				  lockMovementY:true
 			});  
 			canvas.add(video1);
 
@@ -39,7 +79,9 @@
 				  left: 1070,  
 				  top: 0,  
 				  originX: 'center',
-				  originY: 'center'
+				  originY: 'center',
+				  lockMovementX:true,
+				  lockMovementY:true
 			});  
 			canvas.add(remoteVideo1);      
 
@@ -47,7 +89,9 @@
 				  left: 310,  
 				  top: 490,  
 				  originX: 'center',
-				  originY: 'center'  
+				  originY: 'center',
+				  lockMovementX:true,
+				  lockMovementY:true  
 			});  
 			canvas.add(remoteVideo2);      
 
@@ -55,7 +99,9 @@
 				  left: 1070,  
 				  top: 490,  
 				  originX: 'center',
-				  originY: 'center'
+				  originY: 'center',
+				  lockMovementX:true,
+				  lockMovementY:true
 			});  
 			canvas.add(remoteVideo3);          
 			
@@ -78,6 +124,8 @@
 			};
 			let room;
 			let pc;  
+			let remoteStream = new MediaStream();
+
 
 
 			function onSuccess() {};
@@ -131,17 +179,63 @@
 			    }
 			  }
 
-			  // When a remote stream arrives display it in the #remoteVideo element
-			  pc.onaddstream = event => { //onaddstream  
-			    remoteVideo1.srcObject = event.stream;          
+			  /*pc.addEventListener('track', async (event) => {   
+			  	console.log(event.track);
+    			remoteStream.addTrack(event.track, remoteStream);
+			  });*/           
 
-			    console.log(event.stream);            
- 
-			    remoteVideo1El.srcObject = event.stream;
-			    canvas.add(remoteVideo1);  
-			    remoteVideo1.moveTo(0); // move webcam element to back of zIndex stack
-			    remoteVideo1.getElement().play();
+			  // When a remote stream arrives display it in the #remoteVideo element
+			  pc.ontrack = ({track, streams: [stream]}) => {  //onaddstream    event =>
+
+
+			  		stream.onremovetrack = ({track}) => {
+					    console.log(`${track.kind} track was removed.`);
+					    if (!stream.getTracks().length) {
+					      console.log(`stream ${stream.id} emptied (effectively removed).`);
+					    }
+					};
+
+			  	
+
+			  		var remote1 = document.getElementById("remote1").value;
+				  	var remote2 = document.getElementById("remote2").value;
+				  	var remote3 = document.getElementById("remote3").value;
+
+				  	var inboundStream = null;
+				  	inboundStream = new MediaStream();
+
+				  	if(remote1 == '') {  
+				  		document.getElementById("remote1").value = "1";
+				  		remoteVideo1.srcObject = stream;                    
+					    remoteVideo1El.srcObject = stream;
+					    canvas.add(remoteVideo1);    
+					    remoteVideo1.moveTo(0); // move webcam element to back of zIndex stack
+					    remoteVideo1.getElement().play();	
+				  	} else if(remote2 == '') {
+				  		document.getElementById("remote2").value = "1";
+				  		remoteVideo2.srcObject = stream;          
+					    remoteVideo2El.srcObject = stream;
+					    canvas.add(remoteVideo2);  
+					    remoteVideo2.moveTo(0); // move webcam element to back of zIndex stack
+					    remoteVideo2.getElement().play();	
+				  	} else if(remote3 == '') {
+				  		document.getElementById("remote3").value = "1";
+				  		remoteVideo3.srcObject = stream;      
+					    remoteVideo3El.srcObject = stream;
+					    canvas.add(remoteVideo3);  
+					    remoteVideo3.moveTo(0); // move webcam element to back of zIndex stack
+					    remoteVideo3.getElement().play();	
+				  	}   
+
+
+
+			  	
+
 			  };
+
+			  pc.removestream= (event) => {
+			  	console.log("user removed");
+			  }
 
 			  navigator.mediaDevices.getUserMedia({
 			    audio: true,
@@ -209,17 +303,31 @@
 	  		var rect3 = { left: 160, top: 390, fill: 'white', width: 300, height: 200 , id:"user_three",lockMovementX:true,lockMovementY:true,stroke:"#A9C099",strokeWidth:3};
 	  		var rect4 = { left: 920, top: 390, fill: 'white', width: 300, height: 200 , id:"user_four",lockMovementX:true,lockMovementY:true,stroke:"#DE7E7E",strokeWidth:3,};  
 
+	  		var doneButton = { left: 780, top: 350, angle:-50, fill: 'white', width: 70, height: 25 , id:"done_button",lockMovementX:true,lockMovementY:true,stroke:"black",strokeWidth:3,};    
+
 	  		var rect1obj = new fabric.Rect( rect1 )
 	  		var rect2obj = new fabric.Rect( rect2 ) 
 	  		var rect3obj = new fabric.Rect( rect3 )
 	  		var rect4obj = new fabric.Rect( rect4 )
-
-
+	  		var doneButtonobj = new fabric.Rect( doneButton )
 
 	  		canvas.add(rect1obj);   
 	  		canvas.add(rect2obj);       
 	  		canvas.add(rect3obj);
 	  		canvas.add(rect4obj);
+	  		canvas.add(doneButtonobj);
+
+	  		canvas.add(new fabric.Text('Done', { 
+			    left: 790, 
+			    top: 340, 
+			    angle:-50,
+			    fontSize: 20,  
+			    fill: 'black',
+			    id:"done_text",
+			    lockMovementX:true,
+				lockMovementY:true
+			}));    
+
 
 	  		/***************** left top left bar **************/
 	  		fabric.Image.fromURL('flat-yel-010.png', function(myImg) {
@@ -732,6 +840,11 @@
 			});*/      
 
 			canvas.on({
+				'mouse:up': function(e) {
+					if(e.target.id == "done_button" || e.target.id == "done_text") {
+						console.log("sdsdsd");
+					}
+				},
 			    'object:moving': function(e) {
 			    	//console.log(e.target.canvas);	  
 			    },
@@ -852,7 +965,7 @@
 
   	</script>	
 
-  	
+  	<script src="dice.js"></script>  
 
 </body>
 </html>       
