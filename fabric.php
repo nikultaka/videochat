@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <script src="http://fabricjs.com/lib/fabric.js"></script>
-  <script type='text/javascript' src='http://cdn.scaledrone.com/scaledrone.min.js'></script>
+  <script src="fabric.js"></script>
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
   <!-- <script src="script.js"></script> -->
-</head>
+</head> 
 <body> 
 
  
-	<video id="localVideo" width="300" height="400"  style="height: auto;display: none;" autoplay muted></video>
-	<video id="remoteVideo1" width="300" height="400" style="display: none"></video>  
-	<video id="remoteVideo2" width="300" height="200" style="display: none"></video>  
-	<video id="remoteVideo3" width="300" height="200" style="display: none"></video>  
+	<video id="localVideo" width="300" height="400"  style="height: auto;display: none" autoplay muted></video>
+	<video id="remoteVideo1" width="300" height="400" style="height: auto;display: none" autoplay></video>    
+	<video id="remoteVideo2" width="300" height="200" style="height: auto;display: none" autoplay></video>  
+	<video id="remoteVideo3" width="300" height="200" style="height: auto;display: none" autoplay></video>  
 	<canvas id="c" style="border: 1px solid black; position: relative; "></canvas> 	      
         
-	    
+	      
   	<script>
 
   	(function() {	 
@@ -24,9 +24,9 @@
 	  		var canvas = this.__canvas = new fabric.Canvas('c',{ selection: true });
 
 	  		var video1El = document.getElementById('localVideo');
-	  		var remotevideo1El = document.getElementById('remoteVideo1');
-	  		var remotevideo2El = document.getElementById('remoteVideo2');
-	  		var remotevideo3El = document.getElementById('remoteVideo3');
+	  		var remoteVideo1El = document.getElementById('remoteVideo1');
+	  		var remoteVideo2El = document.getElementById('remoteVideo2');
+	  		var remoteVideo3El = document.getElementById('remoteVideo3');    
 	  		var video1 = new fabric.Image(video1El, {        
 				  left: 310, //310 0
 				  top: 0,      
@@ -35,29 +35,29 @@
 			});  
 			canvas.add(video1);
 
-			var remotevideo1 = new fabric.Image(remotevideo1El, {        
+			var remoteVideo1 = new fabric.Image(remoteVideo1El, {        
 				  left: 1070,  
 				  top: 0,  
 				  originX: 'center',
 				  originY: 'center'
 			});  
-			canvas.add(remotevideo1);      
+			canvas.add(remoteVideo1);      
 
-			var remotevideo2 = new fabric.Image(remotevideo2El, {        
+			var remoteVideo2 = new fabric.Image(remoteVideo2El, {        
 				  left: 310,  
 				  top: 490,  
 				  originX: 'center',
-				  originY: 'center'
+				  originY: 'center'  
 			});  
-			canvas.add(remotevideo2);      
+			canvas.add(remoteVideo2);      
 
-			var remotevideo3 = new fabric.Image(remotevideo3El, {        
+			var remoteVideo3 = new fabric.Image(remoteVideo3El, {        
 				  left: 1070,  
 				  top: 490,  
 				  originX: 'center',
 				  originY: 'center'
 			});  
-			canvas.add(remotevideo3);          
+			canvas.add(remoteVideo3);          
 			
 
 			/*************** video streaming *************/
@@ -83,7 +83,7 @@
 			function onSuccess() {};
 			function onError(error) {
 			  console.error(error);
-			};
+			}; 
 
 			drone.on('open', error => {
 			  if (error) {
@@ -132,13 +132,15 @@
 			  }
 
 			  // When a remote stream arrives display it in the #remoteVideo element
-			  pc.onaddstream = event => {
-			    remoteVideo.srcObject = event.stream;
+			  pc.onaddstream = event => { //onaddstream  
+			    remoteVideo1.srcObject = event.stream;          
 
-			    remotevideo1El.srcObject = event.stream;
-			    canvas.add(remotevideo1);
-			    remotevideo1.moveTo(0); // move webcam element to back of zIndex stack
-			    remotevideo1.getElement().play();
+			    console.log(event.stream);            
+ 
+			    remoteVideo1El.srcObject = event.stream;
+			    canvas.add(remoteVideo1);  
+			    remoteVideo1.moveTo(0); // move webcam element to back of zIndex stack
+			    remoteVideo1.getElement().play();
 			  };
 
 			  navigator.mediaDevices.getUserMedia({
@@ -716,7 +718,7 @@
 
 			var objectsLength = [];
 	  		var objs = canvas.getObjects().map(function(o) {
-	  			console.log(o);
+	  			//console.log(o);
 	  			objectsLength.push({left:o.left,width:o.width,top:o.top,height:o.height,}); 
 			  	return o.set('active', true);
 			});               
