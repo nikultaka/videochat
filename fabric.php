@@ -9,7 +9,7 @@
 </head>       
 <body>
    
-	<div id="dice" data-side="1" style="position: absolute;top: 0; left: 0; bottom: 0; right: 0;margin: auto;z-index: 9999;">      
+	<div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;">      
 		<div class="sides side-1">
 				<span class="dot dot-1"></span>
 		</div>      
