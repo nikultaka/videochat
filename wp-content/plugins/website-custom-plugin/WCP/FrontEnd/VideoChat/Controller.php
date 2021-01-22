@@ -289,7 +289,9 @@ class WCP_VideoChat_Controller {
         $users_table = $wpdb->prefix.'online_users';
         if(isset($_POST['user_id'])) {      
             $userID = $_POST['user_id'];  
-            $userData = $wpdb->get_results("select * from ".$users_table." where user_id !=".$userID." and status = '1' order by id ASC limit 1  ");
+            $room_id = $_POST['room_id'];
+            $userData = $wpdb->get_results("select * from ".$users_table." where user_id !=".$userID." and status = '1' and room_id = '".$room_id."' order by id ASC limit 1  ");
+
             $next_turn = '';
             if(!empty($userData)) {
                $next_turn = $userData[0]->user_id;

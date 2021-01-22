@@ -1382,7 +1382,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         $.ajax({    
             type: 'POST',
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            data: {"action": "WCP_VideoChat_Controller::done","user_id":"<?php echo $user_id; ?>"},
+            data: {"action": "WCP_VideoChat_Controller::done","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},
             success: function (data) {   
                 var result =  JSON.parse(data);
                 if (result.status == 1) {  
