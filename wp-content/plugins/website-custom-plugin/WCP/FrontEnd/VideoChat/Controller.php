@@ -290,14 +290,34 @@ class WCP_VideoChat_Controller {
         if(isset($_POST['user_id'])) {      
             $userID = $_POST['user_id'];  
             $room_id = $_POST['room_id'];
-            $userData = $wpdb->get_results("select * from ".$users_table." where user_id !=".$userID." and status = '1' and room_id = '".$room_id."' order by id ASC limit 1  ");
+            $userData = $wpdb->get_results("select * from ".$users_table." where status = '1' and room_id = '".$room_id."' order by id ASC");
+            //user_id !=".$userID." and 
+
+            $wpdb->query(" update ".$users_table." set current_turn = '0' ");
 
             $next_turn = '';
+            if(!empty($userData)) {
+                foreach($userData as $userKey => $userValue) {
+                    if($userValue->current_turn == "1") {
+                        if(isset($userData[$userKey+1])) {
+                            $nextUserData = $userData[$userKey+1];
+                            $next_turn = $nextUserData->user_id;
+                        } else {
+                            $nextUserData = $userData[0];
+                            $next_turn = $nextUserData->user_id;
+                        }
+                        $wpdb->query(" update ".$users_table." set current_turn = '1' where user_id =".$next_turn." ");
+                        break;
+                    }
+                }
+            }
+
+            /*$next_turn = '';
             if(!empty($userData)) {
                $next_turn = $userData[0]->user_id;
                $wpdb->query(" update ".$users_table." set current_turn = '0' ");
                $wpdb->query(" update ".$users_table." set current_turn = '1' where user_id =".$next_turn." ");
-            }
+            }*/
             echo json_encode(array("status"=>1,'next_turn'=>$next_turn));
         } else {
             echo json_decode(array("status"=>0));

@@ -3,10 +3,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo plugins_url('website-custom-plugin/WCP/assets/css/style.css'); ?>" >    
 <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
 
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">   
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script>
@@ -28,7 +27,13 @@ $user_id = get_current_user_id();
 
 $is_admin = 0;
 if(!empty($roomData)) {
-    $is_admin = $roomData[0]->is_admin;
+    foreach($roomData as $key => $value) {
+        $is_admin = $value->is_admin;
+        $room_admin_user_id = $value->user_id;  
+        if( ($room_admin_user_id == $user_id) && $is_admin == "1") {
+            $is_admin = "1";          
+        }
+    }
 }
 $user_one_color = "#FFC000";
 $user_two_color = "#305496";
@@ -45,7 +50,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 ?> 
 
-<div class="modal" tabindex="-1" role="dialog">
+<div class="modal" id="mymodal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +87,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
   </div>
 </div>
 
-<button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button>
+
+<?php if($is_admin == "1") { ?>
+  <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button>
+<?php } ?>  
 
 <div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;">      
         <div class="sides side-1">
@@ -547,7 +555,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));     
 
-            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
+            /*fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 670;
                 myImg.top = 42;
@@ -585,7 +593,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            });*/
 
 
             /***************** left bottom left bar **************/
@@ -738,7 +746,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 563, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+            /*fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 670;
                 myImg.top = 521;   //42 add
@@ -776,7 +784,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });    
+            });  */  
 
 
             /**************** right bottom top bar **************/  
@@ -821,7 +829,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** middle middle bar **************/  
 
-            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
+            /*fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 224;
                 myImg.top = 280;    
@@ -901,7 +909,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            });*/    
 
             canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 670,lockMovementX:true,lockMovementY:true }));     
             
@@ -1407,14 +1415,14 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 var result =  JSON.parse(data);
                 if(result.status == 1) {  
                     toastr.success('Color applied successfully');
-                    $(".modal").modal('hide');
+                    $("#mymodal").modal('hide');
                 }
             }
         });
     }
 
     function setColor() {
-        $(".modal").modal('show');
+        $("#mymodal").modal('show');
     }
 
     function get_online_user() {
@@ -1689,7 +1697,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         function rollDice() {
             var current_turn = $("#current_turn").val();
             if(current_turn != '<?php echo $user_id; ?>') {
-                alert("Please wait for your turn");
+                toastr.error("Please wait for your turn");
                 return false;
             }
 
