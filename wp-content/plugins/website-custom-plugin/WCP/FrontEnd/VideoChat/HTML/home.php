@@ -438,8 +438,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_3";        
                 myImg.id = "";
-                myImg.left = 170;
-                myImg.top = 210;
+                myImg.left = 176;
+                myImg.top = 216;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;    
                 canvas.add(myImg);   
@@ -516,8 +516,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.type = "blue_3";
                 myImg.id = "";
-                myImg.left = 885;
-                myImg.top = 0;
+                myImg.left = 881;
+                myImg.top = 6;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -670,8 +670,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {  
                 myImg.type = "green_3";
                 myImg.id = "";
-                myImg.left = 470;    
-                myImg.top = 565;
+                myImg.left = 477;    
+                myImg.top = 583;
                 myImg.lockMovementX = true;   
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -794,8 +794,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                 myImg.type = "red_3";   
                 myImg.id  = "";   
-                myImg.left = 1130;  
-                myImg.top = 370;    
+                myImg.left = 1127;  
+                myImg.top = 372;    
                 myImg.lockMovementX = true; 
                 myImg.lockMovementY = true; 
                 canvas.add(myImg);       
@@ -972,8 +972,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                         if( ( (movedClientX>=objectLeft && movedClientX<=totlaWidthCompare) && (movedClientY>=objectTop && movedClientY<=totlaHeightCompare) &&  objectId.includes("empty_")  )  ) {  
 
-                            var centerX = (objectLeft + (objectWidth/7)) - 3;
-                            var centerY = (objectTop + (objectHeight/7)) - 3;
+                            var centerX = (objectLeft + (objectWidth/7)) + 2;
+                            var centerY = (objectTop + (objectHeight/7)) + 1;
                             
                             canvas.getObjects().map(function(o) {
                               if( o.type == movedType ) {  
