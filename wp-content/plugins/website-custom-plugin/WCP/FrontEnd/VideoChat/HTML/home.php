@@ -181,7 +181,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             remoteVideo2 = new fabric.Image(remoteVideo2El, {        
                   left: 310,  
-                  top: 490,  
+                  top: 510,  
                   originX: 'center',
                   originY: 'center',
                   lockMovementX:true,
@@ -192,7 +192,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             remoteVideo3 = new fabric.Image(remoteVideo3El, {        
                   left: 1070,  
-                  top: 490,  
+                  top: 510,   
                   originX: 'center',
                   originY: 'center',
                   lockMovementX:true,
@@ -363,8 +363,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             var rect1 = { left: 160, top: 0, stroke:"<?php echo $user_one_color; ?>",strokeWidth:3,fill:'',width: 300, height: 200, id:"user_one",lockMovementX:true,lockMovementY:true };
               
             var rect2 = { left: 920, top: 0,fill: 'white', width: 300, height: 200 , id:"user_two",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_two_color ?>",strokeWidth:3 };
-            var rect3 = { left: 160, top: 390, fill: 'white', width: 300, height: 200 , id:"user_three",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_three_color ?>",strokeWidth:3};
-            var rect4 = { left: 920, top: 390, fill: 'white', width: 300, height: 200 , id:"user_four",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_four_color; ?>",strokeWidth:3,};  
+            var rect3 = { left: 160, top: 410, fill: 'white', width: 300, height: 200 , id:"user_three",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_three_color ?>",strokeWidth:3};
+            var rect4 = { left: 920, top: 410, fill: 'white', width: 300, height: 200 , id:"user_four",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_four_color; ?>",strokeWidth:3,};   
 
             fabric.Image.fromURL('<?php echo $doneURL; ?>', function(myImg) {
                 myImg.id = "done_text";
@@ -446,29 +446,29 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });              
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" })); 
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" })); 
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_1" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_1" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_2" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_2" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_3" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_3" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_4" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_4" }));
 
             /**************** left top right bar **************/
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_10" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_10" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_9" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_9" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 84, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_8" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 84, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_8" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 122, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_7" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 126, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_7" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 164, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_6" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 168, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_6" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 206, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_5" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_5" }));
 
             /**************** right top right bar **************/
 
@@ -524,36 +524,36 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_15" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_15" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 84, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_16" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 84, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_16" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 122, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_17" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 126, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_17" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 164, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_18" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 168, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_18" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 206, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_19" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_19" }));
 
             /**************** right top bottom bar **************/
             
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 930,lockMovementX:true,lockMovementY:true,id:"empty_20" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 940,lockMovementX:true,lockMovementY:true,id:"empty_20" }));  
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 980,lockMovementX:true,lockMovementY:true,id:"empty_21" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1000,lockMovementX:true,lockMovementY:true,id:"empty_21" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1030,lockMovementX:true,lockMovementY:true,id:"empty_22" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1060,lockMovementX:true,lockMovementY:true,id:"empty_22" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1080,lockMovementX:true,lockMovementY:true,id:"empty_23" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1120,lockMovementX:true,lockMovementY:true,id:"empty_23" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1130,lockMovementX:true,lockMovementY:true,id:"empty_24" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_24" }));
 
             /******************** top middle bar **************/
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 570,lockMovementX:true,lockMovementY:true,id:"empty_11" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 570,lockMovementX:true,lockMovementY:true,id:"empty_11" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_12" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_12" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));     
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));     
 
             /*fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
@@ -642,30 +642,30 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** left bottom top bar **************/
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_52" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_52" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_51" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_51" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_50" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_50" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_49" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_49" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_48" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_48" }));
 
 
             /**************** left bottom right bar **************/  
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_47" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_47" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 397, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_46" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 409, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_46" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 439, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_45" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 451, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_45" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 481, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_44" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 493, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_44" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 523, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_43" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 535, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_43" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 565, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));
 
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {  
                 myImg.type = "green_3";
@@ -726,25 +726,25 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** right bottom left bar **************/
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_33" }));  
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_33" }));  
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 397, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_34" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 409, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_34" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 439, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_35" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 451, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_35" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 481, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_36" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 493, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_36" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 521, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_37" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 533, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_37" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 563, left: 885,lockMovementX:true,lockMovementY:true,id:"empty_38" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_38" }));
 
 
             /******************** bottom middle bar **************/
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 563, left: 570,lockMovementX:true,lockMovementY:true,id:"empty_41" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 570,lockMovementX:true,lockMovementY:true,id:"empty_41" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 563, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_40" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_40" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 563, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
 
             /*fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
@@ -789,43 +789,43 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** right bottom top bar **************/  
             
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 930,lockMovementX:true,lockMovementY:true,id:"empty_32" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 940,lockMovementX:true,lockMovementY:true,id:"empty_32" }));
 
             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                 myImg.type = "red_3";   
                 myImg.id  = "";   
                 myImg.left = 1130;  
-                myImg.top = 355;    
+                myImg.top = 370;    
                 myImg.lockMovementX = true; 
                 myImg.lockMovementY = true; 
                 canvas.add(myImg);       
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; });  
             });             
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 980,lockMovementX:true,lockMovementY:true,id:"empty_31" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1000,lockMovementX:true,lockMovementY:true,id:"empty_31" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 1030,lockMovementX:true,lockMovementY:true,id:"empty_30" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1060,lockMovementX:true,lockMovementY:true,id:"empty_30" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 1080,lockMovementX:true,lockMovementY:true,id:"empty_29" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1120,lockMovementX:true,lockMovementY:true,id:"empty_29" }));
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 355, left: 1130,lockMovementX:true,lockMovementY:true,id:"empty_28" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_28" }));
 
             /**************** middle right bar **************/  
    
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 320, left: 1130,lockMovementX:true,lockMovementY:true,id:"empty_27" }));      
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 327, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_27" }));      
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 1130,lockMovementX:true,lockMovementY:true,id:"empty_26" }));      
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 288, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_26" }));      
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 245, left: 1130,lockMovementX:true,lockMovementY:true,id:"empty_25" }));       
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 249, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_25" }));       
 
 
             /**************** middle left bar **************/  
    
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 320, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_53" }));      
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 327, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_53" }));      
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_54" }));      
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 288, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_54" }));      
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 245, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_55" }));       
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 249, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_55" }));       
 
             /**************** middle middle bar **************/  
 
