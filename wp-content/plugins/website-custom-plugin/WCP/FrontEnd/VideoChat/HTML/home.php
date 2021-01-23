@@ -1662,9 +1662,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           }
                           canvas.getObjects().map(function(o) {
                               if(o.id == marble.current_position) {
-                                objectLeft = o.left;
-                                objectTop = o.top;
-                              }  
+                                objectLeft = o.left+6;
+                                objectTop = o.top+5;
+                              }       
                           });
 
                           canvas.getObjects().map(function(o) {
@@ -1695,7 +1695,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         var outputDiv = document.getElementById('diceResult');
 
         function rollDice() {
-            var current_turn = $("#current_turn").val();
+            var current_turn = $("#turn_user_id").val();   
             if(current_turn != '<?php echo $user_id; ?>') {
                 toastr.error("Please wait for your turn");
                 return false;
