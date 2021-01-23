@@ -8,7 +8,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script>
+<!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->
+<script type="text/javascript" src="<?php echo plugins_url('website-custom-plugin/WCP/assets/js/simplewebrtc.bundle.js'); ?>"></script>
 
 <style>  
     .site-header, .header-footer-group  { display: none; }
@@ -300,7 +301,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               });*/
 
 
-              navigator.mediaDevices.getUserMedia({
+              /*navigator.mediaDevices.getUserMedia({
                 audio: true,
                 video: true,
               }).then(stream => {
@@ -314,7 +315,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               }, function(e) { 
                 //addUser('','',"local",myPeerID);           
                 console.log(e);     
-              });
+              });*/
               
 
               // Listen to signaling data from Scaledrone
