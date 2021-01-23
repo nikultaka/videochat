@@ -997,12 +997,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         canvas.getObjects().map(function(o) {
                             if( o.type == movedType && movedType == 'yellow_3'  ) { 
                                 o.set({
-                                  left: 170,    
-                                  top: 210
+                                  left: 177,    
+                                  top: 215
                                 });
                                 o.setCoords({
-                                  left: 170,    
-                                  top: 210
+                                  left: 177,    
+                                  top: 215
                                 });
                             } else if( o.type == movedType && movedType == 'yellow_2'  ) { 
                                 o.set({
@@ -1033,12 +1033,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                 });
                             } else if( o.type == movedType && movedType == 'blue_3'  ) { 
                                 o.set({
-                                  left: 885,    
-                                  top: 0
+                                  left: 881,    
+                                  top: 6
                                 });
                                 o.setCoords({
-                                  left: 885,    
-                                  top: 0
+                                  left: 881,    
+                                  top: 6
                                 });  
                             } else if( o.type == movedType && movedType == 'blue_2'  ) { 
                                 o.set({
@@ -1069,12 +1069,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                 });  
                             } else if( o.type == movedType && movedType == 'red_3'  ) { 
                                 o.set({
-                                  left: 1130,    
-                                  top: 355
+                                  left: 1127,    
+                                  top: 312
                                 });
                                 o.setCoords({
-                                  left: 1130,    
-                                  top: 355
+                                  left: 1127,    
+                                  top: 312
                                 });  
                             } else if( o.type == movedType && movedType == 'red_2'  ) { 
                                 o.set({
@@ -1105,13 +1105,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                 });  
                             } else if( o.type == movedType && movedType == 'green_3'  ) { 
                                 o.set({
-                                  left: 470,    
-                                  top: 565 
+                                  left: 477,    
+                                  top: 583 
                                 });
                                 o.setCoords({
-                                  left: 470,    
-                                  top: 565
-                                });  
+                                  left: 477,    
+                                  top: 583
+                                });      
                             } else if( o.type == movedType && movedType == 'green_2'  ) { 
                                 o.set({
                                   left: 120,    
