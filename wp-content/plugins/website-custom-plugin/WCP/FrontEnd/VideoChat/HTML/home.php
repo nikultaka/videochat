@@ -131,8 +131,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
  
     <video id="localVideo" width="280" height="390" style="height:auto;display: none" autoplay muted></video>   
     <video id="remoteVideo1" width="280" height="390" style="height: auto;display: none" autoplay></video>    
-    <video id="remoteVideo2" width="280" height="390" style="height: auto;display: none" autoplay></video>  
-    <video id="remoteVideo3" width="280" height="390" style="height: auto;display: none" autoplay></video>     
+    <video id="remoteVideo2" width="280" height="200" style="height: auto;display: none" autoplay></video>  
+    <video id="remoteVideo3" width="280" height="200" style="height: auto;display: none" autoplay></video>     
     <input type="hidden" id="remote1" value="" />
     <input type="hidden" id="remote2" value="" />
     <input type="hidden" id="remote3" value="" />
@@ -543,7 +543,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             // });
 
-            canvas.add(new fabric.Circle({ radius: 17, fill: 'blue',stroke:"blue",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'blue',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
 
             // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
 
@@ -1635,7 +1635,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             }
                         });  
                     } else if(next_turn == "3") {
-                        var rectSelected = { left: 160, top: 590, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
+                        var rectSelected = { left: 160, top: 610, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);   
 
@@ -1651,8 +1651,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                               });   
                             }
                         });
-                    } else if(next_turn == "4") {
-                        var rectSelected = { left: 920, top: 590, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
+                    } else if(next_turn == "4") {    
+                        var rectSelected = { left: 920, top: 610, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);
     
