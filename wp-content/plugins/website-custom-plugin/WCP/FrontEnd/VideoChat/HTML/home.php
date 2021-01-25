@@ -129,10 +129,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         </div>
     </div>
  
-    <video id="localVideo" width="300" height="400"  style="height: auto;display: none" autoplay muted></video>
-    <video id="remoteVideo1" width="300" height="400" style="height: auto;display: none" autoplay></video>    
-    <video id="remoteVideo2" width="300" height="200" style="height: auto;display: none" autoplay></video>  
-    <video id="remoteVideo3" width="300" height="200" style="height: auto;display: none" autoplay></video> 
+    <video id="localVideo" width="280" height="390" style="height:auto;display: none" autoplay muted></video>   
+    <video id="remoteVideo1" width="280" height="390" style="height: auto;display: none" autoplay></video>    
+    <video id="remoteVideo2" width="280" height="390" style="height: auto;display: none" autoplay></video>  
+    <video id="remoteVideo3" width="280" height="390" style="height: auto;display: none" autoplay></video>     
     <input type="hidden" id="remote1" value="" />
     <input type="hidden" id="remote2" value="" />
     <input type="hidden" id="remote3" value="" />
@@ -361,7 +361,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
               
             
-            var rect1 = { left: 160, top: 0, stroke:"<?php echo $user_one_color; ?>",strokeWidth:3,fill:'',width: 300, height: 200, id:"user_one",lockMovementX:true,lockMovementY:true };
+            var rect1 = { left: 160, top: 0, stroke:"<?php echo $user_one_color; ?>",strokeWidth:3,fill:'',width: 300, height: 200, id:"user_one",lockMovementX:true,lockMovementY:true};
               
             var rect2 = { left: 920, top: 0,fill: 'white', width: 300, height: 200 , id:"user_two",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_two_color ?>",strokeWidth:3 };
             var rect3 = { left: 160, top: 410, fill: 'white', width: 300, height: 200 , id:"user_three",lockMovementX:true,lockMovementY:true,stroke:"<?php echo $user_three_color ?>",strokeWidth:3};
@@ -391,6 +391,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             
 
             /***************** left top left bar **************/
+
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 0, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_0" }));    
+
             fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_0";
                 myImg.id = "";
@@ -400,7 +403,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });   
+            });
+
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 50, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_1" }));        
 
             fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_1";
@@ -413,6 +418,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 100, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_2" }));        
+
             fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_2";
                 myImg.id = "";
@@ -424,19 +431,22 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
-            // fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-            //     myImg.type = "yellow_3";
-            //     myImg.id = "";
-            //     myImg.left = 120;
-            //     myImg.top = 150;
-            //     myImg.lockMovementX = true;
-            //     myImg.lockMovementY = true;
-            //     canvas.add(myImg); 
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            // });
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 150, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_3" }));        
+
+            fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
+                myImg.type = "yellow_3";
+                myImg.id = "";
+                myImg.left = 120;
+                myImg.top = 150;
+                myImg.lockMovementX = true;
+                myImg.lockMovementY = true;
+                canvas.add(myImg); 
+                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+            });
 
             /**************** left top bottom bar **************/
-            fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'yellow',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" }));     
+            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_3";        
                 myImg.id = "";
                 myImg.left = 176;
@@ -445,9 +455,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;    
                 canvas.add(myImg);   
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });              
+            });*/              
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" })); 
+            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" })); 
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_1" }));
 
@@ -473,6 +483,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** right top right bar **************/
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'blue',stroke:"blue",strokeWidth:2, top: 0, left: 1240,lockMovementX:true,lockMovementY:true,id:"blue_inner_0" }));           
+
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.type = "blue_0";
                 myImg.left = 1240;
@@ -481,7 +493,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });  
+            }); 
+
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'blue',stroke:"blue",strokeWidth:2, top: 50, left: 1240,lockMovementX:true,lockMovementY:true,id:"blue_inner_1" })); 
 
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.type = "blue_1";
@@ -493,6 +507,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'blue',stroke:"blue",strokeWidth:2, top: 100, left: 1240,lockMovementX:true,lockMovementY:true,id:"blue_inner_2" })); 
+
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.type = "blue_2";
                 myImg.left = 1240;
@@ -503,29 +519,33 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
-            // fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-            //     myImg.type = "blue_3";
-            //     myImg.left = 1240;
-            //     myImg.top = 150;
-            //     myImg.lockMovementX = true;
-            //     myImg.lockMovementY = true;
-            //     canvas.add(myImg); 
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            // });
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'blue',stroke:"blue",strokeWidth:2, top: 150, left: 1240,lockMovementX:true,lockMovementY:true,id:"blue_inner_3" })); 
 
-            /**************** right top left bar **************/
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.type = "blue_3";
-                myImg.id = "";
-                myImg.left = 881;
-                myImg.top = 6;
+                myImg.left = 1240;
+                myImg.top = 150;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
+            /**************** right top left bar **************/
+            // fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
+            //     myImg.type = "blue_3";
+            //     myImg.id = "";
+            //     myImg.left = 881;
+            //     myImg.top = 6;
+            //     myImg.lockMovementX = true;
+            //     myImg.lockMovementY = true;
+            //     canvas.add(myImg); 
+            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+            // });
+
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'blue',stroke:"blue",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
+
+            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_15" }));
 
@@ -556,9 +576,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));     
 
-            /*fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
+            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 42;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -568,7 +588,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 84;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -578,7 +598,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 126;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -588,16 +608,17 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 168;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/
+            });    
 
 
             /***************** left bottom left bar **************/
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'green',stroke:"green",strokeWidth:2, top: 570, left: 120,lockMovementX:true,lockMovementY:true,id:"green_inner_0" }));        
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.type = "green_0";
                 myImg.id = '';
@@ -609,6 +630,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'green',stroke:"green",strokeWidth:2, top: 520, left: 120,lockMovementX:true,lockMovementY:true,id:"green_inner_1" }));
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.type = "green_1";
                 myImg.id = '';
@@ -620,6 +642,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'green',stroke:"green",strokeWidth:2, top: 470, left: 120,lockMovementX:true,lockMovementY:true,id:"green_inner_2" }));
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.type = "green_2";
                 myImg.id = '';
@@ -631,15 +654,17 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });  
 
-            // fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
-            //     myImg.id = "green_3";
-            //     myImg.left = 120;
-            //     myImg.top = 420;
-            //     myImg.lockMovementX = true;
-            //     myImg.lockMovementY = true;
-            //     canvas.add(myImg); 
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            // });
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'green',stroke:"green",strokeWidth:2, top: 420, left: 120,lockMovementX:true,lockMovementY:true,id:"green_inner_3" }));
+            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                myImg.type = "green_3";
+                myImg.id = "";
+                myImg.left = 120;
+                myImg.top = 420;  
+                myImg.lockMovementX = true;
+                myImg.lockMovementY = true;
+                canvas.add(myImg); 
+                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+            });
 
             /**************** left bottom top bar **************/
 
@@ -666,9 +691,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 535, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_43" }));
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));
+            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {  
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'green',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));        
+
+            /*fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {  
                 myImg.type = "green_3";
                 myImg.id = "";
                 myImg.left = 477;    
@@ -677,11 +704,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });         
+            });*/         
 
 
             /**************** right bottom right bar **************/
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'red',stroke:"red",strokeWidth:2, top: 570, left: 1240,lockMovementX:true,lockMovementY:true,id:"red_inner_0" }));        
             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                 myImg.type = "red_0";
                 myImg.id = "";
@@ -693,6 +721,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'red',stroke:"red",strokeWidth:2, top: 520, left: 1240,lockMovementX:true,lockMovementY:true,id:"red_inner_1" }));
             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                 myImg.type = "red_1";
                 myImg.id = "";
@@ -704,6 +733,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'red',stroke:"red",strokeWidth:2, top: 470, left: 1240,lockMovementX:true,lockMovementY:true,id:"red_inner_2" }));
             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                 myImg.type = "red_2";
                 myImg.id = "";
@@ -715,15 +745,17 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
             });
 
-            // fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
-            //     myImg.id = "";
-            //     myImg.left = 1240;  
-            //     myImg.top = 420;
-            //     myImg.lockMovementX = true;
-            //     myImg.lockMovementY = true;
-            //     canvas.add(myImg); 
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            // });
+            canvas.add(new fabric.Circle({ radius: 12, fill: 'red',stroke:"red",strokeWidth:2, top: 420, left: 1240,lockMovementX:true,lockMovementY:true,id:"red_inner_3" }));
+            fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+                myImg.type = "red_3";
+                myImg.id = "";
+                myImg.left = 1240;  
+                myImg.top = 420;
+                myImg.lockMovementX = true;
+                myImg.lockMovementY = true;
+                canvas.add(myImg); 
+                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+            });
 
             /**************** right bottom left bar **************/
 
@@ -747,9 +779,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
 
-            /*fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 521;   //42 add
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -759,7 +791,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 479;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -769,7 +801,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 437;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
@@ -779,29 +811,29 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 670;
+                myImg.left = 680;
                 myImg.top = 395;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });  */  
+            });  
 
 
             /**************** right bottom top bar **************/  
             
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 940,lockMovementX:true,lockMovementY:true,id:"empty_32" }));
 
-            fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
-                myImg.type = "red_3";   
-                myImg.id  = "";   
-                myImg.left = 1127;  
-                myImg.top = 372;    
-                myImg.lockMovementX = true; 
-                myImg.lockMovementY = true; 
-                canvas.add(myImg);       
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; });  
-            });             
+            // fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+            //     myImg.type = "red_3";   
+            //     myImg.id  = "";   
+            //     myImg.left = 1127;  
+            //     myImg.top = 372;    
+            //     myImg.lockMovementX = true; 
+            //     myImg.lockMovementY = true; 
+            //     canvas.add(myImg);       
+            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; });  
+            // });             
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1000,lockMovementX:true,lockMovementY:true,id:"empty_31" }));
 
@@ -809,7 +841,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1120,lockMovementX:true,lockMovementY:true,id:"empty_29" }));
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_28" }));
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'red',stroke:"black",strokeWidth:2, top: 369, left: 1180,lockMovementX:true,lockMovementY:true,id:"empty_28" }));
 
             /**************** middle right bar **************/  
    
@@ -830,10 +862,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** middle middle bar **************/  
 
-            /*fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
+            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 224;
-                myImg.top = 280;    
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -843,7 +875,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 284;
-                myImg.top = 280;    
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -853,7 +885,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 344;
-                myImg.top = 280;    
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -863,7 +895,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
                 myImg.id = "";
                 myImg.left = 404;
-                myImg.top = 280;    
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -873,8 +905,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {
                 myImg.id = "";
-                myImg.left = 1080;   
-                myImg.top = 280;    
+                myImg.left = 1140;   
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -883,8 +915,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
                 myImg.id = "";
-                myImg.left = 1030;   
-                myImg.top = 280;    
+                myImg.left = 1090;   
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -893,8 +925,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
                 myImg.id = "";
-                myImg.left = 980;   
-                myImg.top = 280;    
+                myImg.left = 1040;   
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
@@ -904,13 +936,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
                 myImg.id = "";
-                myImg.left = 930;   
-                myImg.top = 280;    
+                myImg.left = 990;   
+                myImg.top = 293;    
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true;
                 canvas.add(myImg); 
                 canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/    
+            }); 
 
             canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 670,lockMovementX:true,lockMovementY:true }));     
             
@@ -1152,7 +1184,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             
             /************************************/  
-
+ 
             //canvas.renderAll();
 
             window.addEventListener('resize', resizeCanvas, false);
@@ -1184,7 +1216,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             fabric.util.requestAnimFrame(function render() {
 
-                    var innerWidth = window.innerWidth-15; // - 50
+                    var innerWidth = window.innerWidth-2; // - 50   
 
                     //console.log(window.innerWidth);
                     //console.log(window.innerHeight);    
@@ -1743,10 +1775,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 autoRequestMedia: true,
                 debug: false,
                 url: base_url
-            });
+            });  
 
             // we have to wait until it's ready
-
             //alert(room_name);
 
             
