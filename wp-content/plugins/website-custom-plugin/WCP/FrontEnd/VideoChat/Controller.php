@@ -375,6 +375,15 @@ class WCP_VideoChat_Controller {
         die;
     }
 
+    public function reset_game() {
+        global $wpdb;   
+        $table = $wpdb->prefix.'marble_position';    
+        $room_id = $_POST['room_id'];
+        $wpdb->query("delete from ".$table." where room_id =".$room_id);
+        echo json_encode(array('status'=>1));
+        die;
+    }
+
 }
 
 function custom_blockusers_init() {
@@ -432,6 +441,9 @@ add_action('wp_ajax_WCP_VideoChat_Controller::added_room', Array($WCP_VideoChat_
 
 add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::save_color', Array($WCP_VideoChat_Controller, 'save_color'));
 add_action('wp_ajax_WCP_VideoChat_Controller::save_color', Array($WCP_VideoChat_Controller, 'save_color'));
+
+add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::reset_game', Array($WCP_VideoChat_Controller, 'reset_game'));
+add_action('wp_ajax_WCP_VideoChat_Controller::reset_game', Array($WCP_VideoChat_Controller, 'reset_game'));
 
 
 ?>

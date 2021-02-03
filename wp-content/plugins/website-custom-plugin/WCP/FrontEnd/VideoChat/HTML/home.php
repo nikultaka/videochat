@@ -51,6 +51,26 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 ?> 
 
+<div id="reset_game" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reset Game</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure want to reset game ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="resetMarble();">Ok</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id="mymodal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -90,10 +110,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 
 <?php if($is_admin == "1") { ?>
-  <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button>
+  <!-- <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button> -->
+  <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="resetGame()" >Reset</button>
 <?php } ?>  
 
-<div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;">      
+<div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;display: none;">      
         <div class="sides side-1">
             <span class="dot dot-1"></span>
         </div>      
@@ -129,10 +150,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         </div>
     </div>
  
-    <video id="localVideo" width="280" height="390" style="height:auto;display: none" autoplay muted></video>   
-    <video id="remoteVideo1" width="280" height="390" style="height: auto;display: none" autoplay></video>    
-    <video id="remoteVideo2" width="280" height="200" style="height: auto;display: none" autoplay></video>  
-    <video id="remoteVideo3" width="280" height="200" style="height: auto;display: none" autoplay></video>     
+      
+    <video id="localVideo" width="390" height="390" style="height: auto;display: none" autoplay muted></video>     
+    <video id="remoteVideo1" width="440" height="390" style="height: auto;display: none" autoplay></video>    
+    <video id="remoteVideo2" width="390" height="390" style="height: auto;display: none" autoplay></video>  
+    <video id="remoteVideo3" width="390" height="390" style="display: none" autoplay></video>     
     <input type="hidden" id="remote1" value="" />
     <input type="hidden" id="remote2" value="" />
     <input type="hidden" id="remote3" value="" />
@@ -149,6 +171,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
      var remoteStream1 = '';
      var remoteStream2 = '';
      var remoteStream3 = '';
+
+    
     (function() {      
 
             canvas = this.__canvas = new fabric.Canvas('c',{ selection: false });
@@ -158,20 +182,31 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             remoteVideo2El = document.getElementById('remoteVideo2');
             remoteVideo3El = document.getElementById('remoteVideo3');  
 
-            video1 = new fabric.Image(video1El, {      
-                  left: 310, //310 0
-                  top: 0,      
-                  originX: 'center',
-                  originY: 'center',
+            video1 = new fabric.Image(video1El, {        
+                  left: 262, //310 0  262     
+                  top: 0,        
+                  flipX: true,  
+                  cropX:100,  
+                  //cropY:200,  
+                  originX: 'center',      
+                  originY: 'center',      
                   lockMovementX:true,
                   lockMovementY:true,
-                  id: 'localCanvasVideo'
+                  objectCaching: false, 
+                  id: 'localCanvasVideo',
             });  
             canvas.add(video1);
+            //canvas.moveTo(video1,1);
+            
+            
+
+            
 
             remoteVideo1 = new fabric.Image(remoteVideo1El, {        
-                  left: 1070,  
+                  left: 996,  
                   top: 0,  
+                  flipX: true,  
+                  cropX:150,  
                   originX: 'center',
                   originY: 'center',
                   lockMovementX:true,
@@ -181,8 +216,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             canvas.add(remoteVideo1);      
 
             remoteVideo2 = new fabric.Image(remoteVideo2El, {        
-                  left: 310,  
-                  top: 510,  
+                  left: 255,  
+                  top: 610,  
+                  flipX: true,  
+                  cropY:200,    
+                  cropX:110,           
                   originX: 'center',
                   originY: 'center',
                   lockMovementX:true,
@@ -192,12 +230,16 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             canvas.add(remoteVideo2);      
 
             remoteVideo3 = new fabric.Image(remoteVideo3El, {        
-                  left: 1070,  
-                  top: 510,   
+                  left: 1016,      
+                  top: 610,  
+                  flipX: true,  
+                  cropY:200,  
+                  cropX:110,           
                   originX: 'center',
                   originY: 'center',
                   lockMovementX:true,
                   lockMovementY:true,
+                  objectCaching: false, 
                   id: 'remoteCanvasVideo3'
             });  
             canvas.add(remoteVideo3);         
@@ -392,7 +434,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /***************** left top left bar **************/
 
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 0, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_0" }));    
+            var yellow_inner_0 = new fabric.Circle({ radius: 12, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 0, left: 120,lockMovementX:true,lockMovementY:true,id:"yellow_inner_0" });
+            canvas.add(yellow_inner_0);    
+            //canvas.moveTo(yellow_inner_0,0);     
 
             fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                 myImg.type = "yellow_0";
@@ -574,48 +618,15 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_12" }));
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));     
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));  
 
-            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 42;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 42, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));          
 
-            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 84;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 84, left: 670,lockMovementX:true,lockMovementY:true,id:"" })); 
 
-            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 126;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 126, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));           
 
-            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 168;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });    
-
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 168, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
 
             /***************** left bottom left bar **************/
             canvas.add(new fabric.Circle({ radius: 12, fill: 'green',stroke:"green",strokeWidth:2, top: 570, left: 120,lockMovementX:true,lockMovementY:true,id:"green_inner_0" }));        
@@ -779,45 +790,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 521;   //42 add
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 521, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 479;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 479, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 437;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 437, left: 670,lockMovementX:true,lockMovementY:true,id:"" })); 
 
-            fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 680;
-                myImg.top = 395;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });  
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 395, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
 
 
             /**************** right bottom top bar **************/  
@@ -862,89 +841,25 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** middle middle bar **************/  
 
-            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 224;
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 224,lockMovementX:true,lockMovementY:true,id:"" }));
 
-            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 284;
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 284,lockMovementX:true,lockMovementY:true,id:"" }));  
 
-            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 344;
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 344,lockMovementX:true,lockMovementY:true,id:"" }));  
 
-            fabric.Image.fromURL('<?php echo $flatYelURL ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 404;
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 404,lockMovementX:true,lockMovementY:true,id:"" }));
 
 
-            fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {
-                myImg.id = "";
-                myImg.left = 1140;   
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1120,lockMovementX:true,lockMovementY:true,id:"" }));     
 
-            fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
-                myImg.id = "";
-                myImg.left = 1090;   
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1060,lockMovementX:true,lockMovementY:true,id:"" }));     
 
-            fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
-                myImg.id = "";
-                myImg.left = 1040;   
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1000,lockMovementX:true,lockMovementY:true,id:"" }));     
+
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 940,lockMovementX:true,lockMovementY:true,id:"" }));     
 
 
-            fabric.Image.fromURL('<?php echo $flatRedURL; ?>', function(myImg) {  
-                myImg.id = "";
-                myImg.left = 990;   
-                myImg.top = 293;    
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            }); 
-
-            canvas.add(new fabric.Circle({ radius: 12, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 670,lockMovementX:true,lockMovementY:true }));     
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 670,lockMovementX:true,lockMovementY:true,id:"center" }));     
             
 
             var objectsLength = [];
@@ -1186,31 +1101,16 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             /************************************/  
  
             //canvas.renderAll();
-
-            window.addEventListener('resize', resizeCanvas, false);
-
-            
-              function resizeCanvas() {
-                    var innerWidth = window.innerWidth - 50;
-
-                    //console.log(window.innerWidth);
-                    //console.log(window.innerHeight);
-
-                    canvas.setHeight(window.innerHeight);
-                    canvas.setWidth(innerWidth);
-
-                    var originalWidth = 1300;
-                    var originalHeight = 980;
-
-                    canvas.setZoom(innerWidth/originalWidth);
-                    //canvas.setWidth(originalWidth * canvas.getZoom());
-                    //canvas.setHeight(originalHeight * canvas.getZoom());
-                    //canvas.calcOffset();
-                    canvas.renderAll(); //innerWidth
-                    //console.log("zoom:"+canvas.getZoom());
-
-                    
-              }     
+            //window.addEventListener('resize', resizeCanvas, false);
+            function resizeCanvas() {
+                  var innerWidth = window.innerWidth - 50;
+                  canvas.setHeight(window.innerHeight);
+                  canvas.setWidth(innerWidth);
+                  var originalWidth = 1300;
+                  var originalHeight = 980;
+                  canvas.setZoom(innerWidth/originalWidth);
+                  canvas.renderAll(); 
+            }     
 
 
 
@@ -1218,24 +1118,16 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                     var innerWidth = window.innerWidth-2; // - 50   
 
-                    //console.log(window.innerWidth);
-                    //console.log(window.innerHeight);    
-
                     canvas.setHeight(window.innerHeight);
                     canvas.setWidth(innerWidth); 
 
                     var originalWidth = 1370; //1300
-                    var originalHeight = 980; //980
+                    var originalHeight = 980; //980    
 
                     canvas.setZoom(innerWidth/originalWidth);
                     canvas.renderAll();
-                      fabric.util.requestAnimFrame(render);
+                    fabric.util.requestAnimFrame(render);
             });  
-
-            
-
-              // resize on init
-              //resizeCanvas();
                 
     })();  
 
@@ -1324,9 +1216,22 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                         if(stream != '') {
                           video1El.srcObject = stream;
-                          canvas.add(video1);    
+                          canvas.add(video1);  
                           video1.moveTo(0); 
                           video1.getElement().play();    
+
+
+                          /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
+                              myImg.type = "yellow_0";
+                              myImg.id = "";
+                              myImg.left = 120;
+                              myImg.top = 0;
+                              myImg.lockMovementX = true;
+                              myImg.lockMovementY = true;
+                              canvas.add(myImg); 
+                              canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                          });*/
+
                         } else {
                           fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
                             myImg.id = "no_image";
@@ -1363,29 +1268,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           });
                         }
                         
-                    } else if(result.user_position == '2') {
-
-                        if(stream != '') {
-                          $("#remote2").val(stream_id);
-                          remoteVideo2El.srcObject = stream;
-                          canvas.add(remoteVideo2);    
-                          remoteVideo2.moveTo(0); 
-                          remoteVideo2.getElement().play();     
-                        } else {
-                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
-                            myImg.id = "no_image";
-                            myImg.left = 185;
-                            myImg.top = 392;
-                            myImg.width = 250;
-                            myImg.height = 200;    
-                            myImg.lockMovementX = true;
-                            myImg.lockMovementY = true; 
-                            canvas.add(myImg);    
-                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                          });
-                        }
-                        
-                    } else if(result.user_position == '3') {
+                    } else if(result.user_position == '2') {    
 
                         if(stream != '') {
                             $("#remote3").val(stream_id);
@@ -1406,6 +1289,28 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
                             });  
                         }  
+                        
+                    } else if(result.user_position == '3') {
+
+                       if(stream != '') {
+                          $("#remote2").val(stream_id);
+                          remoteVideo2El.srcObject = stream;
+                          canvas.add(remoteVideo2);    
+                          remoteVideo2.moveTo(0); 
+                          remoteVideo2.getElement().play();     
+                        } else {
+                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
+                            myImg.id = "no_image";
+                            myImg.left = 185;
+                            myImg.top = 392;
+                            myImg.width = 250;
+                            myImg.height = 200;    
+                            myImg.lockMovementX = true;
+                            myImg.lockMovementY = true; 
+                            canvas.add(myImg);    
+                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                          });
+                        }
                         
                     }
                     setInterval(function(){ get_online_user() }, 3000);  
@@ -1456,6 +1361,25 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
     function setColor() {
         $("#mymodal").modal('show');
+    }
+
+    function resetMarble() {
+        $.ajax({    
+            type: 'POST',    
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {"action": "WCP_VideoChat_Controller::reset_game","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},
+            success: function (data) {
+                var result =  JSON.parse(data);  
+                if(result.status == 1) {  
+                    toastr.success('Game reset successfully');
+                    $("#reset_game").modal('hide');
+                }
+            }
+        });    
+    }
+
+    function resetGame() {
+        $("#reset_game").modal('show');
     }
 
     function get_online_user() {
@@ -1513,63 +1437,6 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     }  
                 });
 
-                /*Object.keys(loadUserWithoutVideo).forEach(function(key) {
-                    var loadUserValue = loadUserWithoutVideo[key];
-                    if(loadUserValue!='') {
-                        if(key == 1) {
-                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
-                            myImg.id = "no_image";
-                            myImg.left = 185;
-                            myImg.top = 2;
-                            myImg.width = 250;
-                            myImg.height = 200;    
-                            myImg.lockMovementX = true;
-                            myImg.lockMovementY = true; 
-                            canvas.add(myImg);    
-                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                          });
-                        }
-                        if(key == 2) {    
-                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
-                            myImg.id = "no_image";
-                            myImg.left = 945;
-                            myImg.top = 2;     
-                            myImg.width = 250;
-                            myImg.height = 200;    
-                            myImg.lockMovementX = true;
-                            myImg.lockMovementY = true; 
-                            canvas.add(myImg);    
-                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                          });
-                        }
-                        if(key == 3) {    
-                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
-                            myImg.id = "no_image";
-                            myImg.left = 185;
-                            myImg.top = 392;
-                            myImg.width = 250;
-                            myImg.height = 200;    
-                            myImg.lockMovementX = true;
-                            myImg.lockMovementY = true; 
-                            canvas.add(myImg);    
-                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                          });
-                        } 
-                        if(key == 4) {    
-                          fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
-                            myImg.id = "no_image";
-                            myImg.left = 945;
-                            myImg.top = 392;       
-                            myImg.width = 250;
-                            myImg.height = 200;    
-                            myImg.lockMovementX = true;
-                            myImg.lockMovementY = true; 
-                            canvas.add(myImg);    
-                            canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                          });
-                        }  
-                    }
-                });*/        
 
                 if (result.status == 1) {  
                     var stream_data = result.stream_data;
@@ -1580,6 +1447,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                     $("#current_turn").val(next_turn);  
                     $("#turn_user_id").val(turn_user_id);  
+
+                    if(turn_user_id == '<?php echo $user_id ?>') {
+                        $("#dice").show();
+                    } else {
+                        $("#dice").hide();
+                    }
 
                     var remote1 = $("#remote1").val();
                     var remote2 = $("#remote2").val();
@@ -1600,25 +1473,26 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     });         
 
                     if(next_turn == "1") {
-                      var rectSelected = { left: 160, top: 200, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
+                      var rectSelected = { left: 160, top: 195, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);
 
-                        canvas.getObjects().map(function(o) {
+                        canvas.getObjects().map(function(o) {    
+
                             if( (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3')  && turn_user_id  == '<?php echo $user_id; ?>' )  {
-                              o.set({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });
-                              o.setCoords({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });   
+                                o.set({
+                                  lockMovementX: false,
+                                  lockMovementY: false    
+                                });
+                                o.setCoords({
+                                  lockMovementX: false,
+                                  lockMovementY: false
+                                });   
                             }
                         });        
                     } else if(next_turn == "2") {  
                         console.log("testing");
-                        var rectSelected = { left: 920, top: 200, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
+                        var rectSelected = { left: 920, top: 195, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);  
 
@@ -1635,24 +1509,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             }
                         });  
                     } else if(next_turn == "3") {
-                        var rectSelected = { left: 160, top: 610, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
-                        var rectSelectedobj = new fabric.Rect(rectSelected); 
-                        canvas.add(rectSelectedobj);   
-
-                        canvas.getObjects().map(function(o) {
-                            if((o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3')  && turn_user_id  == '<?php echo $user_id; ?>') {
-                              o.set({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });
-                              o.setCoords({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });   
-                            }
-                        });
-                    } else if(next_turn == "4") {    
-                        var rectSelected = { left: 920, top: 610, fill: 'white', width: 300, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:3,};  
+                        var rectSelected = { left: 920, top: 610, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);
     
@@ -1668,23 +1525,24 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                               });   
                             }
                         });
-                    }                 
- 
-                    /*if(remote1 != '' && !stream_data.includes(remote1)) {
-                        deleteSelectedObjectsFromCanvas(canvas,'remoteCanvasVideo1');
-                        $("#remote1").val('');
-                        console.log("remote 1");
-                    }      
-                    if(remote2 != '' && !stream_data.includes(remote2)) {
-                        $("#remote2").val('');
-                        deleteSelectedObjectsFromCanvas(canvas,'remoteCanvasVideo2');
-                        console.log("remote 2");
-                    }
-                    if(remote3 != '' && !stream_data.includes(remote3)) {
-                        $("#remote3").val(''); 
-                        deleteSelectedObjectsFromCanvas(canvas,'remoteCanvasVideo3');
-                        console.log("remote 3");  
-                    }*/
+                    } else if(next_turn == "4") { 
+                        var rectSelected = { left: 160, top: 610, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
+                        var rectSelectedobj = new fabric.Rect(rectSelected); 
+                        canvas.add(rectSelectedobj);       
+
+                        canvas.getObjects().map(function(o) {
+                            if((o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3')  && turn_user_id  == '<?php echo $user_id; ?>') {
+                              o.set({
+                                lockMovementX: false,
+                                lockMovementY: false
+                              });
+                              o.setCoords({
+                                lockMovementX: false,
+                                lockMovementY: false
+                              });   
+                            }
+                        });
+                    }  
 
 
                     Object.keys(marble_data).forEach(function(key) {
@@ -1774,7 +1632,18 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 nick: token,
                 autoRequestMedia: true,
                 debug: false,
-                url: base_url
+                url: base_url,
+                /*media: { 
+                    audio: true,
+                    video: {
+                        mandatory: {
+                          chromeMediaSource: 'desktop',
+                          maxWidth: window.screen.width,
+                          maxHeight: window.screen.height,
+                          maxFrameRate: 3
+                       }
+                    }
+                }*/    
             });  
 
             // we have to wait until it's ready
