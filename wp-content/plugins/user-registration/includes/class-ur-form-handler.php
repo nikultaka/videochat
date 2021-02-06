@@ -429,7 +429,6 @@ class UR_Form_Handler {
 						} else {
 							$redirect = get_home_url();
 						}
-						$redirect = $_SERVER['HTTP_REFERER'];    
 					}
 
 					wp_redirect( wp_validate_redirect( apply_filters( 'user_registration_login_redirect', $redirect, $user ), $redirect ) );

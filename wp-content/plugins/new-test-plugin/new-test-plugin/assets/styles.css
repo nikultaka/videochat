@@ -1,0 +1,93 @@
+.woocommerce_variable_attributes .options label {
+    display: inline-block;
+    padding: 0 !important;
+}
+
+.kunaki-settings {
+    padding: 15px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.kunaki-settings__title {
+    margin-top: 0;
+}
+
+.kunaki-settings__description {
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.kunaki-inp-line {
+    margin-bottom: 15px;
+}
+
+.kunaki-inp-line__lable {
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 14px;
+}
+
+.kunaki-inp__input {
+    min-width: 300px;
+}
+
+.kunaki-inp__button {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #e5e5e5;
+    font-size: 14px;
+}
+
+.kunaki-inp__button:focus {
+    outline: none;
+}
+
+.kunaki-inp__button:hover {
+    background-color: #0073aa;
+    color: #ffffff;
+}
+
+.kunaki-inp__submit {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #e5e5e5;
+    font-size: 14px;
+    width: 100px;
+}
+
+.kunaki-inp__submit:hover {
+    background-color: #0073aa;
+    color: #ffffff;
+}
+
+.kunaki-inp__button-preload {
+    background-image: url('img/preload.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding-left: 33px;
+    background-position-x: 5px;
+}
+
+.kunaki-inp__button-cussess {
+    background-image: url('img/sucess.png');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding-left: 33px;
+    background-position-x: 5px;
+}
+
+.kunaki-inp__button-error {
+    background-image: url('img/error.png');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding-left: 33px;
+    background-position-x: 5px;
+}
