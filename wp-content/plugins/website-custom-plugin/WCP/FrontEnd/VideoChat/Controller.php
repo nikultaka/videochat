@@ -332,8 +332,11 @@ class WCP_VideoChat_Controller {
                 $wpdb->query(" delete from ".$marbletable." where user_id = ".$userID);
                 $wpdb->query("update ".$table." set status = '0' where user_id = ".$userID." ");
                 $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");      
-                $wpdb->query(" insert into ".$table." (room_id,stream_id,user_id,is_admin,status,current_turn,gm_created,gm_updated) values(".$room_id.",'',".$userID.",".$is_admin.",'1',".$current_turn.",NOW(),NOW())  ");
-                $wpdb->insert($joinroomtable,array('room_id'=>$room_id,'is_admin'=>$is_admin,'user_id'=>$userID));    
+                $isUserDataExist = $wpdb->get_results("select * from ".$table." where user_id =".$userID." and room_id = '".$room_id."'' ");
+                if(count($isUserDataExist) == 0) {  
+                    $wpdb->query(" insert into ".$table." (room_id,stream_id,user_id,is_admin,status,current_turn,gm_created,gm_updated) values(".$room_id.",'',".$userID.",".$is_admin.",'1',".$current_turn.",NOW(),NOW())  ");
+                    $wpdb->insert($joinroomtable,array('room_id'=>$room_id,'is_admin'=>$is_admin,'user_id'=>$userID));    
+                }
                 echo json_encode(array("status"=>1));    
             } else {
                 echo json_encode(array("status"=>0,"msg"=> "Room is full"));

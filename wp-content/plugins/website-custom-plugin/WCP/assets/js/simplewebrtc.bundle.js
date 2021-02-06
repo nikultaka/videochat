@@ -18272,11 +18272,18 @@ SimpleWebRTC.prototype.startLocalVideo = function () {
         if (err) {
             self.emit('localMediaError', err);
         } else {
-            //console.log(self.webrtc.connection.getSessionid());
-            console.log("local peer id :"+this.webrtc.connection.getSessionid());    
-            addUser("",stream,"local",this.webrtc.connection.getSessionid());
+            console.log(this.webrtc.connection.getSessionid());
+            if(typeof this.webrtc.connection.getSessionid() == undefined || typeof this.webrtc.connection.getSessionid() == 'undefined' || this.webrtc.connection.getSessionid() == 'undefined') {
+              setTimeout(function () {
+                  console.log("timeout id "+this.webrtc.connection.getSessionid());
+                  addUser("",stream,"local",this.webrtc.connection.getSessionid());  
+              }, 2000);    
+            } else {
+              console.log("local peer id :"+this.webrtc.connection.getSessionid());    
+              addUser("",stream,"local",this.webrtc.connection.getSessionid());  
+            }
             //attachMediaStream(stream, self.getLocalVideoContainer(), self.config.localVideo);
-        }
+        }    
     });
 };
 
