@@ -18272,6 +18272,7 @@ SimpleWebRTC.prototype.startLocalVideo = function () {
         if (err) {
             self.emit('localMediaError', err);
         } else {
+            //console.log(self.webrtc.connection.getSessionid());
             console.log("local peer id :"+this.webrtc.connection.getSessionid());    
             addUser("",stream,"local",this.webrtc.connection.getSessionid());
             //attachMediaStream(stream, self.getLocalVideoContainer(), self.config.localVideo);

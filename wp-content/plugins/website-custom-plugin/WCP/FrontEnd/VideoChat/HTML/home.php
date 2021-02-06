@@ -413,6 +413,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 myImg.id = "done_text";
                 myImg.left = 690;
                 myImg.top = 350;
+                myImg.opacity = 0;
                 myImg.angle = -50;
                 myImg.lockMovementX = true;
                 myImg.lockMovementY = true; 
@@ -1383,6 +1384,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
           toastr.error('You need to wait for your turn');
           return false;
         } 
+        canvas.getObjects().map(function(o) {
+            if(o.id == 'done_text') {
+              o.set({
+                  opacity: 0
+              });
+            }  
+        });
         $.ajax({    
             type: 'POST',
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
@@ -1421,6 +1429,156 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         $("#mymodal").modal('show');
     }
 
+    function resetToOriginalPosition() {
+      canvas.getObjects().map(function(o) {
+                            if( o.type == 'yellow_3'  ) { 
+                                o.set({
+                                  left: 112,    
+                                  top: 156
+                                });
+                                o.setCoords({
+                                  left: 112,    
+                                  top: 156
+                                });
+                            } else if( o.type == 'yellow_2'  ) { 
+                                o.set({
+                                  left: 112,    
+                                  top: 106
+                                });
+                                o.setCoords({
+                                  left: 112,    
+                                  top: 106
+                                });
+                            } else if( o.type == 'yellow_1'  ) { 
+                                o.set({
+                                  left: 112,    
+                                  top: 56
+                                });
+                                o.setCoords({
+                                  left: 112,    
+                                  top: 56
+                                });
+                            } else if( o.type == 'yellow_0'  ) { 
+                                o.set({
+                                  left: 112,    
+                                  top: 6
+                                });
+                                o.setCoords({
+                                  left: 112,    
+                                  top: 6
+                                });
+                            } else if( o.type == 'blue_3'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 155
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 155
+                                });  
+                            } else if( o.type == 'blue_2'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 105
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 105
+                                });  
+                            } else if( o.type == 'blue_1'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 55
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 55
+                                });  
+                            } else if( o.type == 'blue_0'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 5
+                                });
+                                o.setCoords({
+                                  left: 1240,    
+                                  top: 5
+                                });  
+                            } else if( o.type == 'red_3'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 426
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 426
+                                });  
+                            } else if( o.type == 'red_2'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 476
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 476
+                                });  
+                            } else if( o.type == 'red_1'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 526
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 526
+                                });  
+                            } else if( o.type == 'red_0'  ) { 
+                                o.set({
+                                  left: 1246,    
+                                  top: 576
+                                });
+                                o.setCoords({
+                                  left: 1246,    
+                                  top: 576
+                                });  
+                            } else if( o.type == 'green_3'  ) { 
+                                o.set({
+                                  left: 111,    
+                                  top: 426 
+                                });
+                                o.setCoords({
+                                  left: 111,    
+                                  top: 426  
+                                });      
+                            } else if( o.type == 'green_2'  ) { 
+                                o.set({
+                                  left: 111,    
+                                  top: 476 
+                                });
+                                o.setCoords({
+                                  left: 111,    
+                                  top: 476
+                                });  
+                            } else if( o.type == 'green_1'  ) { 
+                                o.set({
+                                  left: 111,    
+                                  top: 526 
+                                });
+                                o.setCoords({
+                                  left: 111,    
+                                  top: 526
+                                });  
+                            } else if( o.type == 'green_0'  ) { 
+                                o.set({
+                                  left: 111,    
+                                  top: 576 
+                                });
+                                o.setCoords({
+                                  left: 111,    
+                                  top: 576
+                                });  
+                            }            
+                        });
+    }
+
     function resetMarble() {
         $.ajax({    
             type: 'POST',    
@@ -1429,6 +1587,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             success: function (data) {
                 var result =  JSON.parse(data);  
                 if(result.status == 1) {  
+                    resetToOriginalPosition();
                     toastr.success('Game reset successfully');
                     $("#reset_game").modal('hide');
                 }
@@ -1508,8 +1667,22 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                     if(turn_user_id == '<?php echo $user_id ?>') {
                         $("#dice").show();
+                        canvas.getObjects().map(function(o) {
+                            if(o.id == 'done_text') {
+                              o.set({
+                                  opacity: 1
+                              });
+                            }  
+                        });
                     } else {
                         $("#dice").hide();
+                        canvas.getObjects().map(function(o) {
+                            if(o.id == 'done_text') {
+                              o.set({
+                                  opacity: 0
+                              });
+                            }  
+                        });
                     }
 
                     var remote1 = $("#remote1").val();
@@ -1603,33 +1776,40 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     }  
 
 
-                    Object.keys(marble_data).forEach(function(key) {
-                          var marble = marble_data[key];
-                          var marble_user_id = marble.user_id;
-                          if(marble_user_id == '<?php echo $user_id ?>') {
-                            return false;
-                          }
-                          canvas.getObjects().map(function(o) {
-                              if(o.id == marble.current_position) {
-                                objectLeft = o.left+6;
-                                objectTop = o.top+5;
-                              }       
-                          });
 
-                          canvas.getObjects().map(function(o) {
-                              if(o.type == marble.marble_id) {
-                                    o.set({
-                                      left: objectLeft,
-                                      top: objectTop
-                                    });
-                                    o.setCoords({
-                                      left: objectLeft,
-                                      top: objectTop
-                                    });
-                              }
-                          });
-                          
-                    });      
+                    if(marble_data.length>0) {
+                        Object.keys(marble_data).forEach(function(key) {
+                            var marble = marble_data[key];
+                            var marble_user_id = marble.user_id;
+                            if(marble_user_id == '<?php echo $user_id ?>') {
+                              return false;
+                            }
+                            canvas.getObjects().map(function(o) {
+                                if(o.id == marble.current_position) {
+                                  objectLeft = o.left+6;
+                                  objectTop = o.top+5;
+                                }       
+                            });
+
+                            canvas.getObjects().map(function(o) {
+                                if(o.type == marble.marble_id) {
+                                      o.set({
+                                        left: objectLeft,
+                                        top: objectTop
+                                      });
+                                      o.setCoords({
+                                        left: objectLeft,
+                                        top: objectTop
+                                      });
+                                }
+                          });  
+                      });        
+                    } else {
+                      if(turn_user_id != '<?php echo $user_id ?>') {
+                        resetToOriginalPosition();
+                      }
+                    }
+                    
                     
 
                 }      
@@ -1701,7 +1881,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           maxFrameRate: 3
                        }
                     }
-                }*/    
+                }*/
             });  
 
             // we have to wait until it's ready
@@ -1714,6 +1894,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 webrtc.joinRoom(room_name);
                 console.log("log token =" + myPeerID);
             });
+            // webrtc.on('startLocalVideo', function (sessionId) {
+            //     console.log("sdsdsdsd");      
+            // });  
+
             webrtc.on('videoAdded', function (video, peer) {
                 var peerID = webrtc.getDomId(peer);
                 console.log("video added");
