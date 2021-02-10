@@ -498,7 +498,7 @@ class LicenseBoxAPI {
 }
 
 
-if ( ! function_exists( 'ntplugin_license_data' ) ) {
+/*if ( ! function_exists( 'ntplugin_license_data' ) ) {
 	function ntplugin_license_data( $ret = 'license_code', $default = '' ) {
 
 		$license_data = get_option( 'activate_license_option_name', array() );
@@ -506,7 +506,7 @@ if ( ! function_exists( 'ntplugin_license_data' ) ) {
 
 		return isset( $license_data[ $ret ] ) ? $license_data[ $ret ] : $default;
 	}
-}
+}*/
 
 /*function remove_core_updates(){
         global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
@@ -528,7 +528,7 @@ if($license_status == 'deactivated') {
 
 
 
-add_action( 'upgrader_pre_install', function( $upgrader_object, $options ) {
+/*add_action( 'upgrader_pre_install', function( $upgrader_object, $options ) {
 
 	$license_box_api  = new LicenseBoxAPI();
 	$license_response = $license_box_api->verify_license( false, ntplugin_license_data( 'license_code' ), ntplugin_license_data( 'client_name' ) );
@@ -546,4 +546,4 @@ add_action( 'upgrader_pre_install', function( $upgrader_object, $options ) {
 	}
 
     
-}, 10, 2 );
+}, 10, 2 );*/

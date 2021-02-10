@@ -23,6 +23,54 @@ $flatRedURL = plugins_url('website-custom-plugin/WCP/assets/images/flat-red-010.
 $flatYelURL = plugins_url('website-custom-plugin/WCP/assets/images/flat-yel-010.png');
 $doneURL = plugins_url('website-custom-plugin/WCP/assets/images/done.png');
 $noImageURL = plugins_url('website-custom-plugin/WCP/assets/images/blank_profile_picture.png');             
+
+$yellow_zero_left_position = 112;
+$yellow_zero_top_position = 6;    
+
+$yellow_one_left_position = 112;
+$yellow_one_top_position = 56;
+
+$yellow_two_left_position = 112;
+$yellow_two_top_position = 106;
+
+$yellow_three_left_position = 112;
+$yellow_three_top_position = 156;
+
+$blue_zero_left_position = 1246;
+$blue_zero_top_position = 5;
+
+$blue_one_left_position = 1246;
+$blue_one_top_position = 55;
+
+$blue_two_left_position = 1246;
+$blue_two_top_position = 105;
+
+$blue_three_left_position = 1246;
+$blue_three_top_position = 155;
+
+$red_zero_left_position = 1246;
+$red_zero_top_position = 576;
+
+$red_one_left_position = 1246;
+$red_one_top_position = 526;
+
+$red_two_left_position = 1246;
+$red_two_top_position = 476;
+
+$red_three_left_position = 1246;
+$red_three_top_position = 426;
+
+$green_zero_left_position = 111;
+$green_zero_top_position = 576;
+
+$green_one_left_position = 111;
+$green_one_top_position = 526;
+
+$green_two_left_position = 111;
+$green_two_top_position = 476;
+
+$green_three_left_position = 111;
+$green_three_top_position = 426;
  
 $user_id = get_current_user_id();   
 
@@ -581,13 +629,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_13" }));  
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 42, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));          
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 42, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_blue_0" }));          
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 84, left: 670,lockMovementX:true,lockMovementY:true,id:"" })); 
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 84, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_blue_1" })); 
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 126, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));           
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 126, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_blue_2" }));           
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 168, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'blue',stroke:"black",strokeWidth:2, top: 168, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_blue_3" }));   
 
             /***************** left bottom left bar **************/
             canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"green",strokeWidth:2, top: 570, left: 105,lockMovementX:true,lockMovementY:true,id:"green_empty_0" }));        
@@ -673,13 +721,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 575, left: 770,lockMovementX:true,lockMovementY:true,id:"empty_39" }));       
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 521, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 521, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_green_0" }));   
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 479, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 479, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_green_1" }));   
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 437, left: 670,lockMovementX:true,lockMovementY:true,id:"" })); 
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 437, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_green_2" })); 
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 395, left: 670,lockMovementX:true,lockMovementY:true,id:"" }));   
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'green',stroke:"black",strokeWidth:2, top: 395, left: 670,lockMovementX:true,lockMovementY:true,id:"empty_green_3" }));   
 
 
             /**************** right bottom top bar **************/  
@@ -724,25 +772,25 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             /**************** middle middle bar **************/  
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 224,lockMovementX:true,lockMovementY:true,id:"" }));
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_yellow_0" }));
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 284,lockMovementX:true,lockMovementY:true,id:"" }));  
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_yellow_1" }));  
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 344,lockMovementX:true,lockMovementY:true,id:"" }));  
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_yellow_2" }));  
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 404,lockMovementX:true,lockMovementY:true,id:"" }));
-
-
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1120,lockMovementX:true,lockMovementY:true,id:"" }));     
-
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1060,lockMovementX:true,lockMovementY:true,id:"" }));     
-
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1000,lockMovementX:true,lockMovementY:true,id:"" }));     
-
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 940,lockMovementX:true,lockMovementY:true,id:"" }));     
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_yellow_3" }));
 
 
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 280, left: 670,lockMovementX:true,lockMovementY:true,id:"center" }));     
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1120,lockMovementX:true,lockMovementY:true,id:"empty_red_0" }));     
+
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1060,lockMovementX:true,lockMovementY:true,id:"empty_red_1" }));     
+
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 1000,lockMovementX:true,lockMovementY:true,id:"empty_red_2" }));     
+
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'red',stroke:"black",strokeWidth:2, top: 293, left: 940,lockMovementX:true,lockMovementY:true,id:"empty_red_3" }));     
+
+
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 290, left: 670,lockMovementX:true,lockMovementY:true,id:"center_empty_0" }));     
             
 
             var objectsLength = [];
@@ -794,7 +842,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         var objectHeight = objectsLength[n].height;
                         var objectId = objectsLength[n].id;
 
-                        console.log(objectId);
+                        console.log(objectId);     
                         //var cacheTranslationX = objectsLength[n].cacheTranslationX;
                         //var cacheTranslationY = objectsLength[n].cacheTranslationY;
 
@@ -808,6 +856,463 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             
                             canvas.getObjects().map(function(o) {
                               if( o.type == movedType ) {  
+
+                                  canvas.getObjects().map(function(r) {  
+                                    var existingType = r.type;
+                                    var existingLeft = r.left;
+                                    var existingTop = r.top;
+                                    if((movedType == 'yellow_0' || movedType == 'yellow_1' ||  movedType == 'yellow_2' || movedType == 'yellow_3')) {
+                                        if(existingLeft == centerX && existingTop == centerY){
+                                               if(existingType == 'blue_0') {
+                                                  r.set({
+                                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                                    top: <?php echo $blue_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_zero_left_position ?>,    
+                                                    top: <?php echo $blue_zero_top_position ?>
+                                                  });  
+                                               } else if(existingType == 'blue_1') {
+                                                  r.set({
+                                                    left: <?php echo $blue_one_left_position; ?>,    
+                                                    top: <?php echo $blue_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_one_left_position; ?>,    
+                                                    top: <?php echo $blue_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_2') {
+                                                  r.set({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_3') {
+                                                  r.set({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_0') {
+                                                  r.set({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_1') {
+                                                  r.set({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_2') {
+                                                  r.set({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_3') {
+                                                  r.set({
+                                                    left: <?php echo $red_three_left_position ?>,    
+                                                    top: <?php echo $red_three_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_three_left_position ?>,    
+                                                    top: <?php echo $red_three_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'green_0') {
+                                                  r.set({
+                                                    left: <?php echo $green_zero_left_position ?>,    
+                                                    top: <?php echo $green_zero_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_zero_left_position ?>,    
+                                                    top: <?php echo $green_zero_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'green_1') {
+                                                  r.set({
+                                                    left: <?php echo $green_one_left_position ?>,    
+                                                    top: <?php echo $green_one_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_one_left_position ?>,    
+                                                    top: <?php echo $green_one_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'green_2') {
+                                                  r.set({
+                                                    left: <?php echo $green_two_left_position ?>,    
+                                                    top: <?php echo $green_two_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_two_left_position ?>,    
+                                                    top: <?php echo $green_two_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'green_3') {
+                                                  r.set({    
+                                                    left: <?php echo $green_three_left_position ?>,    
+                                                    top: <?php echo $green_three_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_three_left_position ?>,    
+                                                    top: <?php echo $green_three_top_position ?>
+                                                  }); 
+                                               }
+                                            }
+                                        } else if((movedType == 'blue_0' || movedType == 'blue_1' ||  movedType == 'blue_2' || movedType == 'blue_3')) {
+                                        if(existingLeft == centerX && existingTop == centerY){
+                                               if(existingType == 'yellow_0') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_zero_left_position ?>,    
+                                                    top: <?php echo $yellow_zero_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_zero_left_position ?>,    
+                                                    top: <?php echo $yellow_zero_top_position ?>
+                                                  });  
+                                               } else if(existingType == 'yellow_1') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_one_left_position ?>,    
+                                                    top: <?php echo $yellow_one_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_one_left_position ?>,    
+                                                    top: <?php echo $yellow_one_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_2') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_two_left_position ?>,    
+                                                    top: <?php echo $yellow_two_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_two_left_position ?>,    
+                                                    top: <?php echo $yellow_two_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_3') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_three_left_position ?>,    
+                                                    top: <?php echo $yellow_three_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_three_left_position ?>,    
+                                                    top: <?php echo $yellow_three_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'red_0') {
+                                                  r.set({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_1') {
+                                                  r.set({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_2') {
+                                                  r.set({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_3') {
+                                                  r.set({
+                                                    left: <?php echo $red_three_left_position; ?>,    
+                                                    top: <?php echo $red_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_three_left_position; ?>,    
+                                                    top: <?php echo $red_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_0') {
+                                                  r.set({
+                                                    left: <?php echo $green_zero_left_position; ?>,    
+                                                    top: <?php echo $green_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_zero_left_position; ?>,    
+                                                    top: <?php echo $green_zero_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_1') {
+                                                  r.set({
+                                                    left: <?php echo $green_one_left_position; ?>,    
+                                                    top: <?php echo $green_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_one_left_position; ?>,    
+                                                    top: <?php echo $green_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_2') {
+                                                  r.set({
+                                                    left: <?php echo $green_two_left_position; ?>,    
+                                                    top: <?php echo $green_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_two_left_position; ?>,    
+                                                    top: <?php echo $green_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_3') {
+                                                  r.set({    
+                                                    left: <?php echo $green_three_left_position; ?>,    
+                                                    top: <?php echo $green_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_three_left_position; ?>,    
+                                                    top: <?php echo $green_three_top_position; ?>
+                                                  }); 
+                                               }
+                                            }
+                                        } else if((movedType == 'red_0' || movedType == 'red_1' ||  movedType == 'red_2' || movedType == 'red_3')) {
+                                        if(existingLeft == centerX && existingTop == centerY){
+                                               if(existingType == 'yellow_0') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                                    top: <?php echo $yellow_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                                    top: <?php echo $yellow_zero_top_position; ?>
+                                                  });  
+                                               } else if(existingType == 'yellow_1') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                                    top: <?php echo $yellow_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                                    top: <?php echo $yellow_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_2') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                                    top: <?php echo $yellow_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                                    top: <?php echo $yellow_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_3') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_three_left_position; ?>,    
+                                                    top: <?php echo $yellow_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_three_left_position; ?>,    
+                                                    top: <?php echo $yellow_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_0') {
+                                                  r.set({
+                                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                                    top: <?php echo $blue_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                                    top: <?php echo $blue_zero_top_position; ?>
+                                                  });  
+                                               } else if(existingType == 'blue_1') {
+                                                  r.set({
+                                                    left: <?php echo $blue_one_left_position ?>,    
+                                                    top: <?php echo $blue_one_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_one_left_position ?>,    
+                                                    top: <?php echo $blue_one_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_2') {
+                                                  r.set({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_3') {
+                                                  r.set({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_0') {
+                                                  r.set({
+                                                    left: <?php echo $green_zero_left_position; ?>,    
+                                                    top: <?php echo $green_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_zero_left_position; ?>,    
+                                                    top: <?php echo $green_zero_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_1') {
+                                                  r.set({
+                                                    left: <?php echo $green_one_left_position; ?>,    
+                                                    top: <?php echo $green_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_one_left_position; ?>,    
+                                                    top: <?php echo $green_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_2') {
+                                                  r.set({
+                                                    left: <?php echo $green_two_left_position; ?>,    
+                                                    top: <?php echo $green_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_two_left_position; ?>,    
+                                                    top: <?php echo $green_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'green_3') {
+                                                  r.set({    
+                                                    left: <?php echo $green_three_left_position; ?>,    
+                                                    top: <?php echo $green_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $green_three_left_position; ?>,    
+                                                    top: <?php echo $green_three_top_position; ?>
+                                                  }); 
+                                               }
+                                            }
+                                        } else if((movedType == 'green_0' || movedType == 'green_1' ||  movedType == 'green_2' || movedType == 'green_3')) {
+                                        if(existingLeft == centerX && existingTop == centerY){
+                                               if(existingType == 'yellow_0') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                                    top: <?php echo $yellow_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                                    top: <?php echo $yellow_zero_top_position; ?>
+                                                  });  
+                                               } else if(existingType == 'yellow_1') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                                    top: <?php echo $yellow_one_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                                    top: <?php echo $yellow_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_2') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                                    top: <?php echo $yellow_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                                    top: <?php echo $yellow_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'yellow_3') {
+                                                  r.set({
+                                                    left: <?php echo $yellow_three_left_position; ?>,    
+                                                    top: <?php echo $yellow_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $yellow_three_left_position; ?>,    
+                                                    top: <?php echo $yellow_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_0') {
+                                                  r.set({
+                                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                                    top: <?php echo $blue_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                                    top: <?php echo $blue_zero_top_position; ?>
+                                                  });  
+                                               } else if(existingType == 'blue_1') {
+                                                  r.set({
+                                                    left: <?php echo $blue_one_left_position ?>,    
+                                                    top: <?php echo $blue_one_top_position ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_one_left_position ?>,    
+                                                    top: <?php echo $blue_one_top_position ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_2') {
+                                                  r.set({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_two_left_position; ?>,    
+                                                    top: <?php echo $blue_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'blue_3') {
+                                                  r.set({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $blue_three_left_position; ?>,    
+                                                    top: <?php echo $blue_three_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_0') {
+                                                  r.set({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_zero_left_position; ?>,    
+                                                    top: <?php echo $red_zero_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_1') {
+                                                  r.set({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  });    
+                                                  r.setCoords({
+                                                    left: <?php echo $red_one_left_position; ?>,    
+                                                    top: <?php echo $red_one_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_2') {
+                                                  r.set({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_two_left_position; ?>,    
+                                                    top: <?php echo $red_two_top_position; ?>
+                                                  }); 
+                                               } else if(existingType == 'red_3') {
+                                                  r.set({
+                                                    left: <?php echo $red_three_left_position; ?>,    
+                                                    top: <?php echo $red_three_top_position; ?>
+                                                  });
+                                                  r.setCoords({
+                                                    left: <?php echo $red_three_left_position; ?>,    
+                                                    top: <?php echo $red_three_top_position; ?>
+                                                  }); 
+                                               } 
+                                            }
+                                        }
+                                  });  
+                                  
+
                                   o.set({    
                                     left: centerX,
                                     top: centerY 
@@ -817,9 +1322,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     top: centerY
                                   });
                               }              
-                          });    
-                          is_element_exist = 1;
-                          update_marble_position(movedType,objectId);
+                            });       
+                            is_element_exist = 1;        
+                            update_marble_position(movedType,objectId);
                         }   
                         console.log(is_element_exist);   
                     }  
@@ -828,148 +1333,148 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         canvas.getObjects().map(function(o) {
                             if( o.type == movedType && movedType == 'yellow_3'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 156
+                                  left: <?php echo $yellow_three_left_position; ?>,    
+                                  top: <?php echo $yellow_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 156
+                                  left: <?php echo $yellow_three_left_position; ?>,    
+                                  top: <?php echo $yellow_three_top_position; ?>
                                 });
                             } else if( o.type == movedType && movedType == 'yellow_2'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 106
+                                  left: <?php echo $yellow_two_left_position; ?>,    
+                                  top: <?php echo $yellow_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 106
+                                  left: <?php echo $yellow_two_left_position; ?>,    
+                                  top: <?php echo $yellow_two_top_position; ?>
                                 });
                             } else if( o.type == movedType && movedType == 'yellow_1'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 56
+                                  left: <?php echo $yellow_one_left_position; ?>,    
+                                  top: <?php echo $yellow_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 56
+                                  left: <?php echo $yellow_one_left_position; ?>,    
+                                  top: <?php echo $yellow_one_top_position; ?>
                                 });
                             } else if( o.type == movedType && movedType == 'yellow_0'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 6
+                                  left: <?php echo $yellow_zero_left_position; ?>,    
+                                  top: <?php echo $yellow_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 6
+                                  left: <?php echo $yellow_zero_left_position; ?>,    
+                                  top: <?php echo $yellow_zero_top_position; ?>
                                 });
                             } else if( o.type == movedType && movedType == 'blue_3'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 155
+                                  left: <?php echo $blue_three_left_position; ?>,    
+                                  top: <?php echo $blue_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 155
+                                  left: <?php echo $blue_three_left_position; ?>,    
+                                  top: <?php echo $blue_three_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'blue_2'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 105
+                                  left: <?php echo $blue_two_left_position; ?>,    
+                                  top: <?php echo $blue_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 105
+                                  left: <?php echo $blue_two_left_position; ?>,    
+                                  top: <?php echo $blue_two_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'blue_1'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 55
+                                  left: <?php echo $blue_one_left_position; ?>,    
+                                  top: <?php echo $blue_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 55
+                                  left: <?php echo $blue_one_left_position; ?>,    
+                                  top: <?php echo $blue_one_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'blue_0'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 5
+                                  left: <?php echo $blue_zero_left_position; ?>,    
+                                  top: <?php echo $blue_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1240,    
-                                  top: 5
+                                  left: <?php echo $blue_zero_left_position; ?>,    
+                                  top: <?php echo $blue_zero_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'red_3'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 426
+                                  left: <?php echo $red_three_left_position; ?>,    
+                                  top: <?php echo $red_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 426
+                                  left: <?php echo $red_three_left_position; ?>,    
+                                  top: <?php echo $red_three_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'red_2'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 476
+                                  left: <?php echo $red_two_left_position; ?>,    
+                                  top: <?php echo $red_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 476
+                                  left: <?php echo $red_two_left_position; ?>,    
+                                  top: <?php echo $red_two_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'red_1'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 526
+                                  left: <?php echo $red_one_left_position; ?>,    
+                                  top: <?php echo $red_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 526
+                                  left: <?php echo $red_one_left_position; ?>,    
+                                  top: <?php echo $red_one_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'red_0'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 576
+                                  left: <?php echo $red_zero_left_position; ?>,    
+                                  top: <?php echo $red_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 576
+                                  left: <?php echo $red_zero_left_position; ?>,    
+                                  top: <?php echo $red_zero_top_position; ?>
                                 });  
                             } else if( o.type == movedType && movedType == 'green_3'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 426 
+                                  left: <?php echo $green_three_left_position; ?>,    
+                                  top: <?php echo $green_three_top_position; ?> 
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 426  
+                                  left: <?php echo $green_three_left_position; ?>,    
+                                  top: <?php echo $green_three_top_position; ?> 
                                 });      
                             } else if( o.type == movedType && movedType == 'green_2'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 476 
+                                  left: <?php echo $green_two_left_position; ?>,    
+                                  top: <?php echo $green_two_top_position; ?> 
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 476
+                                  left: <?php echo $green_two_left_position; ?>,    
+                                  top: <?php echo $green_two_top_position; ?> 
                                 });  
                             } else if( o.type == movedType && movedType == 'green_1'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 526 
+                                  left: <?php echo $green_one_left_position; ?>,    
+                                  top: <?php echo $green_one_top_position; ?>  
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 526
+                                  left: <?php echo $green_one_left_position; ?>,    
+                                  top: <?php echo $green_one_top_position; ?>  
                                 });  
                             } else if( o.type == movedType && movedType == 'green_0'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 576 
+                                  left: <?php echo $green_zero_left_position; ?>,    
+                                  top: <?php echo $green_zero_top_position; ?>  
                                 });
-                                o.setCoords({
-                                  left: 111,    
-                                  top: 576
-                                });  
+                                o.setCoords({    
+                                  left: <?php echo $green_zero_left_position; ?>,    
+                                  top: <?php echo $green_zero_top_position; ?>  
+                                });      
                             }            
                         });
                     }
@@ -1106,8 +1611,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                                     myImg.type = "yellow_0";
                                     myImg.id = "";
-                                    myImg.left = 112;
-                                    myImg.top = 6;
+                                    myImg.left = <?php echo $yellow_zero_left_position; ?>;
+                                    myImg.top = <?php echo $yellow_zero_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1118,8 +1623,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                                     myImg.type = "yellow_1";
                                     myImg.id = "";
-                                    myImg.left = 112;
-                                    myImg.top = 56;
+                                    myImg.left = <?php echo $yellow_one_left_position; ?>;
+                                    myImg.top = <?php echo $yellow_one_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1130,8 +1635,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                                     myImg.type = "yellow_2";
                                     myImg.id = "";
-                                    myImg.left = 112;
-                                    myImg.top = 106;
+                                    myImg.left = <?php echo $yellow_two_left_position; ?>;
+                                    myImg.top = <?php echo $yellow_two_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1143,8 +1648,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
                                     myImg.type = "yellow_3";
                                     myImg.id = "";
-                                    myImg.left = 112;
-                                    myImg.top = 156;
+                                    myImg.left = <?php echo $yellow_three_left_position; ?>;
+                                    myImg.top = <?php echo $yellow_three_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1176,8 +1681,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                            fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                                     myImg.type = "blue_0";
-                                    myImg.left = 1246;
-                                    myImg.top = 5;
+                                    myImg.left = <?php echo $blue_zero_left_position; ?>;
+                                    myImg.top = <?php echo $blue_zero_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1187,8 +1692,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           
                           fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                                     myImg.type = "blue_1";
-                                    myImg.left = 1246;
-                                    myImg.top = 55;
+                                    myImg.left = <?php echo $blue_one_left_position; ?>;
+                                    myImg.top = <?php echo $blue_one_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1197,8 +1702,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           
                           fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                                     myImg.type = "blue_2";
-                                    myImg.left = 1246;
-                                    myImg.top = 105;
+                                    myImg.left = <?php echo $blue_two_left_position; ?>;
+                                    myImg.top = <?php echo $blue_two_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1209,8 +1714,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           
                           fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
                                     myImg.type = "blue_3";
-                                    myImg.left = 1246;
-                                    myImg.top = 155;
+                                    myImg.left = <?php echo $blue_three_left_position; ?>;
+                                    myImg.top = <?php echo $blue_three_top_position; ?>;
                                     myImg.lockMovementX = true;
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
@@ -1246,8 +1751,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                                 myImg.type = "red_0";
                                 myImg.id = "";
-                                myImg.left = 1246;    
-                                myImg.top = 576;  
+                                myImg.left = <?php echo $red_zero_left_position; ?>;
+                                myImg.top = <?php echo $red_zero_top_position; ?>;
                                 myImg.lockMovementX = true;
                                 myImg.lockMovementY = true;
                                 canvas.add(myImg); 
@@ -1258,8 +1763,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                                 myImg.type = "red_1";
                                 myImg.id = "";
-                                myImg.left = 1246;
-                                myImg.top = 526;
+                                myImg.left = <?php echo $red_one_left_position; ?>;
+                                myImg.top = <?php echo $red_one_top_position; ?>;
                                 myImg.lockMovementX = true;
                                 myImg.lockMovementY = true;
                                 canvas.add(myImg); 
@@ -1269,8 +1774,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                                 myImg.type = "red_2";
                                 myImg.id = "";
-                                myImg.left = 1246;
-                                myImg.top = 476;
+                                myImg.left = <?php echo $red_two_left_position; ?>;
+                                myImg.top = <?php echo $red_two_top_position; ?>;
                                 myImg.lockMovementX = true;
                                 myImg.lockMovementY = true;
                                 canvas.add(myImg); 
@@ -1280,8 +1785,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
                                 myImg.type = "red_3";
                                 myImg.id = "";
-                                myImg.left = 1246;  
-                                myImg.top = 426;
+                                myImg.left = <?php echo $red_three_left_position; ?>;
+                                myImg.top = <?php echo $red_three_top_position; ?>;
                                 myImg.lockMovementX = true;
                                 myImg.lockMovementY = true;
                                 canvas.add(myImg); 
@@ -1315,8 +1820,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                                 myImg.type = "green_0";
                                 myImg.id = '';
-                                myImg.left = 111;
-                                myImg.top = 576;
+                                myImg.left = <?php echo $green_zero_left_position; ?>;
+                                myImg.top = <?php echo $green_zero_top_position; ?>;
                                 myImg.lockMovementX = true;
                                 myImg.lockMovementY = true;
                                 canvas.add(myImg); 
@@ -1327,8 +1832,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                                       myImg.type = "green_1";
                                       myImg.id = '';
-                                      myImg.left = 111;
-                                      myImg.top = 526;
+                                      myImg.left = <?php echo $green_one_left_position; ?>;
+                                      myImg.top = <?php echo $green_one_top_position; ?>;
                                       myImg.lockMovementX = true;
                                       myImg.lockMovementY = true;
                                       canvas.add(myImg); 
@@ -1338,8 +1843,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                                       myImg.type = "green_2";
                                       myImg.id = '';
-                                      myImg.left = 111;
-                                      myImg.top = 476;
+                                      myImg.left = <?php echo $green_two_left_position; ?>;
+                                      myImg.top = <?php echo $green_two_top_position; ?>;
                                       myImg.lockMovementX = true;
                                       myImg.lockMovementY = true;
                                       canvas.add(myImg); 
@@ -1349,8 +1854,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                           fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
                                       myImg.type = "green_3";
                                       myImg.id = "";
-                                      myImg.left = 111;
-                                      myImg.top = 426;  
+                                      myImg.left = <?php echo $green_three_left_position; ?>;
+                                      myImg.top = <?php echo $green_three_top_position; ?>;
                                       myImg.lockMovementX = true;
                                       myImg.lockMovementY = true;
                                       canvas.add(myImg); 
@@ -1433,147 +1938,147 @@ if(isset($_GET['id']) && $_GET['id']!='') {
       canvas.getObjects().map(function(o) {
                             if( o.type == 'yellow_3'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 156
+                                  left : <?php echo $yellow_three_left_position; ?>,
+                                  top : <?php echo $yellow_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 156
+                                  left : <?php echo $yellow_three_left_position; ?>,
+                                  top : <?php echo $yellow_three_top_position; ?>
                                 });
                             } else if( o.type == 'yellow_2'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 106
+                                  left : <?php echo $yellow_two_left_position; ?>,
+                                  top : <?php echo $yellow_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 106
+                                  left : <?php echo $yellow_two_left_position; ?>,
+                                  top : <?php echo $yellow_two_top_position; ?>
                                 });
                             } else if( o.type == 'yellow_1'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 56
+                                  left : <?php echo $yellow_one_left_position; ?>,
+                                  top : <?php echo $yellow_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 56
+                                  left : <?php echo $yellow_one_left_position; ?>,
+                                  top : <?php echo $yellow_one_top_position; ?>
                                 });
                             } else if( o.type == 'yellow_0'  ) { 
                                 o.set({
-                                  left: 112,    
-                                  top: 6
+                                  left : <?php echo $yellow_zero_left_position; ?>,
+                                  top : <?php echo $yellow_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 112,    
-                                  top: 6
+                                  left : <?php echo $yellow_zero_left_position; ?>,
+                                  top : <?php echo $yellow_zero_top_position; ?>
                                 });
                             } else if( o.type == 'blue_3'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 155
+                                  left : <?php echo $blue_three_left_position; ?>,
+                                  top : <?php echo $blue_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 155
+                                  left : <?php echo $blue_three_left_position; ?>,
+                                  top : <?php echo $blue_three_top_position; ?>
                                 });  
                             } else if( o.type == 'blue_2'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 105
+                                  left : <?php echo $blue_two_left_position; ?>,
+                                  top : <?php echo $blue_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 105
+                                  left : <?php echo $blue_two_left_position; ?>,
+                                  top : <?php echo $blue_two_top_position; ?>
                                 });  
                             } else if( o.type == 'blue_1'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 55
+                                  left : <?php echo $blue_one_left_position; ?>,
+                                  top : <?php echo $blue_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 55
+                                  left : <?php echo $blue_one_left_position; ?>,
+                                  top : <?php echo $blue_one_top_position; ?>
                                 });  
                             } else if( o.type == 'blue_0'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 5
+                                  left : <?php echo $blue_zero_left_position; ?>,
+                                  top : <?php echo $blue_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1240,    
-                                  top: 5
+                                  left : <?php echo $blue_zero_left_position; ?>,
+                                  top : <?php echo $blue_zero_top_position; ?>
                                 });  
                             } else if( o.type == 'red_3'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 426
+                                  left : <?php echo $red_three_left_position; ?>,
+                                  top : <?php echo $red_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 426
+                                  left : <?php echo $red_three_left_position; ?>,
+                                  top : <?php echo $red_three_top_position; ?>
                                 });  
                             } else if( o.type == 'red_2'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 476
+                                  left : <?php echo $red_two_left_position; ?>,
+                                  top : <?php echo $red_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 476
+                                  left : <?php echo $red_two_left_position; ?>,
+                                  top : <?php echo $red_two_top_position; ?>
                                 });  
                             } else if( o.type == 'red_1'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 526
+                                  left : <?php echo $red_one_left_position; ?>,
+                                  top : <?php echo $red_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 526
+                                  left : <?php echo $red_one_left_position; ?>,
+                                  top : <?php echo $red_one_top_position; ?>
                                 });  
                             } else if( o.type == 'red_0'  ) { 
                                 o.set({
-                                  left: 1246,    
-                                  top: 576
+                                  left : <?php echo $red_zero_left_position; ?>,
+                                  top : <?php echo $red_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 1246,    
-                                  top: 576
+                                  left : <?php echo $red_zero_left_position; ?>,
+                                  top : <?php echo $red_zero_top_position; ?>
                                 });  
                             } else if( o.type == 'green_3'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 426 
+                                  left : <?php echo $green_three_left_position; ?>,
+                                  top : <?php echo $green_three_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 426  
+                                  left : <?php echo $green_three_left_position; ?>,
+                                  top : <?php echo $green_three_top_position; ?>
                                 });      
                             } else if( o.type == 'green_2'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 476 
+                                  left : <?php echo $green_two_left_position; ?>,
+                                  top : <?php echo $green_two_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 476
+                                  left : <?php echo $green_two_left_position; ?>,
+                                  top : <?php echo $green_two_top_position; ?>
                                 });  
                             } else if( o.type == 'green_1'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 526 
+                                  left : <?php echo $green_one_left_position; ?>,
+                                  top : <?php echo $green_one_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 526
+                                  left : <?php echo $green_one_left_position; ?>,
+                                  top : <?php echo $green_one_top_position; ?>
                                 });  
                             } else if( o.type == 'green_0'  ) { 
                                 o.set({
-                                  left: 111,    
-                                  top: 576 
+                                  left : <?php echo $green_zero_left_position; ?>,
+                                  top : <?php echo $green_zero_top_position; ?>
                                 });
                                 o.setCoords({
-                                  left: 111,    
-                                  top: 576
+                                  left : <?php echo $green_zero_left_position; ?>,
+                                  top : <?php echo $green_zero_top_position; ?>
                                 });  
                             }            
                         });
