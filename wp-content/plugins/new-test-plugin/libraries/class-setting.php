@@ -1,5 +1,6 @@
 <?php
 
+
 class ActivateLicense {
 	private $activate_license_options;
 
@@ -10,7 +11,7 @@ class ActivateLicense {
 	}
 
 
-	function handle_license_checking( $old_value, $value, $option ) {
+	public function handle_license_checking( $old_value, $value, $option ) {
 
 		$license_box_api = new LicenseBoxAPI();
 		$posted_data     = wp_unslash( $_POST );
@@ -42,17 +43,23 @@ class ActivateLicense {
 		$this->activate_license_options = get_option( 'activate_license_option_name' );
 		?>
         <div class="wrap">
-            <h2>Activate License</h2>
-            <p>Please enter the license code you received in your order Receipt.</p>
+            <h2>Automatic Updates</h2>
+            <p>Please enter your License Key. AAn activate License key is needed for automatic updates and <a
+                        title="License Keys" href="https://dmwds.com/My-account/">Support </a>.</p>
 			<?php settings_errors(); ?>
 
             <form method="post" action="options.php">
 				<?php
-				settings_fields( 'activate_license_option_group' );
 				do_settings_sections( 'activate-license-admin' );
+				settings_fields( 'activate_license_option_group' );
+
 				submit_button();
 				?>
             </form>
+            <p> you can find your license keys and manage your active sites <a title="License Keys"
+                                                                               href="https://dmwds.com/My-account/">Dmwds.com </a>.
+            </p>
+
         </div>
 	<?php }
 
@@ -79,13 +86,6 @@ class ActivateLicense {
 			'activate_license_setting_section' // section
 		);
 
-		add_settings_field(
-			'client_name', // id
-			'client name', // title
-			array( $this, 'client_name_callback' ), // callback
-			'activate-license-admin', // page
-			'activate_license_setting_section' // section
-		);
 
 		add_settings_field(
 			'license_action', // id
@@ -125,13 +125,6 @@ class ActivateLicense {
 		);
 	}
 
-	public function client_name_callback() {
-		printf(
-			'<input class="regular-text" type="text" name="activate_license_option_name[client_name]" id="client_name" value="%s">',
-			isset( $this->activate_license_options['client_name'] ) ? esc_attr( $this->activate_license_options['client_name'] ) : ''
-		);
-	}
-
 
 	public function render_license_action() {
 
@@ -139,13 +132,7 @@ class ActivateLicense {
 		$license_response = $license_box_api->verify_license( false, ntplugin_license_data( 'license_code' ), ntplugin_license_data( 'client_name' ) );
 		$license_status   = isset( $license_response['status'] ) && $license_response['status'] ? 'activated' : 'deactivated';
 
-		/*if($license_status == 'deactivated') {
-			add_filter( 'auto_update_plugin', '__return_false' );
-		} else {
-			add_filter( 'auto_update_plugin', '__return_true' );
-		}*/
-
-		printf( '<p class="description"><i>%s</i></p><br>', ucfirst( $license_status ) );
+		printf( '<p class="button button1 description"><i>%s</i></p><br>', ucfirst( $license_status ) );
 	}
 }
 

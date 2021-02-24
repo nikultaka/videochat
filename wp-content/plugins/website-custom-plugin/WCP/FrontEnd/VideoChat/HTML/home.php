@@ -486,70 +486,14 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             var yellow_inner_0 = new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 0, left: 105,lockMovementX:true,lockMovementY:true,id:"yellow_empty_0" });
             canvas.add(yellow_inner_0);         
 
-            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-                myImg.type = "yellow_0";
-                myImg.id = "";
-                myImg.left = 120;
-                myImg.top = 0;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/
-
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 50, left: 105,lockMovementX:true,lockMovementY:true,id:"yellow_empty_1" }));        
-
-            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-                myImg.type = "yellow_1";
-                myImg.id = "";
-                myImg.left = 120;
-                myImg.top = 50;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 100, left: 105,lockMovementX:true,lockMovementY:true,id:"yellow_empty_2" }));        
 
-            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-                myImg.type = "yellow_2";
-                myImg.id = "";
-                myImg.left = 120;
-                myImg.top = 100;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/
-
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"yellow",strokeWidth:2, top: 150, left: 105,lockMovementX:true,lockMovementY:true,id:"yellow_empty_3" }));        
-
-            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-                myImg.type = "yellow_3";
-                myImg.id = "";
-                myImg.left = 120;
-                myImg.top = 150;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/
 
             /**************** left top bottom bar **************/
             canvas.add(new fabric.Circle({ radius: 17, fill: 'yellow',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" }));     
-            /*fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
-                myImg.type = "yellow_3";        
-                myImg.id = "";
-                myImg.left = 176;
-                myImg.top = 216;
-                myImg.lockMovementX = true;
-                myImg.lockMovementY = true;    
-                canvas.add(myImg);   
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/              
-
-            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 170,lockMovementX:true,lockMovementY:true,id:"empty_0" })); 
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 210, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_1" }));
 
@@ -585,20 +529,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 
             /**************** right top left bar **************/
-            // fabric.Image.fromURL('<?php echo $flatBlueURL ?>', function(myImg) {
-            //     myImg.type = "blue_3";
-            //     myImg.id = "";
-            //     myImg.left = 881;
-            //     myImg.top = 6;
-            //     myImg.lockMovementX = true;
-            //     myImg.lockMovementY = true;
-            //     canvas.add(myImg); 
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            // });
 
             canvas.add(new fabric.Circle({ radius: 17, fill: 'blue',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
-
-            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 0, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_14" }));
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 42, left: 875,lockMovementX:true,lockMovementY:true,id:"empty_15" }));
 
@@ -672,20 +604,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 535, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_43" }));
 
-            // canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));
-
-            canvas.add(new fabric.Circle({ radius: 17, fill: 'green',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));        
-
-            /*fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {  
-                myImg.type = "green_3";
-                myImg.id = "";
-                myImg.left = 477;    
-                myImg.top = 583;
-                myImg.lockMovementX = true;   
-                myImg.lockMovementY = true;
-                canvas.add(myImg); 
-                canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-            });*/         
+            canvas.add(new fabric.Circle({ radius: 17, fill: 'green',stroke:"black",strokeWidth:2, top: 577, left: 470,lockMovementX:true,lockMovementY:true,id:"empty_42" }));         
 
 
             /**************** right bottom right bar **************/
@@ -733,17 +652,6 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             /**************** right bottom top bar **************/  
             
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 940,lockMovementX:true,lockMovementY:true,id:"empty_32" }));
-
-            // fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
-            //     myImg.type = "red_3";   
-            //     myImg.id  = "";   
-            //     myImg.left = 1127;  
-            //     myImg.top = 372;    
-            //     myImg.lockMovementX = true; 
-            //     myImg.lockMovementY = true; 
-            //     canvas.add(myImg);       
-            //     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; });  
-            // });             
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'white',stroke:"black",strokeWidth:2, top: 367, left: 1000,lockMovementX:true,lockMovementY:true,id:"empty_31" }));
 
@@ -818,9 +726,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 'object:moving': function(e) {
                     //console.log(e.target.canvas);   
                 },
-                'object:modified': function(options) {
-
-                    
+                'object:modified': function(e) {
+                    //console.log("modified");
+                    //console.log(e.target.type);
                 },
                 'object:moved': function(e) {
                     //console.log(e.target);
@@ -832,7 +740,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     var movedClientY = e.target.top;
                     var movedType = e.target.type;
 
-                    console.log(movedType);   
+                    //console.log(movedType);   
                     
                     var is_element_exist = 0;
                     for(var n=0; n<objectsLength.length; n++) {
@@ -842,7 +750,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         var objectHeight = objectsLength[n].height;
                         var objectId = objectsLength[n].id;
 
-                        console.log(objectId);     
+                        //console.log(objectId);     
                         //var cacheTranslationX = objectsLength[n].cacheTranslationX;
                         //var cacheTranslationY = objectsLength[n].cacheTranslationY;
 
@@ -851,8 +759,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
                         if( ( (movedClientX>=objectLeft && movedClientX<=totlaWidthCompare) && (movedClientY>=objectTop && movedClientY<=totlaHeightCompare) &&  objectId.includes("empty_")  )  ) {  
 
+                            //console.log("testing");
+
                             var centerX = (objectLeft + (objectWidth/7)) + 2;
                             var centerY = (objectTop + (objectHeight/7)) + 1;
+
+                            
                             
                             canvas.getObjects().map(function(o) {
                               if( o.type == movedType ) {  
@@ -861,8 +773,30 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     var existingType = r.type;
                                     var existingLeft = r.left;
                                     var existingTop = r.top;
-                                    if((movedType == 'yellow_0' || movedType == 'yellow_1' ||  movedType == 'yellow_2' || movedType == 'yellow_3')) {
-                                        if(existingLeft == centerX && existingTop == centerY){
+
+                                    var intCenterX = parseInt(centerX);
+                                    var intCenterY = parseInt(centerY);
+ 
+                                    
+
+                                    var diffX = Math.abs(intCenterX - existingLeft);
+                                    var diffY = Math.abs(intCenterY - existingTop);
+
+                                    if(existingType == "blue_0" || existingType == "blue_3" || existingType == "yellow_0") {
+                                      console.log(existingType);     
+                                      console.log("existingLeft X :"+existingLeft);
+                                      console.log("existingTop Y :"+existingTop);
+                                      console.log("center X :"+intCenterX);
+                                      console.log("center Y :"+intCenterY);  
+                                      console.log("diff X :"+diffX);
+                                      console.log("diff Y :"+diffY);  
+                                    }                                
+
+                                    if((movedType == 'yellow_0' || movedType == 'yellow_1' ||  movedType == 'yellow_2' || movedType == 'yellow_3')) {  
+                                              //alert(existingType);
+                                          if((intCenterX == existingLeft && intCenterX == existingTop) || ( diffX<=2 && diffY<=2 )  ) {    
+                                              console.log("existing type : "+existingType);
+
                                                if(existingType == 'blue_0') {
                                                   r.set({
                                                     left: <?php echo $blue_zero_left_position; ?>,    
@@ -872,7 +806,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_zero_left_position ?>,    
                                                     top: <?php echo $blue_zero_top_position ?>
                                                   });  
-                                               } else if(existingType == 'blue_1') {
+                                                  reset_marble_position('blue_0');
+                                               } if(existingType == 'blue_1') {
                                                   r.set({
                                                     left: <?php echo $blue_one_left_position; ?>,    
                                                     top: <?php echo $blue_one_top_position; ?>
@@ -881,7 +816,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_one_left_position; ?>,    
                                                     top: <?php echo $blue_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'blue_2') {
+                                                  reset_marble_position('blue_1');
+                                               } if(existingType == 'blue_2') {
                                                   r.set({
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
@@ -890,7 +826,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'blue_3') {
+                                                  reset_marble_position('blue_2');
+                                               } if(existingType == 'blue_3') {
                                                   r.set({
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
@@ -899,7 +836,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_0') {
+                                                  reset_marble_position('blue_3');
+                                               } if(existingType == 'red_0') {
                                                   r.set({
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
@@ -908,7 +846,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_1') {
+                                                  reset_marble_position('red_0');
+                                               } if(existingType == 'red_1') {
                                                   r.set({
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
@@ -917,7 +856,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_2') {
+                                                  reset_marble_position('red_1');
+                                               } if(existingType == 'red_2') {
                                                   r.set({
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
@@ -926,7 +866,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_3') {
+                                                  reset_marble_position('red_2');
+                                               } if(existingType == 'red_3') {
                                                   r.set({
                                                     left: <?php echo $red_three_left_position ?>,    
                                                     top: <?php echo $red_three_top_position ?>
@@ -935,7 +876,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_three_left_position ?>,    
                                                     top: <?php echo $red_three_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'green_0') {
+                                                  reset_marble_position('red_3');
+                                               } if(existingType == 'green_0') {
                                                   r.set({
                                                     left: <?php echo $green_zero_left_position ?>,    
                                                     top: <?php echo $green_zero_top_position ?>
@@ -944,7 +886,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_zero_left_position ?>,    
                                                     top: <?php echo $green_zero_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'green_1') {
+                                                  reset_marble_position('green_0');
+                                               } if(existingType == 'green_1') {
                                                   r.set({
                                                     left: <?php echo $green_one_left_position ?>,    
                                                     top: <?php echo $green_one_top_position ?>
@@ -953,7 +896,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_one_left_position ?>,    
                                                     top: <?php echo $green_one_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'green_2') {
+                                                  reset_marble_position('green_1');
+                                               } if(existingType == 'green_2') {
                                                   r.set({
                                                     left: <?php echo $green_two_left_position ?>,    
                                                     top: <?php echo $green_two_top_position ?>
@@ -962,7 +906,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_two_left_position ?>,    
                                                     top: <?php echo $green_two_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'green_3') {
+                                                  reset_marble_position('green_2');
+                                               } if(existingType == 'green_3') {
                                                   r.set({    
                                                     left: <?php echo $green_three_left_position ?>,    
                                                     top: <?php echo $green_three_top_position ?>
@@ -971,10 +916,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_three_left_position ?>,    
                                                     top: <?php echo $green_three_top_position ?>
                                                   }); 
+                                                  reset_marble_position('green_3');
                                                }
-                                            }
+                                            }   
                                         } else if((movedType == 'blue_0' || movedType == 'blue_1' ||  movedType == 'blue_2' || movedType == 'blue_3')) {
-                                        if(existingLeft == centerX && existingTop == centerY){
+                                            if((intCenterX == existingLeft && intCenterX == existingTop) || ( diffX<=2 && diffY<=2 )  ) {    
                                                if(existingType == 'yellow_0') {
                                                   r.set({
                                                     left: <?php echo $yellow_zero_left_position ?>,    
@@ -984,7 +930,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_zero_left_position ?>,    
                                                     top: <?php echo $yellow_zero_top_position ?>
                                                   });  
-                                               } else if(existingType == 'yellow_1') {
+                                                  reset_marble_position('yellow_0');
+                                               } if(existingType == 'yellow_1') {
                                                   r.set({
                                                     left: <?php echo $yellow_one_left_position ?>,    
                                                     top: <?php echo $yellow_one_top_position ?>
@@ -993,7 +940,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_one_left_position ?>,    
                                                     top: <?php echo $yellow_one_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_2') {
+                                                  reset_marble_position('yellow_1');
+                                               } if(existingType == 'yellow_2') {
                                                   r.set({
                                                     left: <?php echo $yellow_two_left_position ?>,    
                                                     top: <?php echo $yellow_two_top_position ?>
@@ -1002,7 +950,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_two_left_position ?>,    
                                                     top: <?php echo $yellow_two_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_3') {
+                                                  reset_marble_position('yellow_2');
+                                               } if(existingType == 'yellow_3') {
                                                   r.set({
                                                     left: <?php echo $yellow_three_left_position ?>,    
                                                     top: <?php echo $yellow_three_top_position ?>
@@ -1011,7 +960,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_three_left_position ?>,    
                                                     top: <?php echo $yellow_three_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'red_0') {
+                                                  reset_marble_position('yellow_3');
+                                               } if(existingType == 'red_0') {
                                                   r.set({
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
@@ -1020,7 +970,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_1') {
+                                                  reset_marble_position('red_0');
+                                               } if(existingType == 'red_1') {
                                                   r.set({
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
@@ -1029,7 +980,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_2') {
+                                                  reset_marble_position('red_1');
+                                               } if(existingType == 'red_2') {
                                                   r.set({
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
@@ -1038,7 +990,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_3') {
+                                                  reset_marble_position('red_2');
+                                               } if(existingType == 'red_3') {
                                                   r.set({
                                                     left: <?php echo $red_three_left_position; ?>,    
                                                     top: <?php echo $red_three_top_position; ?>
@@ -1047,7 +1000,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_three_left_position; ?>,    
                                                     top: <?php echo $red_three_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_0') {
+                                                  reset_marble_position('red_3');
+                                               } if(existingType == 'green_0') {
                                                   r.set({
                                                     left: <?php echo $green_zero_left_position; ?>,    
                                                     top: <?php echo $green_zero_top_position; ?>
@@ -1056,7 +1010,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_zero_left_position; ?>,    
                                                     top: <?php echo $green_zero_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_1') {
+                                                  reset_marble_position('green_0');
+                                               } if(existingType == 'green_1') {
                                                   r.set({
                                                     left: <?php echo $green_one_left_position; ?>,    
                                                     top: <?php echo $green_one_top_position; ?>
@@ -1065,7 +1020,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_one_left_position; ?>,    
                                                     top: <?php echo $green_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_2') {
+                                                  reset_marble_position('green_1');
+                                               } if(existingType == 'green_2') {
                                                   r.set({
                                                     left: <?php echo $green_two_left_position; ?>,    
                                                     top: <?php echo $green_two_top_position; ?>
@@ -1074,7 +1030,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_two_left_position; ?>,    
                                                     top: <?php echo $green_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_3') {
+                                                  reset_marble_position('green_2');
+                                               } if(existingType == 'green_3') {
                                                   r.set({    
                                                     left: <?php echo $green_three_left_position; ?>,    
                                                     top: <?php echo $green_three_top_position; ?>
@@ -1083,10 +1040,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_three_left_position; ?>,    
                                                     top: <?php echo $green_three_top_position; ?>
                                                   }); 
+                                                  reset_marble_position('green_3');
                                                }
-                                            }
+                                            }   
                                         } else if((movedType == 'red_0' || movedType == 'red_1' ||  movedType == 'red_2' || movedType == 'red_3')) {
-                                        if(existingLeft == centerX && existingTop == centerY){
+                                            if((intCenterX == existingLeft && intCenterX == existingTop) || ( diffX<=2 && diffY<=2 )  ) {    
                                                if(existingType == 'yellow_0') {
                                                   r.set({
                                                     left: <?php echo $yellow_zero_left_position; ?>,    
@@ -1096,7 +1054,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_zero_left_position; ?>,    
                                                     top: <?php echo $yellow_zero_top_position; ?>
                                                   });  
-                                               } else if(existingType == 'yellow_1') {
+                                                  reset_marble_position('yellow_0');
+                                               } if(existingType == 'yellow_1') {
                                                   r.set({
                                                     left: <?php echo $yellow_one_left_position; ?>,    
                                                     top: <?php echo $yellow_one_top_position; ?>
@@ -1105,7 +1064,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_one_left_position; ?>,    
                                                     top: <?php echo $yellow_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_2') {
+                                                  reset_marble_position('yellow_1');
+                                               } if(existingType == 'yellow_2') {
                                                   r.set({
                                                     left: <?php echo $yellow_two_left_position; ?>,    
                                                     top: <?php echo $yellow_two_top_position; ?>
@@ -1114,7 +1074,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_two_left_position; ?>,    
                                                     top: <?php echo $yellow_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_3') {
+                                                  reset_marble_position('yellow_2');
+                                               } if(existingType == 'yellow_3') {
                                                   r.set({
                                                     left: <?php echo $yellow_three_left_position; ?>,    
                                                     top: <?php echo $yellow_three_top_position; ?>
@@ -1122,8 +1083,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                   r.setCoords({
                                                     left: <?php echo $yellow_three_left_position; ?>,    
                                                     top: <?php echo $yellow_three_top_position; ?>
-                                                  }); 
-                                               } else if(existingType == 'blue_0') {
+                                                  });
+                                                  reset_marble_position('yellow_3'); 
+                                               } if(existingType == 'blue_0') {
                                                   r.set({
                                                     left: <?php echo $blue_zero_left_position; ?>,    
                                                     top: <?php echo $blue_zero_top_position; ?>
@@ -1132,7 +1094,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_zero_left_position; ?>,    
                                                     top: <?php echo $blue_zero_top_position; ?>
                                                   });  
-                                               } else if(existingType == 'blue_1') {
+                                                  reset_marble_position('blue_0'); 
+                                               } if(existingType == 'blue_1') {
                                                   r.set({
                                                     left: <?php echo $blue_one_left_position ?>,    
                                                     top: <?php echo $blue_one_top_position ?>
@@ -1141,7 +1104,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_one_left_position ?>,    
                                                     top: <?php echo $blue_one_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'blue_2') {
+                                                  reset_marble_position('blue_1'); 
+                                               } if(existingType == 'blue_2') {
                                                   r.set({
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
@@ -1150,7 +1114,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'blue_3') {
+                                                  reset_marble_position('blue_2'); 
+                                               } if(existingType == 'blue_3') {
                                                   r.set({
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
@@ -1159,7 +1124,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_0') {
+                                                  reset_marble_position('blue_3'); 
+                                               } if(existingType == 'green_0') {
                                                   r.set({
                                                     left: <?php echo $green_zero_left_position; ?>,    
                                                     top: <?php echo $green_zero_top_position; ?>
@@ -1168,7 +1134,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_zero_left_position; ?>,    
                                                     top: <?php echo $green_zero_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_1') {
+                                                  reset_marble_position('green_0'); 
+                                               } if(existingType == 'green_1') {
                                                   r.set({
                                                     left: <?php echo $green_one_left_position; ?>,    
                                                     top: <?php echo $green_one_top_position; ?>
@@ -1176,8 +1143,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                   r.setCoords({
                                                     left: <?php echo $green_one_left_position; ?>,    
                                                     top: <?php echo $green_one_top_position; ?>
-                                                  }); 
-                                               } else if(existingType == 'green_2') {
+                                                  });
+                                                  reset_marble_position('green_1'); 
+                                               } if(existingType == 'green_2') {
                                                   r.set({
                                                     left: <?php echo $green_two_left_position; ?>,    
                                                     top: <?php echo $green_two_top_position; ?>
@@ -1186,7 +1154,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_two_left_position; ?>,    
                                                     top: <?php echo $green_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'green_3') {
+                                                  reset_marble_position('green_2'); 
+                                               } if(existingType == 'green_3') {
                                                   r.set({    
                                                     left: <?php echo $green_three_left_position; ?>,    
                                                     top: <?php echo $green_three_top_position; ?>
@@ -1195,10 +1164,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $green_three_left_position; ?>,    
                                                     top: <?php echo $green_three_top_position; ?>
                                                   }); 
+                                                  reset_marble_position('green_3'); 
                                                }
-                                            }
+                                            }   
                                         } else if((movedType == 'green_0' || movedType == 'green_1' ||  movedType == 'green_2' || movedType == 'green_3')) {
-                                        if(existingLeft == centerX && existingTop == centerY){
+                                            if((intCenterX == existingLeft && intCenterX == existingTop) || ( diffX<=2 && diffY<=2 )  ) {    
                                                if(existingType == 'yellow_0') {
                                                   r.set({
                                                     left: <?php echo $yellow_zero_left_position; ?>,    
@@ -1208,7 +1178,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_zero_left_position; ?>,    
                                                     top: <?php echo $yellow_zero_top_position; ?>
                                                   });  
-                                               } else if(existingType == 'yellow_1') {
+                                                  reset_marble_position('yellow_0'); 
+                                               } if(existingType == 'yellow_1') {
                                                   r.set({
                                                     left: <?php echo $yellow_one_left_position; ?>,    
                                                     top: <?php echo $yellow_one_top_position; ?>
@@ -1217,7 +1188,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_one_left_position; ?>,    
                                                     top: <?php echo $yellow_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_2') {
+                                                  reset_marble_position('yellow_1'); 
+                                               } if(existingType == 'yellow_2') {
                                                   r.set({
                                                     left: <?php echo $yellow_two_left_position; ?>,    
                                                     top: <?php echo $yellow_two_top_position; ?>
@@ -1226,7 +1198,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_two_left_position; ?>,    
                                                     top: <?php echo $yellow_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'yellow_3') {
+                                                  reset_marble_position('yellow_2'); 
+                                               } if(existingType == 'yellow_3') {
                                                   r.set({
                                                     left: <?php echo $yellow_three_left_position; ?>,    
                                                     top: <?php echo $yellow_three_top_position; ?>
@@ -1235,7 +1208,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $yellow_three_left_position; ?>,    
                                                     top: <?php echo $yellow_three_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'blue_0') {
+                                                  reset_marble_position('yellow_3'); 
+                                               } if(existingType == 'blue_0') {
                                                   r.set({
                                                     left: <?php echo $blue_zero_left_position; ?>,    
                                                     top: <?php echo $blue_zero_top_position; ?>
@@ -1244,7 +1218,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_zero_left_position; ?>,    
                                                     top: <?php echo $blue_zero_top_position; ?>
                                                   });  
-                                               } else if(existingType == 'blue_1') {
+                                                  reset_marble_position('blue_0'); 
+                                               } if(existingType == 'blue_1') {
                                                   r.set({
                                                     left: <?php echo $blue_one_left_position ?>,    
                                                     top: <?php echo $blue_one_top_position ?>
@@ -1253,7 +1228,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_one_left_position ?>,    
                                                     top: <?php echo $blue_one_top_position ?>
                                                   }); 
-                                               } else if(existingType == 'blue_2') {
+                                                  reset_marble_position('blue_1'); 
+                                               } if(existingType == 'blue_2') {
                                                   r.set({
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
@@ -1262,7 +1238,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_two_left_position; ?>,    
                                                     top: <?php echo $blue_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'blue_3') {
+                                                  reset_marble_position('blue_2'); 
+                                               } if(existingType == 'blue_3') {
                                                   r.set({
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
@@ -1271,7 +1248,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $blue_three_left_position; ?>,    
                                                     top: <?php echo $blue_three_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_0') {
+                                                  reset_marble_position('blue_3'); 
+                                               } if(existingType == 'red_0') {
                                                   r.set({
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
@@ -1280,7 +1258,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_zero_left_position; ?>,    
                                                     top: <?php echo $red_zero_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_1') {
+                                                  reset_marble_position('red_0'); 
+                                               } if(existingType == 'red_1') {
                                                   r.set({
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
@@ -1289,7 +1268,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_one_left_position; ?>,    
                                                     top: <?php echo $red_one_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_2') {
+                                                  reset_marble_position('red_1'); 
+                                               } if(existingType == 'red_2') {
                                                   r.set({
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
@@ -1298,7 +1278,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_two_left_position; ?>,    
                                                     top: <?php echo $red_two_top_position; ?>
                                                   }); 
-                                               } else if(existingType == 'red_3') {
+                                                  reset_marble_position('red_2'); 
+                                               } if(existingType == 'red_3') {
                                                   r.set({
                                                     left: <?php echo $red_three_left_position; ?>,    
                                                     top: <?php echo $red_three_top_position; ?>
@@ -1307,8 +1288,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                                     left: <?php echo $red_three_left_position; ?>,    
                                                     top: <?php echo $red_three_top_position; ?>
                                                   }); 
-                                               } 
-                                            }
+                                                  reset_marble_position('red_3'); 
+                                               }   
+                                            }         
                                         }
                                   });  
                                   
@@ -1326,7 +1308,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             is_element_exist = 1;        
                             update_marble_position(movedType,objectId);
                         }   
-                        console.log(is_element_exist);   
+                        //console.log(is_element_exist);   
                     }  
 
                     if(is_element_exist == 0) {
@@ -1535,7 +1517,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
     function task(canvas,n,turn_bullet) {
           setTimeout(function () {
-                console.log(n);
+                //console.log(n);
                 checkId = "empty_"+n; 
                 var objectLeft = "";
                 var objectTop = "";
@@ -1575,6 +1557,20 @@ if(isset($_GET['id']) && $_GET['id']!='') {
     </script>   
 
     <script type="text/javascript">
+
+    function reset_marble_position(marble_id) {
+        $.ajax({     
+            type: 'POST',
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {"action": "WCP_VideoChat_Controller::reset_marble_position","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>","marble_id":marble_id},
+            success: function (data) {       
+                var result =  JSON.parse(data);
+                if (result.status == 1) {  
+                    
+                }
+            }
+        });
+    }  
 
     function update_marble_position(movedType,objectId) {
         $("#current_turn").val(''); 
@@ -1889,6 +1885,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
           toastr.error('You need to wait for your turn');
           return false;
         } 
+        $("#dice").hide();       
         canvas.getObjects().map(function(o) {
             if(o.id == 'done_text') {
               o.set({
@@ -2227,7 +2224,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             }
                         });        
                     } else if(next_turn == "2") {  
-                        console.log("testing");
+                        //console.log("testing");
                         var rectSelected = { left: 920, top: 195, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);  
@@ -2281,11 +2278,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     }  
 
 
-
+                    var existingMarbles = new Array();
                     if(marble_data.length>0) {
                         Object.keys(marble_data).forEach(function(key) {
                             var marble = marble_data[key];
                             var marble_user_id = marble.user_id;
+                            existingMarbles.push(marble.marble_id);
                             if(marble_user_id == '<?php echo $user_id ?>') {
                               return false;
                             }
@@ -2296,8 +2294,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                 }       
                             });
 
+                            var is_marble_exist = 0;
                             canvas.getObjects().map(function(o) {
                                 if(o.type == marble.marble_id) {
+                                      is_marble_exist = 1;
                                       o.set({
                                         left: objectLeft,
                                         top: objectTop
@@ -2307,8 +2307,165 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                         top: objectTop
                                       });
                                 }
-                          });  
+                            });   
                       });        
+
+
+                      console.log(existingMarbles);          
+
+                      canvas.getObjects().map(function(o) {
+                          if( !existingMarbles.includes(o.type) && o.type == 'yellow_3') { 
+                                o.set({
+                                  left: <?php echo $yellow_three_left_position; ?>,    
+                                  top: <?php echo $yellow_three_top_position; ?>
+                                });
+                                o.setCoords({
+                                  left: <?php echo $yellow_three_left_position; ?>,    
+                                  top: <?php echo $yellow_three_top_position; ?>
+                                });
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_2') { 
+                                  o.set({
+                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                    top: <?php echo $yellow_two_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $yellow_two_left_position; ?>,    
+                                    top: <?php echo $yellow_two_top_position; ?>
+                                  });
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_1') { 
+                                  o.set({
+                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                    top: <?php echo $yellow_one_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $yellow_one_left_position; ?>,    
+                                    top: <?php echo $yellow_one_top_position; ?>
+                                  });
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_0') { 
+                                  o.set({
+                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                    top: <?php echo $yellow_zero_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $yellow_zero_left_position; ?>,    
+                                    top: <?php echo $yellow_zero_top_position; ?>
+                                  });
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_3') { 
+                                  o.set({
+                                    left: <?php echo $blue_three_left_position; ?>,    
+                                    top: <?php echo $blue_three_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $blue_three_left_position; ?>,    
+                                    top: <?php echo $blue_three_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_2') { 
+                                  o.set({
+                                    left: <?php echo $blue_two_left_position; ?>,    
+                                    top: <?php echo $blue_two_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $blue_two_left_position; ?>,    
+                                    top: <?php echo $blue_two_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_1') { 
+                                  o.set({
+                                    left: <?php echo $blue_one_left_position; ?>,    
+                                    top: <?php echo $blue_one_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $blue_one_left_position; ?>,    
+                                    top: <?php echo $blue_one_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_0') { 
+                                  o.set({
+                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                    top: <?php echo $blue_zero_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $blue_zero_left_position; ?>,    
+                                    top: <?php echo $blue_zero_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_3') { 
+                                  o.set({
+                                    left: <?php echo $red_three_left_position; ?>,    
+                                    top: <?php echo $red_three_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $red_three_left_position; ?>,    
+                                    top: <?php echo $red_three_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_2') { 
+                                  o.set({
+                                    left: <?php echo $red_two_left_position; ?>,    
+                                    top: <?php echo $red_two_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $red_two_left_position; ?>,    
+                                    top: <?php echo $red_two_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_1') { 
+                                  o.set({
+                                    left: <?php echo $red_one_left_position; ?>,    
+                                    top: <?php echo $red_one_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $red_one_left_position; ?>,    
+                                    top: <?php echo $red_one_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_0') { 
+                                  o.set({
+                                    left: <?php echo $red_zero_left_position; ?>,    
+                                    top: <?php echo $red_zero_top_position; ?>
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $red_zero_left_position; ?>,    
+                                    top: <?php echo $red_zero_top_position; ?>
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_3') { 
+                                  o.set({
+                                    left: <?php echo $green_three_left_position; ?>,    
+                                    top: <?php echo $green_three_top_position; ?> 
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $green_three_left_position; ?>,    
+                                    top: <?php echo $green_three_top_position; ?> 
+                                  });      
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_2') { 
+                                  o.set({
+                                    left: <?php echo $green_two_left_position; ?>,    
+                                    top: <?php echo $green_two_top_position; ?> 
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $green_two_left_position; ?>,    
+                                    top: <?php echo $green_two_top_position; ?> 
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_1') { 
+                                  o.set({
+                                    left: <?php echo $green_one_left_position; ?>,    
+                                    top: <?php echo $green_one_top_position; ?>  
+                                  });
+                                  o.setCoords({
+                                    left: <?php echo $green_one_left_position; ?>,    
+                                    top: <?php echo $green_one_top_position; ?>  
+                                  });  
+                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_0') {          
+                                  o.set({  
+                                    left: <?php echo $green_zero_left_position; ?>,    
+                                    top: <?php echo $green_zero_top_position; ?>  
+                                  });
+                                  o.setCoords({    
+                                    left: <?php echo $green_zero_left_position; ?>,    
+                                    top: <?php echo $green_zero_top_position; ?>  
+                                  });      
+                              }                                
+                      });
+
+                        
+
+
+                      
+
                     } else {
                       if(turn_user_id != '<?php echo $user_id ?>') {
                         resetToOriginalPosition();
@@ -2338,7 +2495,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
             dice.dataset.side = result;
             dice.classList.toggle("reRoll");
-            console.log(result);
+            //console.log(result);
             //moveToEmptyCircle(canvas,result);
         }    
 
@@ -2407,8 +2564,11 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                 var peerID = webrtc.getDomId(peer);
                 console.log("video added");
                 console.log(video.srcObject);
+                console.log(peerID);
                 peerID = peerID.replace('_video_incoming','');
-                addUser(peerID,video.srcObject,"remote",peerID);   
+                setTimeout(function(){      
+                  addUser(peerID,video.srcObject,"remote",peerID);   
+                }, 3000);
             });
             webrtc.on('videoRemoved', function (video, peer) {
                 var peerID = webrtc.getDomId(peer);

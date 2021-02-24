@@ -1,0 +1,360 @@
+.info {
+    background-color: white;
+    padding: 10px 12px;
+}
+.style-sm-screenshot img {
+    margin: 0;
+    width: 50%;
+    height: 100%;
+    vertical-align: middle;
+    padding: 30px;
+}
+.woo-trls-settings a:focus {
+    outline: none;
+}
+
+.woo-trls-settings button:focus {
+    outline: none;
+}
+
+.woo-tradeline-thumb-wrapper img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+#postimagedivstyle1, #postimagedivstyle2, #postimagedivstyle3 {
+    display: none;
+}
+
+.woo-trls-settings .active {
+    display: block !important;
+}
+
+.woo-tradeline-nav-tab {
+    display: none;
+    padding: 15px;
+}
+
+#wootrls_license label {
+    display: block;
+    margin: 10px 5px 5px 2px;
+}
+
+#wootrls_license input[type="text"] {
+    width: 32em;
+    padding: 10px;
+}
+
+#wootrls_license button {
+    display: inline-block;
+    padding: 11px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #e5e5e5;
+}
+
+#wootrls_license button:hover {
+    background-color: #FFFFFE;
+}
+
+#wootrls_license .success {
+    background-image: url(img/sucess.png);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding-left: 35px;
+}
+
+#wootrls_license .error {
+    background-image: url("img/error.png");
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding-left: 35px;
+}
+
+#wootrls_license .preload {
+    background-image: url(img/preload.svg);
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
+    padding-left: 35px;
+}
+
+.styles1 {
+    position: relative;
+    width: 100%;
+    height: 346px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background: url("shortcode/style1.jpg") 0 0 no-repeat;
+    background-size: auto;
+    background-size: auto;
+    background-size: contain;
+}
+
+.styles2 {
+    position: relative;
+    width: 100%;
+    height: 346px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background: url("shortcode/style2.jpg") 0 0 no-repeat;
+    background-size: auto;
+    background-size: auto;
+    background-size: contain;
+}
+
+.styles3 {
+    position: relative;
+    width: 100%;
+    height: 346px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background: url("shortcode/style3.jpg") 0 0 no-repeat;
+    background-size: auto;
+    background-size: auto;
+    background-size: contain;
+}
+
+.stm-admin-wrap.stm-admin-support-screen .stm-admin-row {
+    max-width: 1050px;
+}
+
+.stm-admin-two-third {
+    float: left;
+    padding: 0 15px;
+    width: 62%;
+}
+
+.stm-admin-wrap {
+    font-family: inherit !important;
+}
+
+.stm-admin-wrap {
+    max-width: 100%;
+    margin-left: 0;
+}
+
+.about-wrap {
+    overflow: hidden;
+}
+
+.about-wrap {
+    position: relative;
+    margin: 25px 40px 0 20px;
+    margin-left: 20px;
+    max-width: 1050px;
+    font-size: 15px;
+}
+
+.stm-admin-row {
+    margin: 0 -15px;
+}
+
+a, div {
+    outline: 0;
+}
+
+.about-wrap {
+    font-size: 15px;
+}
+
+.stm-admin-one-half {
+    float: left;
+    width: 50%;
+}
+
+.stm-admin-one-half-inner h3 span {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 52px;
+}
+
+.stm-admin-wrap.about-wrap a:not(.button) {
+    color: #0073aa;
+}
+
+.about-wrap img {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+a, div {
+    outline: 0;
+}
+
+.stm-admin-one-half-inner {
+    margin-bottom: 40px;
+}
+
+.stm-admin-one-third {
+    float: right;
+    padding: 0 15px;
+    width: 30%;
+    text-align: right;
+}
+
+.stm-admin-one-half-inner {
+    padding: 0 15px;
+}
+
+.stm-admin-wrap.about-wrap img {
+    border: 0;
+}
+
+.stm-admin-wrap.about-wrap h3 {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+}
+
+.stm-admin-one-half-inner h3 {
+    margin-top: 0;
+}
+
+.about-wrap h3 {
+    margin: 1.25em 0 .6em;
+    margin-top: 1.25em;
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+
+h2, h3 {
+    color: #23282d;
+    font-size: 1.3em;
+    margin: 1em 0;
+}
+
+.about-wrap img {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.stm-admin-wrap.about-wrap h3 {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+}
+
+.about-wrap h3 {
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+
+.stm-admin-wrap.about-wrap .stm-admin-button.stm-admin-large-button {
+    min-width: 130px;
+    padding: 15px 20px !important;
+    height: 40px !important;
+    line-height: 9px !important;
+    text-transform: uppercase;
+    font-size: 16px;
+    text-shadow: none !important;
+}
+
+.wootrls-activation-warning {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: block;
+    padding-top: 1em;
+}
+
+.wootrls-activation-warning h3 {
+    color: #ff0000;
+}
+.settings_row.style {
+    width: 390px;
+    float: left;
+}
+#wootrls_settings .settings_row{
+	margin-bottom:10px;
+}
+#wootrls_settings .settings_row label{
+	width: 40%;
+float: left;
+	
+}
+.settings_row.style {
+    width: 390px;
+    float: left;
+    background-color: #e1e1e1;
+    padding: 2px 4px 5px 5px;
+    border-left: 5px solid #1C6EA4;
+    border-radius: 3px;
+}
+.settings_row.style_btn {
+    width: 25px;
+    padding: 10px 10px 0 60rem;
+}
+#wootrls_settings .settings_row input{
+	width:40%;
+	
+}
+ /* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+} 

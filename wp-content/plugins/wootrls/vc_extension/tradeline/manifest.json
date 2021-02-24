@@ -1,0 +1,19 @@
+{
+  "elements": {
+    "tradeline": {
+      "settings": {
+        "name": "Tradelines",
+        "metaThumbnailUrl": "[publicPath]/thumbnail-tradeline.png",
+        "metaPreviewUrl": "[publicPath]/preview-tradeline.jpg",
+        "metaDescription": "Simply adding tradelines on page"
+      }
+    }
+  },
+  "categories": {
+    "Misc": {
+      "elements": [
+        "tradeline"
+      ]
+    }
+  }
+}

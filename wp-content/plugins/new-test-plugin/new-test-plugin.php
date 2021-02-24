@@ -3,7 +3,7 @@
  * Plugin Name: New Test Plugin
  * Plugin URI: https://dmwds.com
  * Description: Empty plugin for testing update
- * Version: 1.0.4
+ * Version: 1.0.6
  * Author: Daniel
  * Author URI: https://dmwds.com
  * Text Domain: nt-plugin

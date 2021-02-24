@@ -329,10 +329,10 @@ class WCP_VideoChat_Controller {
                     $is_admin = 1;
                     $current_turn = 1;
                 }
-                $wpdb->query(" delete from ".$marbletable." where user_id = ".$userID);
+                $wpdb->query("delete from ".$marbletable." where user_id = ".$userID);
                 $wpdb->query("update ".$table." set status = '0' where user_id = ".$userID." ");
-                $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");      
-                $isUserDataExist = $wpdb->get_results("select * from ".$table." where user_id =".$userID." and room_id = '".$room_id."'' ");
+                $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");        
+                $isUserDataExist = $wpdb->get_results("select * from ".$table." where user_id =".$userID." and room_id = '".$room_id."' ");
                 if(count($isUserDataExist) == 0) {  
                     $wpdb->query(" insert into ".$table." (room_id,stream_id,user_id,is_admin,status,current_turn,gm_created,gm_updated) values(".$room_id.",'',".$userID.",".$is_admin.",'1',".$current_turn.",NOW(),NOW())  ");
                     $wpdb->insert($joinroomtable,array('room_id'=>$room_id,'is_admin'=>$is_admin,'user_id'=>$userID));    
@@ -383,6 +383,16 @@ class WCP_VideoChat_Controller {
         $table = $wpdb->prefix.'marble_position';    
         $room_id = $_POST['room_id'];
         $wpdb->query("delete from ".$table." where room_id =".$room_id);
+        echo json_encode(array('status'=>1));
+        die;
+    }
+
+    public function reset_marble_position() {
+        global $wpdb;   
+        $table = $wpdb->prefix.'marble_position';    
+        $room_id = $_POST['room_id'];
+        $marble_id = $_POST['marble_id'];
+        $wpdb->query("delete from ".$table." where room_id ='".$room_id."' and  marble_id= '".$marble_id."'  ");
         echo json_encode(array('status'=>1));
         die;
     }
@@ -447,6 +457,9 @@ add_action('wp_ajax_WCP_VideoChat_Controller::save_color', Array($WCP_VideoChat_
 
 add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::reset_game', Array($WCP_VideoChat_Controller, 'reset_game'));
 add_action('wp_ajax_WCP_VideoChat_Controller::reset_game', Array($WCP_VideoChat_Controller, 'reset_game'));
+
+add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::reset_marble_position', Array($WCP_VideoChat_Controller, 'reset_marble_position'));
+add_action('wp_ajax_WCP_VideoChat_Controller::reset_marble_position', Array($WCP_VideoChat_Controller, 'reset_marble_position'));
 
 
 ?>

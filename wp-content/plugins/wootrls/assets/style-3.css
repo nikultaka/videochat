@@ -1,0 +1,204 @@
+.woo-trls-wrapper {
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    font-family: 'Frutiger-Roman';
+}
+
+.woo-trls-items {
+    width: 100%;
+    display: block;
+}
+
+.trl-title > span:first-child {
+    display: block;
+    color: #232829;
+    font-size: 20px;
+    margin: 4px 0px 5px;
+
+}
+
+.woo-trls-items::after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.woo-trls-item {
+    background: #ffffff;
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 1.6%;
+    border: 2px solid #eee;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    overflow: hidden;
+    -webkit-transition: all ease-in-out 0.3s;
+    -khtml-transition: all ease-in-out 0.3s;
+    -moz-transition: all ease-in-out 0.3s;
+    -ms-transition: all ease-in-out 0.3s;
+    -o-transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.3s;
+}
+
+.woo-trls-item:hover {
+    -webkit-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+    -khtml-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+    -ms-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+    -o-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+    box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, .15);
+}
+
+.woo-trls-out-of-stock {
+    background: #d82331;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, .25);
+    color: #fff;
+    position: absolute;
+    min-height: auto;
+    line-height: inherit;
+    border: 2px solid #eee;
+    border-radius: 6px 0px 6px 0px;
+    padding: 3px 15px 1px !important;
+}
+
+.woo-trls-thumb {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+}
+
+.woo-trls-title {
+    text-align: center;
+    padding: 5px 5px 0 5px;
+    font-size: 21px;
+    color: #232829;
+    letter-spacing: -0.016em;
+    line-height: 26px;
+}
+
+.woo-trls-title a {
+    color: #232829;
+    text-decoration: none !important;
+}
+
+.woo-trls-title a:hover {
+    color: #232829;
+    text-decoration: underline !important;
+}
+
+
+.woo-trls-item-smalls {
+    border-top: 2px solid #eee;
+    margin-top: 5px;
+    border-left: 1px solid #f0f0f0;
+}
+
+.woo-trls-item-small {
+    display: block;
+    width: 33%;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.woo-trls-item-small span {
+    font-weight: 900;
+    display: block;
+}
+
+.woo-trls-item-small .woocommerce-Price-currencySymbol {
+    display: inline !important;
+}
+
+.woo-trls-item-small .added {
+    display: none;
+}
+
+.woo-trls-item-small + .left-border {
+    border-left: 2px solid #eee;
+}
+
+.woo-trls-item-small .add_to_cart_button {
+    color: #77c701;
+    font-weight: 900;
+    text-decoration: none !important;
+    line-height: 18px;
+    font-size: 18px;
+}
+
+.woo-trls-item-small .added_to_cart {
+    background: none;
+    text-decoration: none !important;
+    height: 38px;
+    overflow: hidden;
+    padding: 5px;
+    line-height: 16px;
+    color: #6d6d6d;
+}
+
+.woo-trls-item-small .added_to_cart:hover {
+    background: none;
+    text-decoration: underline !important;
+    color: #6d6d6d;
+}
+
+.woo-trls-item-small .added_to_cart::after {
+    display: none;
+}
+
+.woo-trls-item-small .out-of-stock {
+    color: #d82331;
+    font-weight: 600;
+    text-decoration: none !important;
+    height: 40px;
+    display: block;
+}
+
+.woo-trls-pagination-wrapper {
+
+}
+
+.woo-trls-pagination {
+    display: inline-flex;
+    float: right;
+}
+
+.woo-trls-pagination a {
+    color: #868686 !important;
+}
+
+.woo-trls-pagination li a.active {
+    color: #313131 !important;
+    font-weight: bolder;
+}
+
+.woo-trls-pagination li {
+    list-style: none;
+    margin: 5px;
+}
+
+.woo-trls-pagination li.first a {
+    margin: 10px 20px;
+}
+
+.woo-trls-pagination li.last a {
+    margin: 10px 20px;
+}
+
+.woo-trls-orders {
+    font-size: 16px;
+}
+
+.woo-trls-orders a {
+    color: #6d6d6d;
+    text-decoration: none !important;
+    margin: 0 5px;
+}

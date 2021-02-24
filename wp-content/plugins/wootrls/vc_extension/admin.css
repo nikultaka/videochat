@@ -1,0 +1,21 @@
+.tw-bs input[type=checkbox] {
+	width:15px !important;
+	height:15px !important;
+}
+.tw-bs input[type=radio]{
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 10px !important;
+}
+.single_tab{
+	display:none;
+}
+.single_tab:first-child{
+	display:block;
+}
+.w_100{
+	width:100% !important;
+}
+.style_preview{
+	width:400px;
+}

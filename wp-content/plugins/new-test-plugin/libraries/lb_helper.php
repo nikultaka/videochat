@@ -42,7 +42,7 @@ class LicenseBoxAPI {
 		$this->api_url             = 'https://wp-updaters.com/';
 		$this->api_key             = '57748FB6FCACE2B58828';
 		$this->api_language        = 'english';
-		$this->current_version     = '1.0.0';
+		$this->current_version     = '1.0.6';
 		$this->verify_type         = 'non_envato';
 		$this->verification_period = 1;
 		$this->current_path        = realpath( __DIR__ );
@@ -496,54 +496,3 @@ class LicenseBoxAPI {
 		}
 	}
 }
-
-
-/*if ( ! function_exists( 'ntplugin_license_data' ) ) {
-	function ntplugin_license_data( $ret = 'license_code', $default = '' ) {
-
-		$license_data = get_option( 'activate_license_option_name', array() );
-		$license_data = empty( $license_data ) && ! is_array( $license_data ) ? array() : $license_data;
-
-		return isset( $license_data[ $ret ] ) ? $license_data[ $ret ] : $default;
-	}
-}*/
-
-/*function remove_core_updates(){
-        global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
-    }
-if($license_status == 'deactivated') {
-	add_filter( 'auto_update_plugin', '__return_false' );
-	define( 'WP_AUTO_UPDATE_CORE', false );
-    add_filter('pre_site_transient_update_core','remove_core_updates');
-    add_filter('pre_site_transient_update_plugins','remove_core_updates');
-    add_filter('pre_site_transient_update_themes','remove_core_updates');
-} else {
-	add_filter( 'auto_update_plugin', '__return_true' );
-	define( 'WP_AUTO_UPDATE_CORE', true );
-}*/
-
-//$license_box_api  = new LicenseBoxAPI();
-//$update_data1 = $license_box_api->check_update();
-//$download_data = $license_box_api->download_update('25855b8c2155c15df9ed','','1.0.3');
-
-
-
-/*add_action( 'upgrader_pre_install', function( $upgrader_object, $options ) {
-
-	$license_box_api  = new LicenseBoxAPI();
-	$license_response = $license_box_api->verify_license( false, ntplugin_license_data( 'license_code' ), ntplugin_license_data( 'client_name' ) );
-
-	echo '<pre>'; 
-	print_r($license_response); 
-	exit;
-
-	$license_status   = isset( $license_response['status'] ) && $license_response['status'] ? 'activated' : 'deactivated';
-
-	if($license_status == 'deactivated') {
-		return new WP_Error( 'bad_request',"Please activate the code");	
-	} else {
-		return true;
-	}
-
-    
-}, 10, 2 );*/
