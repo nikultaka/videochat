@@ -1,5 +1,6 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
 class WCP_VideoChat_Controller {
 
     public function videochat_home() { 
@@ -270,12 +271,12 @@ class WCP_VideoChat_Controller {
             $movedType = $_POST['movedType'];  
             $roomID = $_POST['room_id'];  
             $marbleData = $wpdb->get_results("select * from ".$table." where user_id =".$userID." and marble_id = '".$movedType."' ");
-            if(!empty($marbleData)) {     
-                $wpdb->query(" update ".$table." set current_position = '".$objectID."' where user_id =".$userID." and marble_id = '".$movedType."' and room_id = ".$roomID);       
+            if(!empty($marbleData)) {             
+                $previousPosition = $marbleData[0]->current_position;
+                $wpdb->query(" update ".$table." set current_position = '".$objectID."',previous_position = '".$previousPosition."' where user_id =".$userID." and marble_id = '".$movedType."' and room_id = ".$roomID);
             } else {     
                 $wpdb->insert($table,array('user_id'=>$userID,'room_id'=>$roomID,'marble_id'=>$movedType,'current_position'=>$objectID));
-            }     
-
+            }       
             echo json_encode(array("status"=>1,'next_turn'=>$next_turn));
         } else {
             echo json_decode(array("status"=>0));
@@ -289,18 +290,29 @@ class WCP_VideoChat_Controller {
         $joinroomtable = $wpdb->prefix.'joinroom';
         $onlineusertable = $wpdb->prefix.'online_users';
         $marbletable = $wpdb->prefix.'marble_position';
+        $options = array(
+           'cluster' => 'ap2',
+           'encrypted' => true
+        );
+        $pusher = new Pusher\Pusher(
+           '2a1428184af6e786468c',
+           'da3f6faa53e7911f7900',
+           '1061526',
+           $options
+        );
         if(isset($_POST['user_id'])) {      
             $userID = $_POST['user_id'];
             $room_name = $_POST['room_name'];
             $wpdb->insert($table,array('user_id'=>$userID,'status'=>1,'name'=>$room_name)); 
-
             $lastid = $wpdb->insert_id;
+            $pusher->trigger('room_users_'.$lastid, 'my_event',$userID);
             $wpdb->query(" delete from ".$marbletable." where user_id = ".$userID);
             $wpdb->query("update ".$onlineusertable." set status = '0' where user_id = ".$userID." ");
             $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");
             $wpdb->insert($joinroomtable,array('room_id'=>$lastid,'is_admin'=>1,'user_id'=>$userID));
 
             $wpdb->query(" insert into ".$onlineusertable." (room_id,stream_id,user_id,is_admin,status,current_turn,gm_created,gm_updated) values(".$lastid.",'',".$userID.",'1','1','1',NOW(),NOW())  ");
+
             echo json_encode(array("status"=>1,'room_id'=>$lastid));   
         } else {         
             echo json_encode(array("status"=>0));
@@ -314,8 +326,19 @@ class WCP_VideoChat_Controller {
         $roomtable = $wpdb->prefix.'room';
         $table = $wpdb->prefix.'online_users';
         $marbletable = $wpdb->prefix.'marble_position';
+        $options = array(
+           'cluster' => 'ap2',
+           'encrypted' => true
+        );
+        $pusher = new Pusher\Pusher(
+           '2a1428184af6e786468c',
+           'da3f6faa53e7911f7900',
+           '1061526',
+           $options
+        );
         if(isset($_POST['user_id'])) {      
             $userID = $_POST['user_id'];
+            $pusher->trigger('room_users_'.$lastid, 'my_event',$userID);
             $room_id = $_POST['room_name'];
             $roomData = $wpdb->get_results("select * from ".$roomtable." where id =".$room_id." and status = '1' ");
 
@@ -350,30 +373,70 @@ class WCP_VideoChat_Controller {
     public function save_color() {
         global $wpdb;   
         $table = $wpdb->prefix.'online_users';
-        $user_color_1 = $_POST['user_color_1'];
-        $user_color_2 = $_POST['user_color_2'];
-        $user_color_3 = $_POST['user_color_3'];
-        $user_color_4 = $_POST['user_color_4'];
+        $tableroom = $wpdb->prefix.'room';
+        $user_one_yellow = $_POST['user_one_yellow'];
+        $user_one_blue = $_POST['user_one_blue'];
+        $user_one_red = $_POST['user_one_red'];
+        $user_one_green = $_POST['user_one_green'];
+
+        $user_two_yellow = $_POST['user_two_yellow'];
+        $user_two_blue = $_POST['user_two_blue'];
+        $user_two_red = $_POST['user_two_red'];
+        $user_two_green = $_POST['user_two_green'];
+
+        $user_three_yellow = $_POST['user_three_yellow'];
+        $user_three_blue = $_POST['user_three_blue'];
+        $user_three_red = $_POST['user_three_red'];
+        $user_three_green = $_POST['user_three_green'];
+
+        $user_four_yellow = $_POST['user_four_yellow'];
+        $user_four_blue = $_POST['user_four_blue'];
+        $user_four_red = $_POST['user_four_red'];
+        $user_four_green = $_POST['user_four_green'];
         $room_id      = $_POST['room_id'];
+
+        $wpdb->query("update ".$tableroom." set is_locked = '1' where id = ".$room_id." ");
+
+        $options = array(
+           'cluster' => 'ap2',
+           'encrypted' => true
+        );
+        $pusher = new Pusher\Pusher(
+           '2a1428184af6e786468c',
+           'da3f6faa53e7911f7900',
+           '1061526',
+           $options
+        );
 
         $userData = $wpdb->get_results("select * from ".$table." where room_id =".$room_id." order by id ASC ");         
 
         $user_color = '';
-        if(!empty($userData)) {
+        $user_access = array();
+        if(!empty($userData)) {  
             foreach ($userData as $key => $value) {
                 $id = $value->id;
+                $user_id = $value->user_id;
                 if($key == 0) {
-                    $user_color = $user_color_1;
+                    $json_string = json_encode(array($user_one_yellow,$user_one_blue,$user_one_red,$user_one_green));
+                    $user_access[$user_id] = $json_string;
+                    $user_color = $json_string;
                 } else if($key == 1) {
-                    $user_color = $user_color_2;
+                    $json_string = json_encode(array($user_two_yellow,$user_two_blue,$user_two_red,$user_two_green));  
+                    $user_access[$user_id] = $json_string;
+                    $user_color = $json_string;
                 } else if($key == 2) {
-                    $user_color = $user_color_3;
+                    $json_string = json_encode(array($user_three_yellow,$user_three_blue,$user_three_red,$user_three_green)); 
+                    $user_access[$user_id] = $json_string;
+                    $user_color = $json_string; 
                 } else if($key == 3) {    
-                    $user_color = $user_color_4;
-                }
-                $wpdb->query("update ".$table." set color = '".$user_color."' where id = ".$id." ");
+                    $json_string = json_encode(array($user_four_yellow,$user_four_blue,$user_four_red,$user_four_green)); 
+                    $user_access[$user_id] = $json_string;
+                    $user_color = $json_string;
+                }    
+                $wpdb->query("update ".$table." set marble_access = '".$user_color."' where id = ".$id." ");
             }     
-        }
+        }    
+        $pusher->trigger('marble_access_'.$room_id, 'my_event',$user_access);        
         echo json_encode(array('status'=>1));
         die;
     }
@@ -394,6 +457,29 @@ class WCP_VideoChat_Controller {
         $marble_id = $_POST['marble_id'];
         $wpdb->query("delete from ".$table." where room_id ='".$room_id."' and  marble_id= '".$marble_id."'  ");
         echo json_encode(array('status'=>1));
+        die;
+    }
+
+    public function roll_dice() {
+        $result = '';
+        if(isset($_POST['result'])) {
+            $room_id = $_POST['room_id'];
+            $result = $_POST['result'];    
+            $options = array(
+               'cluster' => 'ap2',
+               'encrypted' => true
+            );
+            $pusher = new Pusher\Pusher(
+               '2a1428184af6e786468c',
+               'da3f6faa53e7911f7900',
+               '1061526',
+               $options
+            );
+            $pusher->trigger('dice_channel_'.$room_id, 'my_event',$result);
+            echo json_encode(array('status'=>1));
+        } else {
+            echo json_encode(array('status'=>0));
+        }
         die;
     }
 
@@ -460,6 +546,9 @@ add_action('wp_ajax_WCP_VideoChat_Controller::reset_game', Array($WCP_VideoChat_
 
 add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::reset_marble_position', Array($WCP_VideoChat_Controller, 'reset_marble_position'));
 add_action('wp_ajax_WCP_VideoChat_Controller::reset_marble_position', Array($WCP_VideoChat_Controller, 'reset_marble_position'));
+
+add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::roll_dice', Array($WCP_VideoChat_Controller, 'roll_dice'));
+add_action('wp_ajax_WCP_VideoChat_Controller::roll_dice', Array($WCP_VideoChat_Controller, 'roll_dice'));
 
 
 ?>

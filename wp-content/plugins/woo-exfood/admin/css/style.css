@@ -1,0 +1,108 @@
+.cmb-row.column-2 {
+    width: 50%;
+    display: inline-block;
+}
+.cmb-row.column-4 {
+    width: 25%;
+    display: inline-block;
+}
+.cmb-row.column-3 {
+    width: 33.333333%;
+    display: inline-block;
+}
+.cmb-row.column-3 > div {
+    width: 100% !important;
+}
+.cmb-row.column-7 {
+    width: 14.2%;
+    display: inline-block;
+    border-bottom: 0!important;
+}
+.cmb-row.column-7 > div{ width:auto !important; float: left !important; margin-right: 5px;}
+.cmb-row.column-7 > div label { padding: 0; }
+.post-type-product .cmb-row > div{
+	padding: 0 15px;
+    box-sizing: border-box;
+}
+.post-type-product #side-sortables .cmb-row > div{ padding:0; }
+.cmb-type-group .cmb-row.column-4 .cmb-th, .cmb2-postbox .cmb-row.column-4 .cmb-th,
+.cmb-type-group .cmb-row.column-2 .cmb-th, .cmb2-postbox .cmb-row.column-2 .cmb-th{ width:100%; display: block;}
+.cmb-type-group .cmb-row.column-4 .cmb-th+.cmb-td, .cmb2-postbox .cmb-row.column-4 .cmb-th+.cmb-td,
+.cmb-type-group .cmb-row.column-2 .cmb-th+.cmb-td, .cmb2-postbox .cmb-row.column-2 .cmb-th+.cmb-td{ display: block; float: left; }
+.cmb-row.column-2 .regular-text,
+.cmb-row.column-4 .regular-text{ width:auto}
+.post-type-exwoofood_scbd .cmb2-wrap select{ min-width:160px;}
+#adminmenu #menu-posts-product ul>li>a:empty{ display:none;}
+.ex-layout-carousel .hide-incarousel,
+.ex-layout-table .hide-intable,
+.ex-layout-list .hide-inlist,
+.ex-layout-grid .hide-ingrid{ opacity:.3; pointer-events: none;}
+.post-type-product .cmb-type-group .cmb2-wrap>.cmb-field-list>.cmb-row, 
+.post-type-product .cmb2-postbox .cmb2-wrap>.cmb-field-list>.cmb-row{ padding: 7px 0; margin: 0;}
+.post-type-product .cmb2-wrap .cmb-row.column-2:last-of-type,
+.post-type-product .cmb2-wrap .cmb-row.column-4:last-of-type,
+.post-type-product .cmb2-wrap .cmb-row.column-3:last-of-type{ border-bottom:1px solid #eee}
+
+.exwoofood-title img{ max-width: 100px; }
+/*
+.cmb-image-display{width: 100%; height: auto;}
+.cmb-file-field-image{width: 100%;}*/
+.cmb-form div[id^="picker-"] {z-index: 1000; background: #EEE; border: 1px solid #CCC; position: absolute; display: block;}
+.post-type-product .cmb-row .cmb-td {position: relative;}
+
+.post-type-product .cmb-repeat-table .cmb-row.cmb-repeat-row > div {
+    width: 50%;
+    float: left;
+}
+
+input.exfd-sort-menu{max-width:60px; width: 101%;}
+
+.post-type-product table.wp-list-table .column-name { width: 12%;}
+
+
+.cmb-type-openclose .cmb-td .cmb-td > div,
+.post-type-product  .cmb-repeat-table .cmb-row.cmb-repeat-row > div {
+    width: 50%;
+    float: left;
+}
+.post-type-product  .cmb-type-openclose .cmb-repeat-table .cmb-row.cmb-repeat-row > .cmb-td{ width: 70% }
+.post-type-product  .cmb-type-openclose .cmb-repeat-table .cmb-row.cmb-repeat-row > .cmb-td.cmb-remove-row{width: 28%}
+.cmb-type-openclose .cmb-td .cmb-td p{ display: inline-block; margin: 15px 30px;  }
+/* Time slot*/
+.cmb-type-timedelivery .cmb-td .cmb-td > div {width: 24%;float: left;}
+.cmb-type-timedelivery .cmb-td .cmb-td > div input{ width:auto}
+.cmb-type-timedelivery .cmb-td #exwfood_deli_time_repeat .cmb-row > .cmb-td { width: 95%;}
+.cmb-type-timedelivery .cmb-td #exwfood_deli_time_repeat .cmb-row > .cmb-td.cmb-remove-row {width: 5%;}
+
+#adminmenu li#toplevel_page_exwoofood_custom_code_options,
+#adminmenu li#toplevel_page_exwoofood_js_css_file_options,
+#adminmenu li#toplevel_page_exwoofood_shpping_options,
+#adminmenu li#toplevel_page_exwoofood_verify_options,
+#adminmenu li#toplevel_page_exwoofood_adv_timesl_options,
+#adminmenu li#toplevel_page_exwoofood_adv_takeaway_options,
+#adminmenu li#toplevel_page_exwoofood_adv_dinein_options,
+#toplevel_page_exwoofood_options .dashicons-before,
+#adminmenu #toplevel_page_exwoofood_advanced_options {
+    display: none;
+}
+#adminmenu li#toplevel_page_exwoofood_options:hover{ background: transparent; }
+#adminmenu li#toplevel_page_exwoofood_options a.menu-top{ background: transparent; }
+#adminmenu li#toplevel_page_exwoofood_options div.wp-menu-name{padding:0; transition: all .1s ease-in-out,outline 0s; font-weight: bold;}
+#adminmenu li#toplevel_page_exwoofood_options:hover div.wp-menu-name{ color: #00b9eb; }
+div#cmb2-metabox-exwoofood_menu_data > .cmb-row { margin: 15px -15px; }
+
+.cmb2-wrap .cmb-row.cmb2-id-exwp-loc-diskm .cmb-td {width: calc( 100% - 200px );}
+
+.exwf-sub-option a{ text-decoration: none; }
+.exwf-sub-option a.current{font-weight: 600; color: #000}
+.cmb2-options-page a.nav-tab[href*=exwoofood_adv_takeaway_options],
+.cmb2-options-page a.nav-tab[href*=exwoofood_adv_dinein_options],
+.cmb2-options-page a.nav-tab[href*=exwoofood_adv_timesl_options] {display:none;}
+
+#exwo_addition_options .cmb-repeatable-group.sortable .cmb-group-title { cursor: move; }
+#exwoofood_cticon .cmb-remove-field-row,
+#exwoofood_custom_data .cmb-remove-row .move-up, #exwoofood_custom_data .cmb-remove-row .move-down,
+#exwo_addition_options .cmb-remove-row .move-up, #exwo_addition_options .cmb-remove-row .move-down{ display:none}
+#side-sortables .cmb2-wrap input[type=text]:not(.wp-color-picker)#exwo_product_ids {
+    width: auto;
+}

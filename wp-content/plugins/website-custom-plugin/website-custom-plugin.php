@@ -15,7 +15,7 @@ define( 'WCP_PLUGIN_URL', WP_PLUGIN_URL . '/Website-Custome-Plugin' );
 function create_database_table_for_website_custome_plugin() {
 	global $table_prefix, $wpdb;
 
-	$tblname = 'online_users';
+	$tblname = $table_prefix ."online_users";
 	$tblnameRoom = $table_prefix ."room";
 	$joinRoom = $table_prefix ."joinroom";
 	$wp_track_table = $table_prefix . "$tblname";
@@ -46,6 +46,7 @@ function create_database_table_for_website_custome_plugin() {
 		$sql .= "  `id`  int(11)   NOT NULL AUTO_INCREMENT, ";
 		$sql .= "  `user_id`  int(11)   NOT NULL, ";
         $sql .= "  `name`  varchar(255)   NOT NULL, ";
+        $sql .= "  `is_locked`  tinyint(1)   NOT NULL, ";
         $sql .= "  `status`  tinyint(1)   NOT NULL,PRIMARY KEY (id) ";
 		$sql .= ");";  
         require_once( ABSPATH . '/wp-admin/includes/upgrade.php' );
@@ -83,6 +84,27 @@ function create_database_table_for_website_custome_plugin() {
         $sql .= "  `user_two`  varchar(255)   NOT NULL, ";   
         $sql .= "  `user_three`  varchar(255)   NOT NULL, ";   
         $sql .= "  `user_four`  varchar(255)   NOT NULL ";   
+        $sql .= "  ,PRIMARY KEY (id) ";
+        $sql .= ");";          
+        require_once( ABSPATH . '/wp-admin/includes/upgrade.php' );
+		dbDelta($sql);  
+	}
+
+	if($wpdb->get_var( "show tables like '$tblname' " ) != $tblname) 
+	{
+		$sql = "CREATE TABLE `".$tblname."` ( ";
+		$sql .= "  `id`  int(11)   NOT NULL AUTO_INCREMENT, ";
+        $sql .= "  `room_id`  int(11)   NOT NULL, ";   
+        $sql .= "  `stream_id`  varchar(255)   NOT NULL, ";   
+        $sql .= "  `user_id`  int(255)   NOT NULL, ";   
+        $sql .= "  `status`  tinyiny(1)   NOT NULL, ";   
+        $sql .= "  `current_turn`  int(11)   NOT NULL, ";   
+        $sql .= "  `is_admin`  int(11)   NOT NULL, ";   
+        $sql .= "  `gm_created`  datetime()   NOT NULL, ";   
+        $sql .= "  `gm_updated`  datetime() NULL, ";   
+        $sql .= "  `is_video_enable`  int(11) NULL, ";   
+        $sql .= "  `color`  int(11) NULL, ";   
+        $sql .= "  `marble_access`  int(11) NULL";   
         $sql .= "  ,PRIMARY KEY (id) ";
         $sql .= ");";          
         require_once( ABSPATH . '/wp-admin/includes/upgrade.php' );

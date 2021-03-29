@@ -1,0 +1,46 @@
+.woocommerce form.cart .exrow-group .exfood-label {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+.woocommerce form.cart .exrow-group{display: inline-block; width: 100%;}
+.woocommerce form.cart .exrow-group .exwo-container > span {
+	margin-right: 20px;
+    display: inline-block;
+	white-space: normal;
+}
+.woocommerce form.cart .exrow-group input {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.woocommerce form.cart .exrow-group {
+    margin: 0 0 10px 0;
+}
+.woocommerce form.cart .ex-required-min-message,
+.woocommerce form.cart .ex-required-max-message,
+.woocommerce form.cart .ex-required-message{ color: red; padding: 0; margin:3px 0; display: none; }
+.ex-required span.exfood-label .exwo-otitle:after {content: " * ";color: red;}
+.woocommerce form.cart .exrow-group span.exfood-label span{ margin:0; padding: 0; }
+
+.woocommerce form.cart .exrow-group input.ex-options[type="number"],
+.woocommerce form.cart .exrow-group input.ex-options[type="text"],
+.exwo-product-options  textarea.ex-options,
+.exwo-product-options  input.ex-options[type="text"] {
+    width: 100%;
+    border: 1px solid #ddd;
+    background: #fafafa;
+}
+.exwo-accordion-style .exrow-group .exfood-label{ cursor: pointer; }
+.woocommerce form.cart .exrow-group .exwo-container{ margin-top: 5px; }
+.woocommerce form.cart .exwo-accordion-style .exwo-container{ display: none; }
+.exwo-product-options.exwo-accordion-style .exrow-group{border:1px solid #eee; padding: 10px 15px; border-radius: 3px; background: #f3f3f3; position: relative;}
+.exwo-accordion-style span.exfood-label:after{content: "+";position: absolute;right: 10px;}
+.exwo-accordion-style span.exfood-label.exwo-active:after {content: "-";}
+@media (max-width: 768px){
+	.woocommerce form.cart .exrow-group .exwo-container > span{ width: 100%; white-space: normal; }
+}
+.exwoofood-woocommerce.woocommerce form.cart input[type=number]::-webkit-inner-spin-button, 
+.exwoofood-woocommerce.woocommerce form.cart input[type=number]::-webkit-outer-spin-button {  opacity: 1;}
+.woocommerce form.cart .exrow-group.ex-logic-on,
+.exrow-group.ex-logic-on { display: none; }

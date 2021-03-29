@@ -10,10 +10,28 @@
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->
 <script type="text/javascript" src="<?php echo plugins_url('website-custom-plugin/WCP/assets/js/simplewebrtc.bundle.js'); ?>"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>        
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <style>  
     .site-header, .header-footer-group  { display: none; }
     .section-inner { display: none; }    
+    .squareColorBox {
+      width: 26px;
+      height: 10px;
+      border : 1px solid black;
+      display: inline-block;
+    }
+    .swall-overlay {
+        z-index: 100005;   
+    }
+    .swal-modal {
+        z-index: 99999;
+    }
+    .box-dice {
+      z-index: 9 !important;
+    }
 </style>      
 
 <?php
@@ -119,7 +137,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
   </div>
 </div>
 
-<div class="modal" id="mymodal" tabindex="-1" role="dialog">
+<div class="modal" id="mymodal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -129,23 +147,99 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         </button>
       </div>
       <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+              &nbsp;
+          </div>
+          <div class="col-md-2">
+            <span class="squareColorBox" style="background: yellow;"></span>
+          </div>
+          <div class="col-md-2">
+            <span class="squareColorBox" style="background: blue;"></span>
+          </div>
+          <div class="col-md-2">
+            <span class="squareColorBox" style="background: red;"></span>
+          </div>
+          <div class="col-md-2">
+            <span class="squareColorBox" style="background: green;"></span>
+          </div>  
+        </div>  
         <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">User 1</label>
-            <input type="text" class="form-control" id="user_color_1" value="<?php echo $user_one_color; ?>">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">User 2</label>
-            <input type="text" class="form-control" id="user_color_2" value="<?php echo $user_two_color; ?>">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">User 3</label>
-            <input type="text" class="form-control" id="user_color_3" value="<?php echo $user_three_color; ?>">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">User 4</label>
-            <input type="text" class="form-control" id="user_color_4" value="<?php echo $user_four_color; ?>">    
-          </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                  User One
+              </div>  
+              <div class="col-md-2">
+                <span class="squareColorBox" id="one_yellow" onclick="userColor('one','yellow');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="one_blue" onclick="userColor('one','blue');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="one_red" onclick="userColor('one','red');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="one_green" onclick="userColor('one','green');"></span>
+              </div>  
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                  User Two
+              </div>  
+              <div class="col-md-2">
+                <span class="squareColorBox" id="two_yellow" onclick="userColor('two','yellow');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="two_blue" onclick="userColor('two','blue');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="two_red" onclick="userColor('two','red');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="two_green" onclick="userColor('two','green');"></span>
+              </div>  
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                  User Three
+              </div>  
+              <div class="col-md-2">
+                <span class="squareColorBox" id="three_yellow" onclick="userColor('three','yellow');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="three_blue" onclick="userColor('three','blue');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox"  id="three_red" onclick="userColor('three','red');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox"  id="three_green" onclick="userColor('three','green');"></span>
+              </div>  
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                  User Four
+              </div>  
+              <div class="col-md-2">
+                <span class="squareColorBox" id="four_yellow" onclick="userColor('four','yellow');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="four_blue" onclick="userColor('four','blue');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="four_red" onclick="userColor('four','red');"></span>
+              </div>
+              <div class="col-md-2">
+                <span class="squareColorBox" id="four_green" onclick="userColor('four','green');"></span>
+              </div>  
+            </div>    
+
+
+          
         </form>
       </div>
       <div class="modal-footer">
@@ -158,11 +252,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 
 <?php if($is_admin == "1") { ?>
-  <!-- <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button> -->
-  <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="resetGame()" >Reset</button>
+  <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button>
+  <!-- <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="resetGame()" >Reset</button> -->
 <?php } ?>  
 
-<div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;display: none;">      
+<div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;">      
+  <!-- display: none; -->
         <div class="sides side-1">
             <span class="dot dot-1"></span>
         </div>      
@@ -208,6 +303,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
     <input type="hidden" id="remote3" value="" />
     <input type="hidden" id="current_turn" value="<?php if($is_admin == "1") { echo $user_id; } ?>" /> 
     <input type="hidden" id="turn_user_id" value="">
+    <input type="hidden" id="dice_result" value="">
     <canvas id="c" style="border: 1px solid black; position: relative;"></canvas>                 
             
     <script>
@@ -235,7 +331,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                   top: 0,        
                   flipX: true,  
                   cropX:100,  
-                  //cropY:200,  
+                  //cropY:50,    
                   originX: 'center',      
                   originY: 'center',      
                   lockMovementX:true,
@@ -683,8 +779,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 224,lockMovementX:true,lockMovementY:true,id:"empty_yellow_0" }));
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 284,lockMovementX:true,lockMovementY:true,id:"empty_yellow_1" }));  
-
-            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_yellow_2" }));  
+            canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 344,lockMovementX:true,lockMovementY:true,id:"empty_yellow_2" }));
 
             canvas.add(new fabric.Circle({ radius: 18, fill: 'yellow',stroke:"black",strokeWidth:2, top: 293, left: 404,lockMovementX:true,lockMovementY:true,id:"empty_yellow_3" }));
 
@@ -718,7 +813,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
             canvas.on({
                 'mouse:up': function(e) {
-                    if(e.target.id!='undefined' && e.target.id == "done_button" || e.target.id == "done_text") {
+                    if(e.target != null && e.target.id!='undefined' && e.target.id == "done_button" || e.target.id == "done_text") {
                           //console.log("sdsdsd");
                           done();
                     }              
@@ -1613,7 +1708,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     myImg.lockMovementY = true;
                                     canvas.add(myImg); 
                                     canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
-                            });
+                          });    
                           
                           
                           fabric.Image.fromURL('<?php echo $flatYelURL; ?>', function(myImg) {
@@ -1880,12 +1975,6 @@ if(isset($_GET['id']) && $_GET['id']!='') {
     }
 
     function done() {
-        var current_turn = $("#turn_user_id").val();  
-        if(current_turn != '<?php echo $user_id; ?>') {
-          toastr.error('You need to wait for your turn');
-          return false;
-        } 
-        $("#dice").hide();       
         canvas.getObjects().map(function(o) {
             if(o.id == 'done_text') {
               o.set({
@@ -1893,10 +1982,16 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               });
             }  
         });
+        var current_turn = $("#turn_user_id").val();  
+        var dice_result = $("#dice_result").val();
+        if(current_turn != '<?php echo $user_id; ?>') {
+          toastr.error('You need to wait for your turn');
+          return false;
+        }
         $.ajax({    
             type: 'POST',
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            data: {"action": "WCP_VideoChat_Controller::done","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},
+            data: {"action": "WCP_VideoChat_Controller::done","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>","dice_result":dice_result},
             success: function (data) {   
                 var result =  JSON.parse(data);
                 if (result.status == 1) {  
@@ -1908,23 +2003,117 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         }); 
     }
 
+    function userColor(id,type) {
+      var id_selector = "#"+id+'_'+type;
+      var attr = $(id_selector).attr('name');
+      if (typeof attr !== 'undefined' && attr !== false) {
+        $(id_selector).css('background-color','');  
+        $(id_selector).removeAttr('name');
+      } else {    
+        $(id_selector).css('background-color',type);  
+        $(id_selector).attr('name','');
+      }
+    }
+
     function saveUserColor() {
-        var user_color_1  = $("#user_color_1").val();
-        var user_color_2  = $("#user_color_2").val();
-        var user_color_3  = $("#user_color_3").val();
-        var user_color_4  = $("#user_color_4").val();
-        $.ajax({    
-            type: 'POST',      
-            url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            data: {"action": "WCP_VideoChat_Controller::save_color","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>","user_color_1":user_color_1,"user_color_2":user_color_2,"user_color_3":user_color_3,"user_color_4":user_color_4},
-            success: function (data) {
-                var result =  JSON.parse(data);
-                if(result.status == 1) {  
-                    toastr.success('Color applied successfully');
-                    $("#mymodal").modal('hide');
-                }
+        $("#mymodal").modal('hide');
+        Swal.fire({
+          icon: 'info',
+          title: '<strong>Are you sure want to assign color access and lock the game ?</strong>',
+          showConfirmButton : true,    
+          showCloseButton: true,   
+          showCancelButton: true,
+          preConfirm: (login) => {
+            var user_one_yellow = '';
+            var user_one_blue = '';
+            var user_one_red = '';
+            var user_one_green = '';
+
+            var user_two_yellow = '';
+            var user_two_blue = '';
+            var user_two_red = '';
+            var user_two_green = '';
+
+            var user_three_yellow = '';
+            var user_three_blue = '';
+            var user_three_red = '';
+            var user_three_green = '';
+
+            var user_four_yellow = '';
+            var user_four_blue = '';
+            var user_four_red = '';
+            var user_four_green = '';
+
+            if (typeof $("#one_yellow").attr('name') !== 'undefined' && $("#one_yellow").attr('name') !== false) {
+              user_one_yellow  = 1;
             }
-        });
+            if (typeof $("#one_blue").attr('name') !== 'undefined' && $("#one_blue").attr('name') !== false) {
+              user_one_blue  = 1;
+            }
+            if (typeof $("#one_red").attr('name') !== 'undefined' && $("#one_red").attr('name') !== false) {
+              user_one_red  = 1;
+            }
+            if (typeof $("#one_green").attr('name') !== 'undefined' && $("#one_green").attr('name') !== false) {
+              user_one_green  = 1;
+            }
+
+            if (typeof $("#two_yellow").attr('name') !== 'undefined' && $("#two_yellow").attr('name') !== false) {
+              user_two_yellow  = 1;
+            }
+            if (typeof $("#two_blue").attr('name') !== 'undefined' && $("#two_blue").attr('name') !== false) {
+              user_two_blue  = 1;
+            }
+            if (typeof $("#two_red").attr('name') !== 'undefined' && $("#two_red").attr('name') !== false) {
+              user_two_red  = 1;
+            }
+            if (typeof $("#two_green").attr('name') !== 'undefined' && $("#two_green").attr('name') !== false) {
+              user_two_green  = 1;
+            }
+
+            if (typeof $("#three_yellow").attr('name') !== 'undefined' && $("#three_yellow").attr('name') !== false) {
+              user_three_yellow  = 1;
+            }
+            if (typeof $("#three_blue").attr('name') !== 'undefined' && $("#three_blue").attr('name') !== false) {
+              user_three_blue  = 1;
+            }
+            if (typeof $("#three_red").attr('name') !== 'undefined' && $("#three_red").attr('name') !== false) {
+              user_three_red  = 1;
+            }
+            if (typeof $("#three_green").attr('name') !== 'undefined' && $("#three_green").attr('name') !== false) {
+              user_three_green  = 1;
+            }
+
+            if (typeof $("#four_yellow").attr('name') !== 'undefined' && $("#four_yellow").attr('name') !== false) {
+              user_four_yellow  = 1;
+            }
+            if (typeof $("#four_blue").attr('name') !== 'undefined' && $("#four_blue").attr('name') !== false) {
+              user_four_blue  = 1;
+            }
+            if (typeof $("#four_red").attr('name') !== 'undefined' && $("#four_red").attr('name') !== false) {
+              user_four_red  = 1;
+            }
+            if (typeof $("#four_green").attr('name') !== 'undefined' && $("#four_green").attr('name') !== false) {
+              user_four_green  = 1;
+            }
+
+            
+            $.ajax({    
+                type: 'POST',      
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                data: {"action": "WCP_VideoChat_Controller::save_color","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>","user_one_yellow":user_one_yellow,"user_one_blue":user_one_blue,"user_one_red":user_one_red,"user_one_green":user_one_green,"user_two_yellow":user_two_yellow,"user_two_blue":user_two_blue,"user_two_red":user_two_red,"user_two_green":user_two_green,"user_three_yellow":user_three_yellow,"user_three_blue":user_three_blue,"user_three_red":user_three_red,"user_three_green":user_three_green,"user_four_yellow":user_four_yellow,"user_four_blue":user_four_blue,"user_four_red":user_four_red,"user_four_green":user_four_green},      
+                success: function (data) {
+                    var result =  JSON.parse(data);
+                    if(result.status == 1) {  
+                        toastr.success('Color applied successfully');
+                        $("#mymodal").modal('hide');
+                    }
+                }
+            });
+          }
+        })
+
+
+        
     }
 
     function setColor() {
@@ -2098,7 +2287,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
     }
 
     function resetGame() {
-        $("#reset_game").modal('show');
+        <?php if($is_admin == "1") { ?> 
+          $("#reset_game").modal('show');
+        <?php } ?>      
     }
 
     function get_online_user() {
@@ -2168,16 +2359,19 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     $("#turn_user_id").val(turn_user_id);  
 
                     if(turn_user_id == '<?php echo $user_id ?>') {
+                        /*if(is_locked_dice == "") {
+                          is_your_turn = 1;  
+                        }*/
+                        
                         $("#dice").show();
                         canvas.getObjects().map(function(o) {
                             if(o.id == 'done_text') {
                               o.set({
-                                  opacity: 1
+                                  opacity: 1    
                               });
                             }  
                         });
                     } else {
-                        $("#dice").hide();
                         canvas.getObjects().map(function(o) {
                             if(o.id == 'done_text') {
                               o.set({
@@ -2194,87 +2388,26 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     canvas.getObjects().map(function(o) {
                         if(o.id == "active_turn_user") {
                             canvas.remove(o);
-                        }
-                        o.set({
-                          lockMovementX: true,
-                          lockMovementY: true
-                        });
-                        o.setCoords({
-                          lockMovementX: true,
-                          lockMovementY: true
-                        }); 
+                        }    
                     });         
 
                     if(next_turn == "1") {
                       var rectSelected = { left: 160, top: 195, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);
-
-                        canvas.getObjects().map(function(o) {    
-
-                            if( (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3')  && turn_user_id  == '<?php echo $user_id; ?>' )  {
-                                o.set({
-                                  lockMovementX: false,
-                                  lockMovementY: false    
-                                });
-                                o.setCoords({
-                                  lockMovementX: false,
-                                  lockMovementY: false
-                                });   
-                            }
-                        });        
                     } else if(next_turn == "2") {  
                         //console.log("testing");
                         var rectSelected = { left: 920, top: 195, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);  
-
-                        canvas.getObjects().map(function(o) {
-                            if( (o.type == 'blue_0' || o.type == 'blue_1' || o.type == 'blue_2' || o.type == 'blue_3')  && turn_user_id  == '<?php echo $user_id; ?>') {
-                              o.set({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });
-                              o.setCoords({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });   
-                            }
-                        });  
                     } else if(next_turn == "3") {
                         var rectSelected = { left: 920, top: 610, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);
-    
-                        canvas.getObjects().map(function(o) {
-                            if((o.type == 'red_0' || o.type == 'red_1' || o.type == 'red_2' || o.type == 'red_3')  && turn_user_id  == '<?php echo $user_id; ?>') {   
-                              o.set({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });
-                              o.setCoords({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });   
-                            }
-                        });
                     } else if(next_turn == "4") { 
                         var rectSelected = { left: 160, top: 610, fill: 'white', width: 293, height: 2 , id:"active_turn_user",lockMovementX:true,lockMovementY:true,stroke:"green",strokeWidth:10,};  
                         var rectSelectedobj = new fabric.Rect(rectSelected); 
                         canvas.add(rectSelectedobj);       
-
-                        canvas.getObjects().map(function(o) {
-                            if((o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3')  && turn_user_id  == '<?php echo $user_id; ?>') {
-                              o.set({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });
-                              o.setCoords({
-                                lockMovementX: false,
-                                lockMovementY: false
-                              });   
-                            }
-                        });
                     }  
 
 
@@ -2323,7 +2456,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                   left: <?php echo $yellow_three_left_position; ?>,    
                                   top: <?php echo $yellow_three_top_position; ?>
                                 });
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_2') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'yellow_2') { 
                                   o.set({
                                     left: <?php echo $yellow_two_left_position; ?>,    
                                     top: <?php echo $yellow_two_top_position; ?>
@@ -2332,7 +2465,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $yellow_two_left_position; ?>,    
                                     top: <?php echo $yellow_two_top_position; ?>
                                   });
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_1') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'yellow_1') { 
                                   o.set({
                                     left: <?php echo $yellow_one_left_position; ?>,    
                                     top: <?php echo $yellow_one_top_position; ?>
@@ -2341,7 +2474,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $yellow_one_left_position; ?>,    
                                     top: <?php echo $yellow_one_top_position; ?>
                                   });
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'yellow_0') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'yellow_0') { 
                                   o.set({
                                     left: <?php echo $yellow_zero_left_position; ?>,    
                                     top: <?php echo $yellow_zero_top_position; ?>
@@ -2350,7 +2483,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $yellow_zero_left_position; ?>,    
                                     top: <?php echo $yellow_zero_top_position; ?>
                                   });
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_3') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'blue_3') { 
                                   o.set({
                                     left: <?php echo $blue_three_left_position; ?>,    
                                     top: <?php echo $blue_three_top_position; ?>
@@ -2359,7 +2492,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $blue_three_left_position; ?>,    
                                     top: <?php echo $blue_three_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_2') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'blue_2') { 
                                   o.set({
                                     left: <?php echo $blue_two_left_position; ?>,    
                                     top: <?php echo $blue_two_top_position; ?>
@@ -2368,7 +2501,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $blue_two_left_position; ?>,    
                                     top: <?php echo $blue_two_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_1') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'blue_1') { 
                                   o.set({
                                     left: <?php echo $blue_one_left_position; ?>,    
                                     top: <?php echo $blue_one_top_position; ?>
@@ -2377,7 +2510,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $blue_one_left_position; ?>,    
                                     top: <?php echo $blue_one_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'blue_0') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'blue_0') { 
                                   o.set({
                                     left: <?php echo $blue_zero_left_position; ?>,    
                                     top: <?php echo $blue_zero_top_position; ?>
@@ -2386,7 +2519,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $blue_zero_left_position; ?>,    
                                     top: <?php echo $blue_zero_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_3') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'red_3') { 
                                   o.set({
                                     left: <?php echo $red_three_left_position; ?>,    
                                     top: <?php echo $red_three_top_position; ?>
@@ -2395,7 +2528,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $red_three_left_position; ?>,    
                                     top: <?php echo $red_three_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_2') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'red_2') { 
                                   o.set({
                                     left: <?php echo $red_two_left_position; ?>,    
                                     top: <?php echo $red_two_top_position; ?>
@@ -2404,7 +2537,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $red_two_left_position; ?>,    
                                     top: <?php echo $red_two_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_1') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'red_1') { 
                                   o.set({
                                     left: <?php echo $red_one_left_position; ?>,    
                                     top: <?php echo $red_one_top_position; ?>
@@ -2413,7 +2546,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $red_one_left_position; ?>,    
                                     top: <?php echo $red_one_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'red_0') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'red_0') { 
                                   o.set({
                                     left: <?php echo $red_zero_left_position; ?>,    
                                     top: <?php echo $red_zero_top_position; ?>
@@ -2422,7 +2555,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $red_zero_left_position; ?>,    
                                     top: <?php echo $red_zero_top_position; ?>
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_3') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'green_3') { 
                                   o.set({
                                     left: <?php echo $green_three_left_position; ?>,    
                                     top: <?php echo $green_three_top_position; ?> 
@@ -2431,7 +2564,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $green_three_left_position; ?>,    
                                     top: <?php echo $green_three_top_position; ?> 
                                   });      
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_2') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'green_2') { 
                                   o.set({
                                     left: <?php echo $green_two_left_position; ?>,    
                                     top: <?php echo $green_two_top_position; ?> 
@@ -2440,7 +2573,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $green_two_left_position; ?>,    
                                     top: <?php echo $green_two_top_position; ?> 
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_1') { 
+                              } if(!existingMarbles.includes(o.type) && o.type == 'green_1') { 
                                   o.set({
                                     left: <?php echo $green_one_left_position; ?>,    
                                     top: <?php echo $green_one_top_position; ?>  
@@ -2449,7 +2582,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     left: <?php echo $green_one_left_position; ?>,    
                                     top: <?php echo $green_one_top_position; ?>  
                                   });  
-                              } else if(!existingMarbles.includes(o.type) && o.type == 'green_0') {          
+                              } if(!existingMarbles.includes(o.type) && o.type == 'green_0') {          
                                   o.set({  
                                     left: <?php echo $green_zero_left_position; ?>,    
                                     top: <?php echo $green_zero_top_position; ?>  
@@ -2459,42 +2592,147 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                                     top: <?php echo $green_zero_top_position; ?>  
                                   });      
                               }                                
-                      });
-
-                        
-
-
-                      
-
+                      });    
                     } else {
                       if(turn_user_id != '<?php echo $user_id ?>') {
                         resetToOriginalPosition();
                       }
                     }
-                    
-                    
-
                 }      
             }
         });
     }
 
+    Swal.fire({
+      title: 'Do not refresh the page, once game is started',
+      icon: 'info'
+    })
+
+    var is_your_turn = 0;  
+    var channelUsersData;
     $(document).ready(function() {  
 
+
+        var pusher = new Pusher('2a1428184af6e786468c', {
+            cluster: 'ap2',
+            encrypted: true
+        });
+        var channel = pusher.subscribe('dice_channel_<?php echo $room_id; ?>');
+        var channelUsers = pusher.subscribe('room_users_<?php echo $room_id; ?>');
+        var channelMarbleAccess = pusher.subscribe('marble_access_<?php echo $room_id; ?>');
+        channel.bind('my_event',
+          function(data) {
+              console.log("event data");
+              console.log(data);
+              dice.dataset.side = data;
+              dice.classList.toggle("reRoll");
+        });
+
+        channelUsers.bind('my_event',
+          function(data) {
+              console.log("users data");
+              channelUsersData.push(data);
+              console.log(data);
+        });
+
+        channelMarbleAccess.bind('my_event',
+          function(data) {
+              console.log("marble access");
+              console.log(data);
+              var current_user_id = '<?php echo $user_id; ?>';    
+              console.log(current_user_id);
+              var marble_access = JSON.parse(data[current_user_id]);
+              console.log(marble_access);
+              if(Object.keys(data).length > 0) {
+                for(var n =0; n<marble_access.length; n++) {
+                  var accessID = marble_access[n];
+                  if(accessID == '1') {
+                    canvas.getObjects().map(function(o) {  
+                      if( n==0 && (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3') ) {
+                        o.set({
+                          lockMovementX: false,
+                          lockMovementY: false
+                        });
+                        o.setCoords({
+                          lockMovementX: false,
+                          lockMovementY: false
+                        }); 
+                      } 
+                      if( n==1 && (o.type == 'blue_0' || o.type == 'blue_1' || o.type == 'blue_2' || o.type == 'blue_3') ) {
+                          o.set({
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                          o.setCoords({
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                      }
+                      if( n== 2 && (o.type == 'red_0' || o.type == 'red_1' || o.type == 'red_2' || o.type == 'red_3') ) {
+                          o.set({
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                          o.setCoords({
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                      }
+                      if( n== 3 && (o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3') ) {
+                          o.set({ 
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                          o.setCoords({
+                            lockMovementX: false,
+                            lockMovementY: false
+                          });
+                      }
+                    });
+                  }
+                  
+                }
+              }
+              
+              Swal.fire({
+                icon: 'success',
+                title: 'Game is started.....'
+              })
+        });
+ 
 
         let dice = document.getElementById('dice');
         var outputDiv = document.getElementById('diceResult');
 
-        function rollDice() {
+        
+        function rollDice() { 
             var current_turn = $("#turn_user_id").val();   
             if(current_turn != '<?php echo $user_id; ?>') {
                 toastr.error("Please wait for your turn");
                 return false;
             }
+            /*if(is_your_turn == 0 || is_locked_dice == 1) {
+                toastr.error("You already roll dice, please click on done button");
+                return false; 
+            }
+            is_your_turn = 0;
+            is_locked_dice = 1;*/
 
             let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+            $("#dice_result").val(result);
+
+            $.ajax({
+                type : 'POST',
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                data: {"action": "WCP_VideoChat_Controller::roll_dice","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>","result":result},
+                dataType : 'json',
+                success : function(msg) {
+
+                }
+            });
+            
             dice.dataset.side = result;
-            dice.classList.toggle("reRoll");
+            //dice.classList.toggle("reRoll");
             //console.log(result);
             //moveToEmptyCircle(canvas,result);
         }    
