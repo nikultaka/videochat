@@ -338,20 +338,20 @@ class WCP_VideoChat_Controller {
         );
         if(isset($_POST['user_id'])) {      
             $userID = $_POST['user_id'];
-            $pusher->trigger('room_users_'.$lastid, 'my_event',$userID);
             $room_id = $_POST['room_name'];
             $roomData = $wpdb->get_results("select * from ".$roomtable." where id =".$room_id." and status = '1' ");
-
+            $is_locked = $roomData[0]->is_locked;
             $roomData = $wpdb->get_results("select * from ".$joinroomtable." where room_id =".$room_id." ");
 
-            if(count($roomData)<4) {
+            if(count($roomData)<4 && $is_locked != "1") {        
                 $room_user_id = $roomData[0]->user_id;    
                 $is_admin = 0;
                 $current_turn = 0;
                 if($room_user_id == $userID) {
                     $is_admin = 1;
                     $current_turn = 1;
-                }
+                }        
+                $pusher->trigger('room_users_'.$lastid, 'my_event',$userID);
                 $wpdb->query("delete from ".$marbletable." where user_id = ".$userID);
                 $wpdb->query("update ".$table." set status = '0' where user_id = ".$userID." ");
                 $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");        
@@ -362,7 +362,7 @@ class WCP_VideoChat_Controller {
                 }
                 echo json_encode(array("status"=>1));    
             } else {
-                echo json_encode(array("status"=>0,"msg"=> "Room is full"));
+                echo json_encode(array("status"=>0,"msg"=> "Room is full or locked"));
             }
         } else {     
             echo json_encode(array("status"=>0,"msg"=> "something went wrong"));

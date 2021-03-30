@@ -34,15 +34,16 @@ $roomsData = $wpdb->get_results("select * from ".$table." ");
 			            type: 'POST',
 			            url: '<?php echo admin_url('admin-ajax.php'); ?>',
 			            data: {"action": "WCP_VideoChat_Controller::added_room","user_id":"<?php echo $user_id; ?>","room_name":room_name},
+			            dataType : 'json',
 			            success: function (data) {   
-			                var result =  JSON.parse(data);
-			                if (result.status == 1) {  
+			                if (data.status == 1) {  
 			                    document.location.href='video-chat?id='+room_name;
 			                } else {
-			                	alert(result.msg);
+			                	alert(data.msg);
+			                	document.location.href='create-room';
 			                	return false;
 			                }
-			            }
+			            }    
 			        }); 		
 				}
 				

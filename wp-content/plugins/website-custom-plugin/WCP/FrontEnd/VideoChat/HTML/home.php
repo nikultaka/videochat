@@ -144,7 +144,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         <h2 class="modal-title">Set Color</h2>  
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button>  
       </div>
       <div class="modal-body">
         <div class="row">
@@ -245,7 +245,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="saveUserColor();">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+        <button type="button" class="btn btn-primary" onclick="resetGame()" >Reset Game</button>
+      </div>  
     </div>
   </div>
 </div>
@@ -253,8 +254,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 <?php if($is_admin == "1") { ?>
   <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="setColor()" >Set Color</button>
-  <!-- <button type="button" class="btn btn-primary" style="position: absolute;top:2;left: 0;z-index: 9999" onclick="resetGame()" >Reset</button> -->
-<?php } ?>  
+<?php } ?>               
 
 <div id="dice" class="box-dice" data-side="1" style="position: absolute;top: 0; left: 2%; bottom: 9%; right: 14%;margin: auto;z-index: 9999;">      
   <!-- display: none; -->
@@ -2418,27 +2418,54 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                             var marble_user_id = marble.user_id;
                             existingMarbles.push(marble.marble_id);
                             if(marble_user_id == '<?php echo $user_id ?>') {
-                              return false;
-                            }
+                               return false;
+                            }  
+
+                            var previousLeft = '';
+                            var previousTop = '';
                             canvas.getObjects().map(function(o) {
                                 if(o.id == marble.current_position) {
                                   objectLeft = o.left+6;
-                                  objectTop = o.top+5;
+                                  objectTop = o.top+5;  
                                 }       
-                            });
+                                if(o.id == marble.previous_position) {
+                                  previousLeft = o.left+6;
+                                  previousTop = o.top+5;  
+                                }
+                            });    
+
 
                             var is_marble_exist = 0;
                             canvas.getObjects().map(function(o) {
                                 if(o.type == marble.marble_id) {
                                       is_marble_exist = 1;
-                                      o.set({
+                                      /*o.set({
                                         left: objectLeft,
                                         top: objectTop
-                                      });
+                                      });     
                                       o.setCoords({
                                         left: objectLeft,
                                         top: objectTop
-                                      });
+                                      });*/
+                                      o.animate('left', objectLeft, {
+                                          duration: 1000,
+                                          onChange: canvas.renderAll.bind(canvas),
+                                          easing: fabric.util.ease['easeInQuad']
+                                        });    
+                                      o.animate('top', objectTop, {
+                                          duration: 1000,
+                                          onChange: canvas.renderAll.bind(canvas),
+                                          easing: fabric.util.ease['easeInQuad']
+                                        });    
+                                      /*if(objectLeft>previousLeft) {
+                                        var calculateDiff = objectLeft - previousLeft;
+                                        o.animate('left', objectLeft, {
+                                          duration: 1000,
+                                          onChange: canvas.renderAll.bind(canvas),
+                                          easing: fabric.util.ease['easeInQuad']
+                                        });    
+                                      }*/
+
                                 }
                             });   
                       });        
