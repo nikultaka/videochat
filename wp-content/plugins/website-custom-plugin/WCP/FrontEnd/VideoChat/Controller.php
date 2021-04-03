@@ -85,6 +85,7 @@ class WCP_VideoChat_Controller {
                     $stream_array[] = $value->stream_id;
                     $user_stream_array[$key]['stream_id'] = $value->stream_id;
                     $user_stream_array[$key]['user_id'] = $value->user_id;
+                    $user_stream_array[$key]['user_id'] = $value->user_id;
                 }   
             }  
             $currentTurnData = $wpdb->get_results("select * from ".$table." where current_turn = '1' and status = '1' and room_id =".$room_id);
@@ -93,7 +94,7 @@ class WCP_VideoChat_Controller {
                 $next_turn = $currentTurnData[0]->user_id;
             }
 
-            /**************************/
+            /**************************/    
             $joinroomData = $wpdb->get_results("select DISTINCT ".$joinroomtable.".*,".$table.".color 
                 from ".$joinroomtable." 
                 inner join ".$table." on ".$table.".user_id = ".$joinroomtable.".user_id
@@ -122,13 +123,6 @@ class WCP_VideoChat_Controller {
             }   
             /**************************/
 
-            /*$joinroomData = $wpdb->get_results("select ".$table.".stream_id,".$joinroomtable.".id,".$table.".is_video_enable,".$table.".user_id 
-                from ".$joinroomtable." 
-                inner join ".$table." on ".$table.".user_id = ".$joinroomtable.".user_id
-                and ".$table.".room_id =".$room_id."
-                where ".$joinroomtable.".room_id =".$room_id." order by id asc
-            ");*/
-
             $count = 1;
             $loadUserWithoutVideo = array();
             if(!empty($userData)) {
@@ -141,7 +135,7 @@ class WCP_VideoChat_Controller {
                     $count++;  
                 }    
             }
-            self::check_active_status($table,$joinroomtable);
+            //self::check_active_status($table,$joinroomtable);
             echo json_encode(array("status"=>1,'stream_data'=>$stream_array,'user_stream'=>$user_stream_array,'current_marble_id'=>$marbleData,'current_turn'=>$user_position,'turn_user_id'=>$next_turn,'loadUserWithoutVideo'=>$loadUserWithoutVideo,"color_1"=>$color_1,"color_2"=>$color_2,"color_3"=>$color_3,"color_4"=>$color_4));
 
         } else {       
@@ -206,16 +200,15 @@ class WCP_VideoChat_Controller {
 
 
     public function check_active_status($table,$joinroomtable) {
-        return false;
         global $wpdb;    
-        $inactiveUsersData = $wpdb->get_results("select * from ".$table." where gm_updated < (NOW() - INTERVAL 15 SECOND) and stream_id!='' and status = '1'  "); 
+        /*$inactiveUsersData = $wpdb->get_results("select * from ".$table." where gm_updated < (NOW() - INTERVAL 15 SECOND) and stream_id!='' and status = '1'  "); 
             if(!empty($inactiveUsersData)) {
                 foreach($inactiveUsersData as $inactiveKey => $inactiveValue) {
                     $inactiveUserID = $inactiveValue->user_id;    
                     $wpdb->query("update ".$table." set status ='0' where user_id = ".$inactiveUserID." ");
                     $wpdb->query("delete from ".$joinroomtable." where user_id = ".$inactiveUserID." ");
                 }
-            }
+            }*/
     }
 
     public function done() {
@@ -336,26 +329,31 @@ class WCP_VideoChat_Controller {
            '1061526',
            $options
         );
-        if(isset($_POST['user_id'])) {      
+        if(isset($_POST['user_id'])) {  
+            $current_user = wp_get_current_user();  
+            $displayName = $current_user->data->display_name;  
             $userID = $_POST['user_id'];
             $room_id = $_POST['room_name'];
             $roomData = $wpdb->get_results("select * from ".$roomtable." where id =".$room_id." and status = '1' ");
             $is_locked = $roomData[0]->is_locked;
             $roomData = $wpdb->get_results("select * from ".$joinroomtable." where room_id =".$room_id." ");
 
-            if(count($roomData)<4 && $is_locked != "1") {        
+            if(count($roomData)<4 && $is_locked != "1") {     
                 $room_user_id = $roomData[0]->user_id;    
                 $is_admin = 0;
                 $current_turn = 0;
                 if($room_user_id == $userID) {
                     $is_admin = 1;
                     $current_turn = 1;
-                }        
-                $pusher->trigger('room_users_'.$lastid, 'my_event',$userID);
+                }             
+                $triggerData = array("id"=>$userID,'name'=>$displayName);
+                $pusher->trigger('room_users_'.$room_id, 'my_event',$triggerData);  
                 $wpdb->query("delete from ".$marbletable." where user_id = ".$userID);
-                $wpdb->query("update ".$table." set status = '0' where user_id = ".$userID." ");
-                $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");        
+                $wpdb->query("delete from ".$table." where user_id = ".$userID." ");
+                $wpdb->query("delete from ".$joinroomtable." where user_id = ".$userID." ");
+
                 $isUserDataExist = $wpdb->get_results("select * from ".$table." where user_id =".$userID." and room_id = '".$room_id."' ");
+
                 if(count($isUserDataExist) == 0) {  
                     $wpdb->query(" insert into ".$table." (room_id,stream_id,user_id,is_admin,status,current_turn,gm_created,gm_updated) values(".$room_id.",'',".$userID.",".$is_admin.",'1',".$current_turn.",NOW(),NOW())  ");
                     $wpdb->insert($joinroomtable,array('room_id'=>$room_id,'is_admin'=>$is_admin,'user_id'=>$userID));    
@@ -369,6 +367,17 @@ class WCP_VideoChat_Controller {
         }  
         exit;
     }     
+
+    public function get_color_data() {
+        global $wpdb;        
+        $room_id = $_POST['room_id'];
+        $table = $wpdb->prefix.'online_users';
+        $usertable = $wpdb->prefix.'users';
+        $userData = $wpdb->get_results("select ".$table.".*,".$usertable.".display_name from ".$table." inner join ".$usertable." on ".$usertable.".ID =  ".$table.".user_id  where room_id =".$room_id." order by id ASC ");
+
+        echo json_encode(array('status'=>1,'data'=>$userData));
+        die;
+    }
 
     public function save_color() {
         global $wpdb;   
@@ -550,5 +559,7 @@ add_action('wp_ajax_WCP_VideoChat_Controller::reset_marble_position', Array($WCP
 add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::roll_dice', Array($WCP_VideoChat_Controller, 'roll_dice'));
 add_action('wp_ajax_WCP_VideoChat_Controller::roll_dice', Array($WCP_VideoChat_Controller, 'roll_dice'));
 
-
+add_action('wp_ajax_nopriv_WCP_VideoChat_Controller::get_color_data', Array($WCP_VideoChat_Controller, 'get_color_data'));
+add_action('wp_ajax_WCP_VideoChat_Controller::get_color_data', Array($WCP_VideoChat_Controller, 'get_color_data'));
+  
 ?>

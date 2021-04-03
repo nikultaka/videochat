@@ -4,16 +4,17 @@
 <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">   
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->
 <script type="text/javascript" src="<?php echo plugins_url('website-custom-plugin/WCP/assets/js/simplewebrtc.bundle.js'); ?>"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>        
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>           
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+ 
 <style>  
     .site-header, .header-footer-group  { display: none; }
     .section-inner { display: none; }    
@@ -40,7 +41,10 @@ $flatGrnURL = plugins_url('website-custom-plugin/WCP/assets/images/flat-grn-010.
 $flatRedURL = plugins_url('website-custom-plugin/WCP/assets/images/flat-red-010.png');
 $flatYelURL = plugins_url('website-custom-plugin/WCP/assets/images/flat-yel-010.png');
 $doneURL = plugins_url('website-custom-plugin/WCP/assets/images/done.png');
-$noImageURL = plugins_url('website-custom-plugin/WCP/assets/images/blank_profile_picture.png');             
+$noImageURL = plugins_url('website-custom-plugin/WCP/assets/images/blank_profile_picture.png');
+
+//$current_user = wp_get_current_user();             
+//$displayName = $current_user->data->display_name;
 
 $yellow_zero_left_position = 112;
 $yellow_zero_top_position = 6;    
@@ -101,7 +105,8 @@ if(!empty($roomData)) {
             $is_admin = "1";          
         }
     }
-}
+}    
+
 $user_one_color = "#FFC000";
 $user_two_color = "#305496";
 $user_three_color = "#A9C099";
@@ -137,8 +142,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
   </div>
 </div>
 
-<div class="modal" id="mymodal" role="dialog">
-  <div class="modal-dialog" role="document">
+<div class="modal" id="mymodal" role="dialog">  
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">Set Color</h2>  
@@ -148,9 +153,9 @@ if(isset($_GET['id']) && $_GET['id']!='') {
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-4">
-              &nbsp;
-          </div>
+          <div class="col-md-1">
+                  &nbsp;
+          </div>  
           <div class="col-md-2">
             <span class="squareColorBox" style="background: yellow;"></span>
           </div>
@@ -162,13 +167,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
           </div>
           <div class="col-md-2">
             <span class="squareColorBox" style="background: green;"></span>
-          </div>  
+          </div>
         </div>  
         <form>
 
             <div class="row">
-              <div class="col-md-4">
-                  User One
+              <div class="col-md-1">
+                  User 1
               </div>  
               <div class="col-md-2">
                 <span class="squareColorBox" id="one_yellow" onclick="userColor('one','yellow');"></span>
@@ -182,11 +187,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               <div class="col-md-2">
                 <span class="squareColorBox" id="one_green" onclick="userColor('one','green');"></span>
               </div>  
+              <div class="col-md-3" id="user_one_display_name"></div>
             </div>
 
             <div class="row">
-              <div class="col-md-4">
-                  User Two
+              <div class="col-md-1">
+                  User 2
               </div>  
               <div class="col-md-2">
                 <span class="squareColorBox" id="two_yellow" onclick="userColor('two','yellow');"></span>
@@ -200,11 +206,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               <div class="col-md-2">
                 <span class="squareColorBox" id="two_green" onclick="userColor('two','green');"></span>
               </div>  
+              <div class="col-md-3" id="user_two_display_name"></div>
             </div>
 
             <div class="row">
-              <div class="col-md-4">
-                  User Three
+              <div class="col-md-1">
+                  User 3
               </div>  
               <div class="col-md-2">
                 <span class="squareColorBox" id="three_yellow" onclick="userColor('three','yellow');"></span>
@@ -218,11 +225,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               <div class="col-md-2">
                 <span class="squareColorBox"  id="three_green" onclick="userColor('three','green');"></span>
               </div>  
+              <div class="col-md-3" id="user_three_display_name"></div>
             </div>
 
             <div class="row">
-              <div class="col-md-4">
-                  User Four
+              <div class="col-md-1">
+                  User 4
               </div>  
               <div class="col-md-2">
                 <span class="squareColorBox" id="four_yellow" onclick="userColor('four','yellow');"></span>
@@ -235,8 +243,13 @@ if(isset($_GET['id']) && $_GET['id']!='') {
               </div>
               <div class="col-md-2">
                 <span class="squareColorBox" id="four_green" onclick="userColor('four','green');"></span>
-              </div>  
-            </div>    
+              </div> 
+              <div class="col-md-3" id="user_four_display_name"></div>
+              <input type="hidden" id="is_yellow_filled" value="" >     
+              <input type="hidden" id="is_blue_filled" value="" >     
+              <input type="hidden" id="is_red_filled" value="" >     
+              <input type="hidden" id="is_green_filled" value="" >     
+            </div>        
 
 
           
@@ -1969,6 +1982,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         
                     }
                     setInterval(function(){ get_online_user() }, 3000);  
+                    assignMarbleColor();
+                    setInterval(function(){ assignMarbleColor() }, 10000);  
                 }
             }
         });          
@@ -2007,11 +2022,48 @@ if(isset($_GET['id']) && $_GET['id']!='') {
       var id_selector = "#"+id+'_'+type;
       var attr = $(id_selector).attr('name');
       if (typeof attr !== 'undefined' && attr !== false) {
+        if(type == 'yellow') {
+          $("#is_yellow_filled").val('');    
+        } else if(type == 'blue') {
+          $("#is_blue_filled").val('');    
+        } else if(type == 'red') {
+          $("#is_red_filled").val('');    
+        } else if(type == 'green') {
+          $("#is_green_filled").val('');    
+        }
         $(id_selector).css('background-color','');  
         $(id_selector).removeAttr('name');
       } else {    
-        $(id_selector).css('background-color',type);  
-        $(id_selector).attr('name','');
+        if(type == 'yellow') {
+            var is_yellow_filled = $("#is_yellow_filled").val();  
+            if(is_yellow_filled!='1') {
+              $("#is_yellow_filled").val(1);    
+              $(id_selector).css('background-color',type);  
+              $(id_selector).attr('name','');
+            }
+        } else if(type == 'blue') {
+            var is_blue_filled = $("#is_blue_filled").val();  
+            if(is_blue_filled!='1') {
+              $("#is_blue_filled").val(1);    
+              $(id_selector).css('background-color',type);  
+              $(id_selector).attr('name','');
+            }
+        } else if(type == 'red') {
+            var is_red_filled = $("#is_red_filled").val();  
+            if(is_red_filled!='1') {
+              $("#is_red_filled").val(1);    
+              $(id_selector).css('background-color',type);  
+              $(id_selector).attr('name','');
+            }
+        } else if(type == 'green') {
+            var is_green_filled = $("#is_green_filled").val();  
+            if(is_green_filled!='1') {
+              $("#is_green_filled").val(1);    
+              $(id_selector).css('background-color',type);  
+              $(id_selector).attr('name','');
+            }
+        }
+        
       }
     }
 
@@ -2116,8 +2168,124 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         
     }
 
+
+
+    function replaceAll(string, search, replace) {
+      return string.split(search).join(replace);
+    }
+
+    function assignMarbleColor() {
+        $.ajax({    
+            type: 'POST',      
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {"action": "WCP_VideoChat_Controller::get_color_data","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},  
+            dataType : 'json',    
+            success: function (result) {
+                if(result.status == 1) {  
+                    for (var key of Object.keys(result.data)) {
+                      var marble_access = result.data[key].marble_access;    
+                      if(marble_access != null && marble_access!='') { 
+                          marble_access = marble_access.replace("[",'');
+                          marble_access = marble_access.replace("]",'');  
+                          marble_access = marble_access.replace('"','');  
+
+                          if(marble_access != '') {         
+                            marble_access = replaceAll(marble_access,'"','').trim();  
+                            marble_access = marble_access.split(",");
+                          }    
+
+                          var marble_access_user_id = result.data[key].user_id;   
+                          if(marble_access_user_id == <?php echo $user_id; ?>) {
+                              console.log("marble_access");
+                              console.log(marble_access);
+                              console.log(marble_access.length)
+                              for(var n =0; n<marble_access.length; n++) {
+                                  var accessID = marble_access[n];
+                                  //console.log(accessID);
+                                  //console.log(n);    
+                                  if(accessID == '1') {          
+                                    canvas.getObjects().map(function(o) {  
+                                      if( n==0 && (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3') ) {
+                                        o.set({
+                                          lockMovementX: false,
+                                          lockMovementY: false
+                                        });        
+                                        o.setCoords({
+                                          lockMovementX: false,
+                                          lockMovementY: false
+                                        }); 
+                                      } 
+                                      if( n==1 && (o.type == 'blue_0' || o.type == 'blue_1' || o.type == 'blue_2' || o.type == 'blue_3') ) {
+                                          o.set({
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                          o.setCoords({
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                      }
+                                      if( n== 2 && (o.type == 'red_0' || o.type == 'red_1' || o.type == 'red_2' || o.type == 'red_3') ) {
+                                          o.set({
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                          o.setCoords({
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                      }
+                                      if( n== 3 && (o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3') ) {
+                                          o.set({ 
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                          o.setCoords({
+                                            lockMovementX: false,
+                                            lockMovementY: false
+                                          });
+                                      }
+                                    });
+                                  }
+                                  
+                              }
+                          } 
+                      }
+                    }  
+                }
+            }   
+        });
+    }
+
     function setColor() {
-        $("#mymodal").modal('show');
+        $.ajax({    
+            type: 'POST',      
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {"action": "WCP_VideoChat_Controller::get_color_data","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},  
+            dataType : 'json',    
+            success: function (result) {
+                if(result.status == 1) {  
+                    $("#mymodal").modal('show');
+                    $("#user_one_display_name").text('');
+                    $("#user_two_display_name").text('');
+                    $("#user_three_display_name").text('');
+                    $("#user_four_display_name").text('');
+                    for (var key of Object.keys(result.data)) {
+                      var userDisplayName = result.data[key];    
+                      if($("#user_one_display_name").text() == '') {
+                          $("#user_one_display_name").text(userDisplayName.display_name);
+                      } else if($("#user_two_display_name").text() == '') {
+                          $("#user_two_display_name").text(userDisplayName.display_name);
+                      } else if($("#user_three_display_name").text() == '') {
+                          $("#user_three_display_name").text(userDisplayName.display_name);
+                      } else if($("#user_four_display_name").text() == '') {
+                          $("#user_four_display_name").text(userDisplayName.display_name);
+                      }
+                    }  
+                }
+            }   
+        });
+        
     }
 
     function resetToOriginalPosition() {
@@ -2658,7 +2826,10 @@ if(isset($_GET['id']) && $_GET['id']!='') {
         channelUsers.bind('my_event',
           function(data) {
               console.log("users data");
-              channelUsersData.push(data);
+              console.log(data);
+              var addedRoomUserData = JSON.parse(data);
+              console.log(addedRoomUserData)
+              channelUsersData.push(data.id);
               console.log(data);
         });
 
@@ -2679,7 +2850,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                         o.set({
                           lockMovementX: false,
                           lockMovementY: false
-                        });
+                        });   
                         o.setCoords({
                           lockMovementX: false,
                           lockMovementY: false

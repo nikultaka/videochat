@@ -1,0 +1,27 @@
+2021-04-03T10:00:02+00:00 CRITICAL Uncaught Error: Call to a member function get_results() on null in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php:374
+Stack trace:
+#0 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(287): WCP_VideoChat_Controller->get_color_data()
+#1 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters()
+#2 /var/www/oxygen/wordpress/wp-includes/plugin.php(478): WP_Hook->do_action()
+#3 /var/www/oxygen/wordpress/wp-admin/admin-ajax.php(176): do_action()
+#4 {main}
+  thrown in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php on line 374
+
+2021-04-03T10:00:06+00:00 CRITICAL Uncaught Error: Call to a member function get_results() on null in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php:374
+Stack trace:
+#0 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(287): WCP_VideoChat_Controller->get_color_data()
+#1 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters()
+#2 /var/www/oxygen/wordpress/wp-includes/plugin.php(478): WP_Hook->do_action()
+#3 /var/www/oxygen/wordpress/wp-admin/admin-ajax.php(176): do_action()
+#4 {main}
+  thrown in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php on line 374
+
+2021-04-03T10:00:49+00:00 CRITICAL Uncaught Error: Call to a member function get_results() on null in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php:374
+Stack trace:
+#0 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(287): WCP_VideoChat_Controller->get_color_data()
+#1 /var/www/oxygen/wordpress/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters()
+#2 /var/www/oxygen/wordpress/wp-includes/plugin.php(478): WP_Hook->do_action()
+#3 /var/www/oxygen/wordpress/wp-admin/admin-ajax.php(176): do_action()
+#4 {main}
+  thrown in /var/www/oxygen/wordpress/wp-content/plugins/website-custom-plugin/WCP/FrontEnd/VideoChat/Controller.php on line 374
+
