@@ -120,6 +120,8 @@ if(isset($_GET['id']) && $_GET['id']!='') {
   exit;  
 }    
 
+
+$is_game_locked = $room[0]->is_locked;
 ?> 
 
 <div id="reset_game" class="modal" tabindex="-1" role="dialog">
@@ -2068,6 +2070,12 @@ if(isset($_GET['id']) && $_GET['id']!='') {
     }
 
     function saveUserColor() {
+
+        <?php if($is_game_locked == "1") { ?>
+            toastr.error("Game is locked, you can't change it");
+            return false; 
+        <?php } ?>  
+
         $("#mymodal").modal('hide');
         Swal.fire({
           icon: 'info',
@@ -2264,7 +2272,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
             data: {"action": "WCP_VideoChat_Controller::get_color_data","user_id":"<?php echo $user_id; ?>","room_id":"<?php echo $room_id; ?>"},  
             dataType : 'json',    
             success: function (result) {
-                if(result.status == 1) {  
+                if(result.status == 1) { 
                     $("#mymodal").modal('show');
                     $("#user_one_display_name").text('');
                     $("#user_two_display_name").text('');
@@ -2272,14 +2280,89 @@ if(isset($_GET['id']) && $_GET['id']!='') {
                     $("#user_four_display_name").text('');
                     for (var key of Object.keys(result.data)) {
                       var userDisplayName = result.data[key];    
+                      var marble_access = result.data[key].marble_access;    
+                      if(marble_access != null && marble_access!='') { 
+                          marble_access = marble_access.replace("[",'');
+                          marble_access = marble_access.replace("]",'');  
+                          marble_access = marble_access.replace('"','');  
+
+                          if(marble_access != '') {         
+                            marble_access = replaceAll(marble_access,'"','').trim();  
+                            marble_access = marble_access.split(",");
+                          }    
+                      }     
                       if($("#user_one_display_name").text() == '') {
                           $("#user_one_display_name").text(userDisplayName.display_name);
+                          for(var n =0; n<marble_access.length; n++) {
+                              var accessID = marble_access[n];
+                              if(accessID == "1" && n ==0) {
+                                  $("#one_yellow").css('background-color','yellow');  
+                                  $("#one_yellow").attr('name','');
+                              } else if(accessID == "1" && n ==1) {
+                                  $("#one_blue").css('background-color','blue');  
+                                  $("#one_blue").attr('name','');
+                              } else if(accessID == "1" && n ==2) {
+                                  $("#one_red").css('background-color','red');  
+                                  $("#one_red").attr('name','');
+                              } else if(accessID == "1" && n ==3) {
+                                  $("#one_green").css('background-color','green');  
+                                  $("#one_green").attr('name','');
+                              }
+                          }
                       } else if($("#user_two_display_name").text() == '') {
                           $("#user_two_display_name").text(userDisplayName.display_name);
+                          for(var n =0; n<marble_access.length; n++) {
+                              var accessID = marble_access[n];
+                              if(accessID == "1" && n ==0) {
+                                  $("#two_yellow").css('background-color','yellow');  
+                                  $("#two_yellow").attr('name','');
+                              } else if(accessID == "1" && n ==1) {
+                                  $("#two_blue").css('background-color','blue');  
+                                  $("#two_blue").attr('name','');
+                              } else if(accessID == "1" && n ==2) {
+                                  $("#two_red").css('background-color','red');  
+                                  $("#two_red").attr('name','');
+                              } else if(accessID == "1" && n ==3) {
+                                  $("#two_green").css('background-color','green');  
+                                  $("#two_green").attr('name','');
+                              }
+                          }
                       } else if($("#user_three_display_name").text() == '') {
                           $("#user_three_display_name").text(userDisplayName.display_name);
+                          for(var n =0; n<marble_access.length; n++) {
+                              var accessID = marble_access[n];
+                              if(accessID == "1" && n ==0) {
+                                  $("#three_yellow").css('background-color','yellow');  
+                                  $("#three_yellow").attr('name','');
+                              } else if(accessID == "1" && n ==1) {
+                                  $("#three_blue").css('background-color','blue');  
+                                  $("#three_blue").attr('name','');
+                              } else if(accessID == "1" && n ==2) {
+                                  $("#three_red").css('background-color','red');  
+                                  $("#three_red").attr('name','');
+                              } else if(accessID == "1" && n ==3) {
+                                  $("#three_green").css('background-color','green');  
+                                  $("#three_green").attr('name','');
+                              }
+                          }
                       } else if($("#user_four_display_name").text() == '') {
                           $("#user_four_display_name").text(userDisplayName.display_name);
+                          for(var n =0; n<marble_access.length; n++) {
+                              var accessID = marble_access[n];
+                              if(accessID == "1" && n ==0) {
+                                  $("#four_yellow").css('background-color','yellow');  
+                                  $("#four_yellow").attr('name','');
+                              } else if(accessID == "1" && n ==1) {
+                                  $("#four_blue").css('background-color','blue');  
+                                  $("#four_blue").attr('name','');
+                              } else if(accessID == "1" && n ==2) {
+                                  $("#four_red").css('background-color','red');  
+                                  $("#four_red").attr('name','');
+                              } else if(accessID == "1" && n ==3) {
+                                  $("#four_green").css('background-color','green');  
+                                  $("#four_green").attr('name','');
+                              }         
+                          }
                       }
                     }  
                 }
@@ -2456,6 +2539,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
     function resetGame() {
         <?php if($is_admin == "1") { ?> 
+          $("#mymodal").modal('hide');   
           $("#reset_game").modal('show');
         <?php } ?>      
     }

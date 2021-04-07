@@ -10,6 +10,8 @@ class WCP_VideoChat_Controller {
             exit;   
         }        
         $joinroomtable = $wpdb->prefix.'joinroom';
+        $roomtable = $wpdb->prefix.'room';    
+        $onlineuserstable = $wpdb->prefix.'online_users ';    
         $user_id = get_current_user_id();   
         $room_id = '';
         if(isset($_GET['id']) && $_GET['id']!='') {
@@ -20,6 +22,7 @@ class WCP_VideoChat_Controller {
         }  
 
         $roomData = $wpdb->get_results("select * from ".$joinroomtable." where room_id =".$room_id." and user_id = ".$user_id." ");
+        $room = $wpdb->get_results("select * from ".$roomtable." where id =".$room_id."");
 
         if(empty($roomData)) {
           wp_redirect('create-room');  
