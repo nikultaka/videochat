@@ -8,7 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->
+<!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->   
 <script type="text/javascript" src="<?php echo plugins_url('website-custom-plugin/WCP/assets/js/simplewebrtc.bundle.js'); ?>"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>           
@@ -407,7 +407,7 @@ $is_game_locked = $room[0]->is_locked;
             const roomHash =  "123";
             const drone = new ScaleDrone('2xmbUiTsqTzukyf7');     
             const roomName = 'observable-' + roomHash;
-            const configuration = {
+            const configuration = {         
               iceServers: [{
                   urls: 'stun:stun.l.google.com:19302'
               }]
@@ -2293,76 +2293,87 @@ $is_game_locked = $room[0]->is_locked;
                       }     
                       if($("#user_one_display_name").text() == '') {
                           $("#user_one_display_name").text(userDisplayName.display_name);
-                          for(var n =0; n<marble_access.length; n++) {
-                              var accessID = marble_access[n];
-                              if(accessID == "1" && n ==0) {
-                                  $("#one_yellow").css('background-color','yellow');  
-                                  $("#one_yellow").attr('name','');
-                              } else if(accessID == "1" && n ==1) {
-                                  $("#one_blue").css('background-color','blue');  
-                                  $("#one_blue").attr('name','');
-                              } else if(accessID == "1" && n ==2) {
-                                  $("#one_red").css('background-color','red');  
-                                  $("#one_red").attr('name','');
-                              } else if(accessID == "1" && n ==3) {
-                                  $("#one_green").css('background-color','green');  
-                                  $("#one_green").attr('name','');
-                              }
+                          if(marble_access != null && marble_access!='') { 
+                            for(var n =0; n<marble_access.length; n++) {
+                                var accessID = marble_access[n];
+                                if(accessID == "1" && n ==0) {
+                                    $("#one_yellow").css('background-color','yellow');  
+                                    $("#one_yellow").attr('name','');
+                                } else if(accessID == "1" && n ==1) {
+                                    $("#one_blue").css('background-color','blue');  
+                                    $("#one_blue").attr('name','');
+                                } else if(accessID == "1" && n ==2) {
+                                    $("#one_red").css('background-color','red');  
+                                    $("#one_red").attr('name','');
+                                } else if(accessID == "1" && n ==3) {
+                                    $("#one_green").css('background-color','green');  
+                                    $("#one_green").attr('name','');
+                                }
+                            }
                           }
                       } else if($("#user_two_display_name").text() == '') {
                           $("#user_two_display_name").text(userDisplayName.display_name);
-                          for(var n =0; n<marble_access.length; n++) {
-                              var accessID = marble_access[n];
-                              if(accessID == "1" && n ==0) {
-                                  $("#two_yellow").css('background-color','yellow');  
-                                  $("#two_yellow").attr('name','');
-                              } else if(accessID == "1" && n ==1) {
-                                  $("#two_blue").css('background-color','blue');  
-                                  $("#two_blue").attr('name','');
-                              } else if(accessID == "1" && n ==2) {
-                                  $("#two_red").css('background-color','red');  
-                                  $("#two_red").attr('name','');
-                              } else if(accessID == "1" && n ==3) {
-                                  $("#two_green").css('background-color','green');  
-                                  $("#two_green").attr('name','');
+                          if(marble_access != null && marble_access!='') { 
+                              for(var n =0; n<marble_access.length; n++) {
+                                var accessID = marble_access[n];
+                                if(accessID == "1" && n ==0) {
+                                    $("#two_yellow").css('background-color','yellow');  
+                                    $("#two_yellow").attr('name','');
+                                } else if(accessID == "1" && n ==1) {
+                                    $("#two_blue").css('background-color','blue');  
+                                    $("#two_blue").attr('name','');
+                                } else if(accessID == "1" && n ==2) {
+                                    $("#two_red").css('background-color','red');  
+                                    $("#two_red").attr('name','');
+                                } else if(accessID == "1" && n ==3) {
+                                    $("#two_green").css('background-color','green');  
+                                    $("#two_green").attr('name','');
+                                }
                               }
                           }
+                          
                       } else if($("#user_three_display_name").text() == '') {
                           $("#user_three_display_name").text(userDisplayName.display_name);
-                          for(var n =0; n<marble_access.length; n++) {
-                              var accessID = marble_access[n];
-                              if(accessID == "1" && n ==0) {
-                                  $("#three_yellow").css('background-color','yellow');  
-                                  $("#three_yellow").attr('name','');
-                              } else if(accessID == "1" && n ==1) {
-                                  $("#three_blue").css('background-color','blue');  
-                                  $("#three_blue").attr('name','');
-                              } else if(accessID == "1" && n ==2) {
-                                  $("#three_red").css('background-color','red');  
-                                  $("#three_red").attr('name','');
-                              } else if(accessID == "1" && n ==3) {
-                                  $("#three_green").css('background-color','green');  
-                                  $("#three_green").attr('name','');
+                          if(marble_access != null && marble_access!='') { 
+                              for(var n =0; n<marble_access.length; n++) {
+                                  var accessID = marble_access[n];
+                                  if(accessID == "1" && n ==0) {
+                                      $("#three_yellow").css('background-color','yellow');  
+                                      $("#three_yellow").attr('name','');
+                                  } else if(accessID == "1" && n ==1) {
+                                      $("#three_blue").css('background-color','blue');  
+                                      $("#three_blue").attr('name','');
+                                  } else if(accessID == "1" && n ==2) {
+                                      $("#three_red").css('background-color','red');  
+                                      $("#three_red").attr('name','');
+                                  } else if(accessID == "1" && n ==3) {
+                                      $("#three_green").css('background-color','green');  
+                                      $("#three_green").attr('name','');
+                                  }
                               }
                           }
+                          
                       } else if($("#user_four_display_name").text() == '') {
                           $("#user_four_display_name").text(userDisplayName.display_name);
-                          for(var n =0; n<marble_access.length; n++) {
-                              var accessID = marble_access[n];
-                              if(accessID == "1" && n ==0) {
-                                  $("#four_yellow").css('background-color','yellow');  
-                                  $("#four_yellow").attr('name','');
-                              } else if(accessID == "1" && n ==1) {
-                                  $("#four_blue").css('background-color','blue');  
-                                  $("#four_blue").attr('name','');
-                              } else if(accessID == "1" && n ==2) {
-                                  $("#four_red").css('background-color','red');  
-                                  $("#four_red").attr('name','');
-                              } else if(accessID == "1" && n ==3) {
-                                  $("#four_green").css('background-color','green');  
-                                  $("#four_green").attr('name','');
-                              }         
+                          if(marble_access != null && marble_access!='') { 
+                              for(var n =0; n<marble_access.length; n++) {
+                                  var accessID = marble_access[n];
+                                  if(accessID == "1" && n ==0) {
+                                      $("#four_yellow").css('background-color','yellow');  
+                                      $("#four_yellow").attr('name','');
+                                  } else if(accessID == "1" && n ==1) {
+                                      $("#four_blue").css('background-color','blue');  
+                                      $("#four_blue").attr('name','');
+                                  } else if(accessID == "1" && n ==2) {
+                                      $("#four_red").css('background-color','red');  
+                                      $("#four_red").attr('name','');
+                                  } else if(accessID == "1" && n ==3) {
+                                      $("#four_green").css('background-color','green');  
+                                      $("#four_green").attr('name','');
+                                  }         
+                              }
                           }
+                          
                       }
                     }  
                 }
@@ -2545,6 +2556,7 @@ $is_game_locked = $room[0]->is_locked;
     }
 
     function get_online_user() {
+        return false;
         $.ajax({    
             type: 'POST',    
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
@@ -2663,6 +2675,8 @@ $is_game_locked = $room[0]->is_locked;
                     }  
 
 
+                    console.log("marble_data");    
+                    console.log(marble_data);
                     var existingMarbles = new Array();
                     if(marble_data.length>0) {
                         Object.keys(marble_data).forEach(function(key) {
@@ -2671,7 +2685,7 @@ $is_game_locked = $room[0]->is_locked;
                             existingMarbles.push(marble.marble_id);
                             if(marble_user_id == '<?php echo $user_id ?>') {
                                return false;
-                            }  
+                            }      
 
                             var previousLeft = '';
                             var previousTop = '';
@@ -2698,7 +2712,7 @@ $is_game_locked = $room[0]->is_locked;
                                       o.setCoords({
                                         left: objectLeft,
                                         top: objectTop
-                                      });*/
+                                      });*/    
                                       o.animate('left', objectLeft, {
                                           duration: 1000,
                                           onChange: canvas.renderAll.bind(canvas),
@@ -2924,13 +2938,198 @@ $is_game_locked = $room[0]->is_locked;
               var current_user_id = '<?php echo $user_id; ?>';    
               console.log(current_user_id);
               var marble_access = JSON.parse(data[current_user_id]);
+              console.log("marble access colors");
               console.log(marble_access);
+
+
+              if(Object.keys(data).length == 2) {
+                fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
+                    myImg.id = "no_image";
+                    myImg.left = 945;
+                    myImg.top = 420;
+                    myImg.width = 250;
+                    myImg.height = 200;    
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true; 
+                    canvas.add(myImg);    
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+
+                fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
+                    myImg.id = "no_image";
+                    myImg.left = 190;
+                    myImg.top = 420;
+                    myImg.width = 250;
+                    myImg.height = 200;    
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true; 
+                    canvas.add(myImg);    
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+
+                fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+                    myImg.type = "red_0";
+                    myImg.id = "";
+                    myImg.left = <?php echo $red_zero_left_position; ?>;
+                    myImg.top = <?php echo $red_zero_top_position; ?>;
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true;
+                    canvas.add(myImg); 
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+          
+          
+                fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+                    myImg.type = "red_1";
+                    myImg.id = "";
+                    myImg.left = <?php echo $red_one_left_position; ?>;
+                    myImg.top = <?php echo $red_one_top_position; ?>;
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true;
+                    canvas.add(myImg); 
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+          
+                fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+                    myImg.type = "red_2";
+                    myImg.id = "";
+                    myImg.left = <?php echo $red_two_left_position; ?>;
+                    myImg.top = <?php echo $red_two_top_position; ?>;
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true;
+                    canvas.add(myImg); 
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+          
+                fabric.Image.fromURL('<?php echo $flatRedURL ?>', function(myImg) {
+                    myImg.type = "red_3";
+                    myImg.id = "";
+                    myImg.left = <?php echo $red_three_left_position; ?>;
+                    myImg.top = <?php echo $red_three_top_position; ?>;
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true;
+                    canvas.add(myImg); 
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_0";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_zero_left_position; ?>;
+                      myImg.top = <?php echo $green_zero_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+            
+            
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_1";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_one_left_position; ?>;
+                      myImg.top = <?php echo $green_one_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+                  
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_2";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_two_left_position; ?>;
+                      myImg.top = <?php echo $green_two_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });  
+                  
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_3";
+                      myImg.id = "";
+                      myImg.left = <?php echo $green_three_left_position; ?>;
+                      myImg.top = <?php echo $green_three_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+                
+              } else if(Object.keys(data).length == 3) {
+                fabric.Image.fromURL('<?php echo $noImageURL; ?>', function(myImg) {
+                    myImg.id = "no_image";
+                    myImg.left = 190;
+                    myImg.top = 420;
+                    myImg.width = 250;
+                    myImg.height = 200;    
+                    myImg.lockMovementX = true;
+                    myImg.lockMovementY = true; 
+                    canvas.add(myImg);    
+                    canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });   
+
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_0";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_zero_left_position; ?>;
+                      myImg.top = <?php echo $green_zero_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+            
+            
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_1";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_one_left_position; ?>;
+                      myImg.top = <?php echo $green_one_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+                  
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_2";
+                      myImg.id = '';
+                      myImg.left = <?php echo $green_two_left_position; ?>;
+                      myImg.top = <?php echo $green_two_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });  
+                  
+                fabric.Image.fromURL('<?php echo $flatGrnURL ?>', function(myImg) {
+                      myImg.type = "green_3";
+                      myImg.id = "";
+                      myImg.left = <?php echo $green_three_left_position; ?>;
+                      myImg.top = <?php echo $green_three_top_position; ?>;
+                      myImg.lockMovementX = true;
+                      myImg.lockMovementY = true;
+                      canvas.add(myImg); 
+                      canvas.forEachObject(function(o){ o.hasBorders = o.hasControls = false; }); 
+                });
+              }
+
+
+
+               setTimeout(function(){
               if(Object.keys(data).length > 0) {
+                console.log("marble_access length"+marble_access.length);
                 for(var n =0; n<marble_access.length; n++) {
                   var accessID = marble_access[n];
-                  if(accessID == '1') {
-                    canvas.getObjects().map(function(o) {  
-                      if( n==0 && (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3') ) {
+                  console.log(accessID+' '+n);
+                  if(accessID == '1') {  
+                    console.log("in watch");
+                    canvas.getObjects().map(function(o) {
+                      console.log(o.type);  
+                      if( n=='0' && (o.type == 'yellow_0' || o.type == 'yellow_1' || o.type == 'yellow_2' || o.type == 'yellow_3') ) {
+                        console.log("in yellow");
                         o.set({
                           lockMovementX: false,
                           lockMovementY: false
@@ -2940,7 +3139,8 @@ $is_game_locked = $room[0]->is_locked;
                           lockMovementY: false
                         }); 
                       } 
-                      if( n==1 && (o.type == 'blue_0' || o.type == 'blue_1' || o.type == 'blue_2' || o.type == 'blue_3') ) {
+                      if( n=='1' && (o.type == 'blue_0' || o.type == 'blue_1' || o.type == 'blue_2' || o.type == 'blue_3') ) {
+                        console.log("in blue");
                           o.set({
                             lockMovementX: false,
                             lockMovementY: false
@@ -2950,7 +3150,8 @@ $is_game_locked = $room[0]->is_locked;
                             lockMovementY: false
                           });
                       }
-                      if( n== 2 && (o.type == 'red_0' || o.type == 'red_1' || o.type == 'red_2' || o.type == 'red_3') ) {
+                      if( n=='2' && (o.type == 'red_0' || o.type == 'red_1' || o.type == 'red_2' || o.type == 'red_3') ) {
+                        console.log("in red");
                           o.set({
                             lockMovementX: false,
                             lockMovementY: false
@@ -2960,7 +3161,8 @@ $is_game_locked = $room[0]->is_locked;
                             lockMovementY: false
                           });
                       }
-                      if( n== 3 && (o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3') ) {
+                      if( n=='3' && (o.type == 'green_0' || o.type == 'green_1' || o.type == 'green_2' || o.type == 'green_3') ) {
+                        console.log("in green");
                           o.set({ 
                             lockMovementX: false,
                             lockMovementY: false
@@ -2975,12 +3177,18 @@ $is_game_locked = $room[0]->is_locked;
                   
                 }
               }
-              
+
+            },2000);  
+
+
+               
               Swal.fire({
                 icon: 'success',
                 title: 'Game is started.....'
               })
         });
+
+        
  
 
         let dice = document.getElementById('dice');

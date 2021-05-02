@@ -7,7 +7,7 @@ class WCP_VideoChat_Controller {
         global $wpdb;
         if (!is_user_logged_in()) {
             wp_redirect('my-account');
-            exit;   
+            exit;    
         }        
         $joinroomtable = $wpdb->prefix.'joinroom';
         $roomtable = $wpdb->prefix.'room';    
@@ -424,10 +424,20 @@ class WCP_VideoChat_Controller {
 
         $user_color = '';
         $user_access = array();
+        $use_one_id = '';
+        $use_two_id = '';
         if(!empty($userData)) {  
             foreach ($userData as $key => $value) {
                 $id = $value->id;
                 $user_id = $value->user_id;
+
+                if($key == 0) {
+                    $use_one_id = $user_id;
+                }
+                if($key == 1) {
+                    $use_two_id = $user_id;
+                }
+
                 if($key == 0) {
                     $json_string = json_encode(array($user_one_yellow,$user_one_blue,$user_one_red,$user_one_green));
                     $user_access[$user_id] = $json_string;
@@ -447,6 +457,16 @@ class WCP_VideoChat_Controller {
                 }    
                 $wpdb->query("update ".$table." set marble_access = '".$user_color."' where id = ".$id." ");
             }     
+
+            if(count($userData) == 2) {           
+                $json_string = json_encode(array($user_one_yellow,$user_one_blue,'1',$user_one_green));
+                $user_access[$use_one_id] = $json_string;
+                $json_string = json_encode(array($user_two_yellow,$user_two_blue,$user_two_red,'1'));
+                $user_access[$use_two_id] = $json_string;
+            } else if(count($userData) == 3) {
+                $json_string = json_encode(array($user_one_yellow,$user_one_blue,$user_one_red,'1'));
+                $user_access[$use_one_id] = $json_string;
+            }
         }    
         $pusher->trigger('marble_access_'.$room_id, 'my_event',$user_access);        
         echo json_encode(array('status'=>1));
