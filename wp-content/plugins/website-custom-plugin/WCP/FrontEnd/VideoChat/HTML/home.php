@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo plugins_url('website-custom-plugin/WCP/assets/css/style.css'); ?>" >    
 <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
 
-
+ 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
@@ -323,6 +323,7 @@ $is_game_locked = $room[0]->is_locked;
             
     <script>
 
+     var coloredUserAccess = ''; 
      var videoScaleData = Array(); 
      var canvas;
      var video1,remoteVideo1,remoteVideo2,remoteVideo3;
@@ -2556,7 +2557,6 @@ $is_game_locked = $room[0]->is_locked;
     }
 
     function get_online_user() {
-        return false;
         $.ajax({    
             type: 'POST',    
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
@@ -2622,7 +2622,15 @@ $is_game_locked = $room[0]->is_locked;
                     $("#current_turn").val(next_turn);  
                     $("#turn_user_id").val(turn_user_id);  
 
-                    if(turn_user_id == '<?php echo $user_id ?>') {
+                    var userColoredAccess = coloredUserAccess;
+                    console.log("color access");  
+                    console.log(userColoredAccess);
+                    var colorUserKey = Object.keys(userColoredAccess);
+                    console.log(colorUserKey);
+                    console.log(turn_user_id);
+                    console.log(stream_data);
+
+                    if(turn_user_id == '<?php echo $user_id ?>' || ( colorUserKey.includes(turn_user_id)  && stream_data == 'fake' ) ) {    
                         /*if(is_locked_dice == "") {
                           is_your_turn = 1;  
                         }*/
@@ -2931,10 +2939,13 @@ $is_game_locked = $room[0]->is_locked;
               console.log(data);
         });
 
+        
+
         channelMarbleAccess.bind('my_event',
           function(data) {
               console.log("marble access");
               console.log(data);
+              coloredUserAccess = data;      
               var current_user_id = '<?php echo $user_id; ?>';    
               console.log(current_user_id);
               var marble_access = JSON.parse(data[current_user_id]);
