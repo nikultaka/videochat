@@ -11,7 +11,7 @@
 <!-- <script type="text/javascript" src="https://hootenanny-dev.serverdatahost.com/assets/simplewebrtc.bundle.js"></script> -->   
 <script type="text/javascript" src="<?php echo plugins_url('website-custom-plugin/WCP/assets/js/simplewebrtc.bundle.js'); ?>"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>           
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js" ></script>              
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  
@@ -1985,8 +1985,8 @@ $is_game_locked = $room[0]->is_locked;
                         
                     }
                     setInterval(function(){ get_online_user() }, 3000);  
-                    assignMarbleColor();
-                    setInterval(function(){ assignMarbleColor() }, 10000);  
+                    //assignMarbleColor();
+                    setInterval(function(){ assignMarbleColor() }, 3000);    
                 }
             }
         });          
@@ -2001,8 +2001,27 @@ $is_game_locked = $room[0]->is_locked;
             }  
         });
         var current_turn = $("#turn_user_id").val();  
+        var next_turn = $("#current_turn").val();  
         var dice_result = $("#dice_result").val();
-        if(current_turn != '<?php echo $user_id; ?>') {
+
+        var userColoredAccess = coloredUserAccess;
+        var colorUserKey = Object.keys(userColoredAccess);
+        var is_dice_show = "0";
+        if(colorUserKey.length == 2 && next_turn == "3") {
+            <?php if($is_admin == "1") { ?>
+              is_dice_show = "1";
+            <?php } ?>  
+        } else if(colorUserKey.length == 2 && next_turn == "4") {
+          <?php if($is_admin != "1") { ?>
+              is_dice_show = "1";
+            <?php } ?>
+        } else if(colorUserKey.length == 3 && next_turn == "4") {
+          <?php if($is_admin == "1") { ?>
+              is_dice_show = "1";
+            <?php } ?>    
+        }             
+
+        if(current_turn != '<?php echo $user_id; ?>' && is_dice_show == "0") {  
           toastr.error('You need to wait for your turn');
           return false;
         }
@@ -2557,6 +2576,7 @@ $is_game_locked = $room[0]->is_locked;
     }
 
     function get_online_user() {
+        //return false;
         $.ajax({    
             type: 'POST',    
             url: '<?php echo admin_url('admin-ajax.php'); ?>',
@@ -2627,10 +2647,25 @@ $is_game_locked = $room[0]->is_locked;
                     console.log(userColoredAccess);
                     var colorUserKey = Object.keys(userColoredAccess);
                     console.log(colorUserKey);
-                    console.log(turn_user_id);
-                    console.log(stream_data);
+                    //console.log(turn_user_id);
+                    console.log(next_turn);
 
-                    if(turn_user_id == '<?php echo $user_id ?>' || ( colorUserKey.includes(turn_user_id)  && stream_data == 'fake' ) ) {    
+                    var is_dice_show = "0";
+                    if(colorUserKey.length == 2 && next_turn == "3") {
+                        <?php if($is_admin == "1") { ?>
+                          is_dice_show = "1";
+                        <?php } ?>  
+                    } else if(colorUserKey.length == 2 && next_turn == "4") {
+                      <?php if($is_admin != "1") { ?>
+                          is_dice_show = "1";
+                        <?php } ?>
+                    } else if(colorUserKey.length == 3 && next_turn == "4") {
+                      <?php if($is_admin == "1") { ?>
+                          is_dice_show = "1";
+                        <?php } ?>
+                    }    
+
+                    if(turn_user_id == '<?php echo $user_id ?>' || is_dice_show == "1") {    
                         /*if(is_locked_dice == "") {
                           is_your_turn = 1;  
                         }*/

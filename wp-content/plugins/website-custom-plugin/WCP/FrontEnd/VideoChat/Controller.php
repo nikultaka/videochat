@@ -459,25 +459,27 @@ class WCP_VideoChat_Controller {
             }     
 
             if(count($userData) == 2) {           
-                $user_id = wp_create_user(uniqid(),uniqid(),uniqid().'@gmail.com');
-                $wpdb->insert('wp_online_users',array('room_id'=>$room_id,'stream_id'=>'fake','user_id'=>$user_id,'status'=>1,'is_fake'=>'1'));
-
                 $json_string = json_encode(array($user_one_yellow,$user_one_blue,'1',$user_one_green));
-                $user_access[$user_id] = $json_string;
-
-                $user_id = wp_create_user(uniqid(),uniqid(),uniqid().'@gmail.com');
-                $wpdb->insert('wp_online_users',array('room_id'=>$room_id,'stream_id'=>'fake','user_id'=>$user_id,'status'=>1,'is_fake'=>'1'));
-
+                $user_access[$use_one_id] = $json_string;
                 $json_string = json_encode(array($user_two_yellow,$user_two_blue,$user_two_red,'1'));
-                $user_access[$user_id] = $json_string;
-            } else if(count($userData) == 3) {
-                  
+                $user_access[$use_two_id] = $json_string;
+
                 $user_id = wp_create_user(uniqid(),uniqid(),uniqid().'@gmail.com');
                 $wpdb->insert('wp_online_users',array('room_id'=>$room_id,'stream_id'=>'fake','user_id'=>$user_id,'status'=>1,'is_fake'=>'1'));
+                $wpdb->insert('wp_joinroom',array('room_id'=>$room_id,"user_id"=>$user_id,"is_admin"=>0));
 
+                $user_id = wp_create_user(uniqid(),uniqid(),uniqid().'@gmail.com');
+                $wpdb->insert('wp_online_users',array('room_id'=>$room_id,'stream_id'=>'fake','user_id'=>$user_id,'status'=>1,'is_fake'=>'1'));
+                $wpdb->insert('wp_joinroom',array('room_id'=>$room_id,"user_id"=>$user_id,"is_admin"=>0));    
+
+            } else if(count($userData) == 3) {
                 $json_string = json_encode(array($user_one_yellow,$user_one_blue,$user_one_red,'1'));
-                $user_access[$user_id] = $json_string;
-            }
+                $user_access[$use_one_id] = $json_string;
+
+                $user_id = wp_create_user(uniqid(),uniqid(),uniqid().'@gmail.com');
+                $wpdb->insert('wp_online_users',array('room_id'=>$room_id,'stream_id'=>'fake','user_id'=>$user_id,'status'=>1,'is_fake'=>'1'));
+                $wpdb->insert('wp_joinroom',array('room_id'=>$room_id,"user_id"=>$user_id,"is_admin"=>0));
+            }   
         }    
         $pusher->trigger('marble_access_'.$room_id, 'my_event',$user_access);        
         echo json_encode(array('status'=>1));
